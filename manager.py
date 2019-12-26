@@ -13,7 +13,7 @@ def parsing():
 
 def parsing2dict(arg):
     parse = dict()
-    if args.action.upper() not in ["RS","SS","RV","SV"]:
+    if arg.action.upper() not in ["RS","SS","RV","SV"]:
         raise Exception("Action not found")
     parse['action'] = arg.action
     parse['port'] = arg.port
@@ -81,7 +81,7 @@ def StartVM():
     print("[+] Done")
 
 def Execute(args):
-    if args['action'] == "RS":
+    if args['action'].upper() == "RS":
         if args['port'] == None:
             print("You not mentioned port to start web server\nDo you want start all server ? [Y/N]")
             if input().upper() == "Y":
@@ -89,7 +89,7 @@ def Execute(args):
         else:
             print("[+] Starting server on port "+args['port'])
             LaunchServer(args['port'])
-    elif args['action'] == "SS":
+    elif args['action'].upper() == "SS":
         if args['port'] == None:
             print("You not mentioned port to stop web server\nDo you want stop all server ? [Y/N]")
             if input().upper() == "Y":
@@ -97,9 +97,9 @@ def Execute(args):
         else:
             print("[+] Stoping server on port "+args['port'])
             killServer(args['port'])
-    elif args['action'] == "RV":
+    elif args['action'].upper() == "RV":
         StartVM()
-    elif args['action'] == "SV":
+    elif args['action'].upper() == "SV":
         StopVM()
 
 if __name__ == "__main__":
