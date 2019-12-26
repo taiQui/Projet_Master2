@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 import libvirt
-
+from threading import Thread
 class waiting(Thread):
 	def __init__(self):
 		Thread.__init__(self)

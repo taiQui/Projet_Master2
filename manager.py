@@ -76,8 +76,8 @@ def StartVM():
     wait = "Waiting for VM |"
     while  w.is_alive():
         print(wait,end="\r")
-		wait = change(wait)
-		time.sleep(0.2)
+        wait = change(wait)
+        time.sleep(0.2)
     print("[+] Done")
 
 def Execute(args):
