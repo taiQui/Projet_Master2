@@ -1,0 +1,10 @@
+create table users (
+
+  id int(11) PRIMARY KEY NOT NULL AUTO_INCREMENT,
+  name varchar(20) NOT NULL,
+  pass varchar(200) NOT NULL,
+  points int(100) default 0
+);
+
+insert into users(id,name,pass) values(0,"admin","admin");
+update users set id=0 where name="admin";
