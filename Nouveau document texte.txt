@@ -1,0 +1,43 @@
+10 - Manque de surveillance
+	Le manque surveillance de tous les évenements liée a l'ordinateurs, comme les connections interne/externe, les erreurs d'execution de programmes ou des journaux alias "log" 
+	peut amener un Hacker à continuer à attaquer un système informatique, de maintenir une persistance, et de falsifier, extraire ou détruire des données.
+	
+9 - Utilisation de composants vulnérable
+	Les composants, tels que les bibliothèques, les frameworks et autres modules logiciels, s'exécutent avec les mêmes privilèges que l'application. 
+	Si un composant vulnérable est exploité, une telle attaque peut faciliter une grave perte de données ou une prise de contrôle du serveur. 
+	Les applications et les API utilisant des composants présentant des vulnérabilités connues peuvent saper les défenses des applications et permettre diverses attaques et impacts.
+
+8 - La désérialisation non sécurisé
+	Une désérialisation non sécurisée conduit souvent à l'exécution de code à distance. Même si les failles de désérialisation n'entraînent pas l'exécution de code à distance, 
+	elles peuvent être utilisées pour effectuer des attaques, notamment des attaques de relecture, des attaques par injection et des attaques par escalade de privilèges
+
+7 - Cross-site scripting (XSS)
+	Des failles XSS inclut des données non autorisés dans une page Web, ou met à jour une page Web existante avec des données fournies par l'attaquant. 
+	XSS permet en autres aux attaquants d'exécuter des scripts dans le navigateur de la victime qui peuvent pirater des sessions utilisateur, défigurer des sites Web ou rediriger l'utilisateur vers des sites malveillants.
+
+6 - Mauvaise configuration de sécurité
+	Une mauvaise configuration de la sécurité est le problème le plus courant. Cela est généralement le résultat de configurations par défaut non sécurisées, de configurations incomplètes, 
+	d'en-têtes HTTP mal configurés et de messages d'erreur détaillés contenant des informations sensibles. Non seulement tous les systèmes d'exploitation, bibliothèques 
+	et applications doivent être configurés en toute sécurité, mais ils doivent être corrigés / mis à niveau en temps opportun.
+
+5 - Les droits d'accès
+	Les restrictions sur ce que les utilisateurs authentifiés sont autorisés à faire ne sont souvent pas correctement appliquées. Les attaquants peuvent exploiter ces failles pour accéder à 
+	des fonctionnalités et / ou des données non autorisées, comme accéder aux comptes d'autres utilisateurs, afficher des fichiers sensibles, modifier les données d'autres utilisateurs, changer les droits d'accès, etc.
+
+4 - XML
+	Une attaque d' entité externe XML est un type d'attaque contre une application qui analyse une entrée XML . Cette attaque se produit lorsque l'entrée XML contenant une référence
+	à une entité externe est traitée par un analyseur XML faiblement configuré. Cette attaque peut entraîner la divulgation de données confidentielles, un déni de service, 
+	la falsification de requêtes côté serveur, la numérisation de port du point de vue de la machine sur laquelle se trouve l'analyseur et d'autres répercussions sur le système.
+
+3 - Les données sensible non protégé
+	De nombreuses applications Web et API ne protègent pas correctement les données sensibles. Les attaquants peuvent voler ou modifier ces données faiblement
+	protégées pour commettre une fraude par carte de crédit, un vol d'identité ou d'autres délits.
+
+2 - Les failles d'authentification
+	Les fonctions d'application liées à l'authentification et à la gestion de session sont souvent implémentées de manière incorrecte, permettant aux attaquants de compromettre les mots de passe, les jetons de session,
+	ou d'exploiter d'autres failles d'implémentation pour assuré l'identité des autres utilisateurs de manière temporaire ou permanente.
+
+1 - L'injection SQL
+	Des failles d'injection, telles que l'injection SQL, NoSQL, OS et LDAP, se produisent lorsque l'attaquant envoie des données à un interpréteur dans le cadre d'une commande ou d'une requête. 
+	l'injection de l'attaquant peux inciter à exécuter des commandes involontaires ou à accéder aux données sans autorisation appropriée.
+
