@@ -36,11 +36,35 @@ les deux sont simple a comprendre :)
 
 
 
+Pour rentrer plus en profondeur je vais détailler la famille des 5 injections SQL
+
+Attaque 1 : Blind Based
+
+L'injection aveugle SQL est un type d'attaque qui pose des questions vraies ou fausses à la base de données et détermine la réponse en fonction de la réponse des applications
+
+SCHEMA A VENIR
+
+Attaque 2 : Time Based
+
+Presque identique à la première, cependant, la réponse est détermine en fonction du temps de réponse des applications
+
+SCHEMA A VENIR
+
+Attaque 3 : Error Based
+
+Cette méthode profite d'une faiblesse des systèmes de base de données permettant de détourner un message d'erreur généré par la base de données et préalablement volontairement provoquée par l'injection SQL pour lui faire retourner une valeur précise récupérée en base de données
+
+SCHEMA A VENIR
+
+Attaque 4 : Union Based
+
+/
 
 
 
+Attaque 5 : Stacked Queries
 
-
+/
 
 
 
@@ -68,7 +92,7 @@ La confirmation de l'identité, de l'authentification et de la gestion de sessio
 
 
 
-Exemple 1 : Attaque par Brute Force
+Attaque 1 : Attaque par Brute Force
 
 L'attaquant va alors utiliser pour la plus part du temps un outils, ou un script permettant l'utilisation d'un dictionnaire ou non et lancer plusieurs requêtes jusqu'à deviner le mot de passe
 
@@ -78,7 +102,7 @@ IMAGE ExempleBruteForce
 
 
 
-Exemple 2 : Vol de cookie
+Attaque 2 : Vol de cookie
 
 L'attaquant peut, utiliser par exemple une attaque CSRF sur un utilisateur, en volant sont cookie, il peut usurper l'identité de l'utilisateur sur le serveur et ainsi accéder à des informations non autorisée.
 
@@ -91,6 +115,10 @@ IMAGE ExempleVolCookie
 POUR LE PROJET : Attaque ez a mettre en place, un authentif avec un login et mdp faible.
 
 OU un CSRF sa peut être sympat :spy:
+
+
+
+
 
 
 
