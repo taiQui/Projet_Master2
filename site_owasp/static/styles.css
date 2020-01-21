@@ -1,0 +1,14 @@
+.sidebar-nav {
+    margin-top: 20px;
+    padding: 0;
+    list-style: none;
+}
+.container-fluid{
+  background-color: green;
+
+}
+.sidebar-nav{
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
