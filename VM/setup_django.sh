@@ -58,8 +58,7 @@ cd ../XSS
 python3 manage.py startapp Index > /dev/null
 cd ../Insecure_deserialization
 python3 manage.py startapp Index > /dev/null
+python3 manage.py startapp profile > /dev/null
 cd ../Components_know_vuln
-python3 manage.py startapp Index > /dev/null
-cd ../Insufficient_logging_monitoring
 python3 manage.py startapp Index > /dev/null
 
