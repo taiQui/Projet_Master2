@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block title %}faille_1{% endblock title %}
+{% block content %}
+
+<div class="mkt-s1">
+      <h1>faille 1</h1>
+</div>
+{% if user.is_authenticated %}
+  <form action="demarageChallenge/" method="POST">
+    {% csrf_token %}
+    <button type="submit">Démarrer le challenge</button>
+  </form>
+{% else %}
+  <p>connecte toi</p>
+{% endif %}
+{% endblock content %}

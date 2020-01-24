@@ -1,9 +1,9 @@
 echo "[+] Installing python"
-sudo apt-get install software-properties-common > /dev/null
+sudo apt-get install software-properties-common -y> /dev/null
 sudo add-apt-repository ppa:deadsnakes/ppa > /dev/null
 sudo apt-get update > /dev/null
-sudo apt-get install python3.6 > /dev/null
-
+sudo apt-get install python3.6 -y > /dev/null
+sudo apt-get install python3-pip -y > /dev/null
 echo "[+] Installing Django "
 sudo pip3 install Django > /dev/null
 
