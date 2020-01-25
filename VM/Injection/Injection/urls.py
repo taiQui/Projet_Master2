@@ -15,17 +15,16 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path,include
-from Basic.views import Basic_view,Basic_php
+from Basic.views import Basic_attack
 from Index.views import Index_view
-from Blind_based.views import Blind_view
-from Error_based.views import Error_view
+from Blind_based.views import Blind_attack
+from Error_based.views import Error_attack
 urlpatterns = [
     # path('Basic/',include('Basic.urls')),
     path('admin/', admin.site.urls),
     # path('Basic/',include('Basic.urls')),
-    path('Error/',Error_view,name='Error'),
-    path('Blind/',Blind_view,name='Blind'),
-    path('Basic/',Basic_view,name='Basic'),
-    path('Basic/action.php',Basic_php,name="action"),
+    path('Error/',Error_attack,name='Error'),
+    path('Blind/',Blind_attack,name='Blind'),
+    path('Basic/',Basic_attack,name='Basic'),
     path('',Index_view,name='home')
 ]

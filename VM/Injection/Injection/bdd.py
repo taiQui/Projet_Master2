@@ -180,20 +180,49 @@ class DB:
         try:
             self.cursor.execute("select name from users where name=\'"+name+"\'")
             r = self.cursor.fetchall()
-            return r[0]
+            if len(r) > 0:
+                return r
+            else:
+                return []
         except mysql.connector.Error as err:
             print("[-] Error while getting user")
+    def blind_getUser(self,name):
+        try:
+            self.cursor.execute("select name from users where name=\'"+name+"\'")
+            r = self.cursor.fetchall()
+            print(r)
+            if len(r) > 0:
+                return "Right !"
+            else:
+                return "Wrong !"
+        except mysql.connector.Error as err:
+            print("[-] Error while getting user")
+    def error_getUser(self,name):
+        try:
+            if ' or ' in name or ' and ' in name or '#' in name or " union " in name :
+                return [("Le piratage c'est pas bien, jeune padawan du hacking !",)],None
+            self.cursor.execute("select name from users where name=\'"+name+"\'")
+            r = self.cursor.fetchall()
+            print(r)
+            if len(r) > 0:
+                return r,None
+            else:
+                return [],None
+        except mysql.connector.Error as err:
+            return str(err),"command : select name from users where name=\'"+name+"\'"
+            # print("[-] Error while getting user")
 
 if __name__ == "__main__":
-    a = DB("www-data","www-data","projet")
+    a = DB("www-data","www-data","sql_injection")
     # a.show_table()
     # print(a.getUsers())
     # b = a.createUser()
     # a.deleteUser("user1")
     # print(a.getPoints("user1"))
     # a.addPoint("user1",10)
-    a.getUser("user1")
+    print(a.blind_getUser("admin' and (select left(password,1) from users where name='admin')='d'-- -"))
     # print(a.getPoints("user1"))
+
 
     # a.cleanAll()
     # print(b)
