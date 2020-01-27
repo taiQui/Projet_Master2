@@ -129,7 +129,7 @@ Pour notre exemple prenons un site basique que nous pouvons faire nous même.
 
 Chaque site web a des fichiers de configuration, des fichiers de gestions et surtout un dossier de production quand il est en développement. Pour le développement, ll y'a des logiciels qui permettent de facilité l'acces au code a tous les developpeur ainsi que la gestion des differente partis d'un projets, ici nous allons prendre **GIT**, c'est un logiciel de gestion descentralisé, les developpeurs peuvent déposer leurs bout de code ainsi que récuperé celui des autres personne, c'est une définition très basique de cet outils très complets.
 
-Un dossier **git** à la création, crée un dossier nommé **'.git'** qui se trouve a la racine du dossier d'un projet et qui contient tous ce qui se trouve dans le projet, et notamment les differentes **branches** qui se trouve être les partis séparé du projet; (où la branche **master** est la partis principale d'un projet); comme par exemple la partis ***Authentification*** d'un site. Imaginons pour la suite que dans la partis authentification, les developpeur aurait mis dans le code sources en clair : 
+Un dossier **git** à la création, crée un dossier nommé **'.git'** qui se trouve a la racine du dossier d'un projet et qui contient tous ce qui se trouve dans le projet, et notamment les differentes **branches** qui se trouve être les partis séparé du projet; (où la branche **master** est la partis principale d'un projet); comme par exemple la partis ***Authentification*** d'un site. Imaginons pour la suite que dans la partis authentification, les developpeur aurait mis dans le code sources, non chiffré : 
 
 ```php
 SI ( nomDeCompte == "admin"  et  motDePasse == "Hello_je_suis_l_admin") {
