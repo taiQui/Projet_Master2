@@ -176,6 +176,14 @@ class DB:
         except mysql.connector.Error as err:
             print("[-] Error while removing point to {}.\n{}".format(name,err))
 
+    def getUser(self,name):
+        try:
+            self.cursor.execute("select name from users where name=\'"+name+"\'")
+            r = self.cursor.fetchall()
+            return r[0]
+        except mysql.connector.Error as err:
+            print("[-] Error while getting user")
+
 if __name__ == "__main__":
     a = DB("www-data","www-data","projet")
     # a.show_table()
@@ -184,7 +192,7 @@ if __name__ == "__main__":
     # a.deleteUser("user1")
     # print(a.getPoints("user1"))
     # a.addPoint("user1",10)
-    a.removePoint("user1",10)
+    a.getUser("user1")
     # print(a.getPoints("user1"))
 
     # a.cleanAll()

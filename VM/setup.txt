@@ -1,0 +1,9 @@
+# Do not change this file
+
+use mysql;
+
+update user set authentification_string=PASSWORD("root") where user='root';
+
+flush privileges;
+
+quit;

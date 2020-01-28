@@ -1,0 +1,23 @@
+use mysql;
+
+#create user 'www-data'@'localhost' identified by 'flagados_le_sang";
+
+create database sql_injection;
+
+grant all privileges on sql_injection.* to 'www-data'@'localhost';
+
+use sql_injection;
+
+create table users (
+	id int(10) primary key NOT NULL auto_increment,
+	name varchar(120) NOT NULL,
+	lastname varchar(120) NOT NULL,
+	password varchar(120) NOT NULL
+
+);
+
+insert into users(name,lastname,password) values ("jack","daniel","Fl4g4do5_B0ns0ir");
+
+insert into users(name,lastname,password) values ("Jean","BON","CTF_1s_B3st");
+
+insert into users(name,lastname,password) values ("admin","admin","3Azi4JhDDJZQjdjql3");

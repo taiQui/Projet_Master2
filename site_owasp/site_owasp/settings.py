@@ -79,8 +79,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'owasp',
-        'USER': 'root',
-        'PASSWORD': '',
+        'USER': 'www-data',
+        'PASSWORD': 'www-data',
         'HOST': 'localhost',
         'PORT': '3306',
     }
@@ -110,7 +110,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/2.2/topics/i18n/
 
-LANGUAGE_CODE = 'fr-fr'
+LANGUAGE_CODE = 'fr'
 
 TIME_ZONE = 'UTC'
 
