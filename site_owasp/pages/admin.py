@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
 from django import forms
 from django.contrib import admin
 from django.contrib.auth.models import Group
@@ -87,14 +85,4 @@ admin.site.register(MyUser, UserAdmin)
 # ... and, since we're not using Django's built-in permissions,
 # unregister the Group model from admin.
 admin.site.unregister(Group)
-=======
-from django.contrib import admin
-from .models import flag,point
-admin.site.register(point)
->>>>>>> 37490fcfc9b9789a29ca4709225c286298a7f7bb
-=======
-from django.contrib import admin
-from .models import flag,point
-admin.site.register(point)
->>>>>>> refs/remotes/origin/master
 admin.site.register(flag)

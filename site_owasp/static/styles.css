@@ -3,26 +3,13 @@
     padding: 0;
     list-style: none;
 }
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
->>>>>>> refs/remotes/origin/master
-.container-fluid{
-  background-color: green;
 
-}
-<<<<<<< HEAD
->>>>>>> 37490fcfc9b9789a29ca4709225c286298a7f7bb
-=======
->>>>>>> refs/remotes/origin/master
 .sidebar-nav{
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
-<<<<<<< HEAD
-<<<<<<< HEAD
+
 .btn{
   color:#FFF;
 }
@@ -34,7 +21,3 @@
 .p{
    text-align: justify;
 }
-=======
->>>>>>> 37490fcfc9b9789a29ca4709225c286298a7f7bb
-=======
->>>>>>> refs/remotes/origin/master

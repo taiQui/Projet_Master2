@@ -1,6 +1,4 @@
 from django.db import models
-<<<<<<< HEAD
-<<<<<<< HEAD
 from django.contrib.auth.models import (
     BaseUserManager, AbstractBaseUser
 )
@@ -72,32 +70,11 @@ class MyUser(AbstractBaseUser):
         "Is the user a member of staff?"
         # Simplest possible answer: All admins are staff
         return self.is_admin
-=======
-=======
->>>>>>> refs/remotes/origin/master
-from django.contrib.auth.models import User
-from django.urls import reverse
-
-class point(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    point= models.IntegerField()
-
-    def __str__(self):
-        return self.user
-
-    def get_absolute_url(self):
-        return reverse('point-detail', kwargs={'pk': self.pk})
-<<<<<<< HEAD
->>>>>>> 37490fcfc9b9789a29ca4709225c286298a7f7bb
-=======
->>>>>>> refs/remotes/origin/master
 
 class flag(models.Model):
     num_faille  = models.IntegerField()
     flag        = models.CharField(max_length=50)
 
-<<<<<<< HEAD
-<<<<<<< HEAD
     def create_flag(self, num_faille, flag):
         """
         Creates and saves a flag
@@ -116,14 +93,6 @@ class flag(models.Model):
 
     def __str__(self):
         return  str(self.num_faille)
-=======
-    def __str__(self):
-        return self.num_faille
->>>>>>> 37490fcfc9b9789a29ca4709225c286298a7f7bb
-=======
-    def __str__(self):
-        return self.num_faille
->>>>>>> refs/remotes/origin/master
 
     def get_absolute_url(self):
         return reverse('flag-detail', kwargs={'pk': self.pk})

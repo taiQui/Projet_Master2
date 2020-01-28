@@ -17,8 +17,6 @@
             {% endblock head_meta_viewport %}
         {% endblock head_meta %}
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-<<<<<<< HEAD
-<<<<<<< HEAD
         <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
@@ -29,12 +27,6 @@
         <!-- <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script> -->
         <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 
-
-
-=======
->>>>>>> 37490fcfc9b9789a29ca4709225c286298a7f7bb
-=======
->>>>>>> refs/remotes/origin/master
         {% load static %}
         <link rel="stylesheet" href="{% static '/styles.css' %}">
     </head>
@@ -43,8 +35,6 @@
         <header>
 
         </header>
-<<<<<<< HEAD
-<<<<<<< HEAD
         <nav class="navbar navbar-expand-sm bg-dark navbar-dark ">
           <a class="navbar-brand active" href="{% url 'home' %}">menu</a>
           <ul class="navbar-nav mr-auto">
@@ -98,43 +88,6 @@
     <div class="footer-copyright text-center py-3">© 2020 Copyright
       <p style="padding-top:40px" class="text-center top_spac"> Create by <a target="_blank">❤️</a></p>
     </div>
-  
-</footer> -->
-=======
-=======
->>>>>>> refs/remotes/origin/master
-        <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-          <a class="navbar-brand" href="{% url 'home' %}">menu</a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="collapsibleNavbar">
-            <ul class="navbar-nav">
-              <li class="nav-item">
-                <a class="nav-link" href="{% url 'faille_1' %}">faille 1</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">faille 2</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">faille 3</a>
-              </li>
-            </ul>
-          </div>
-            {% if user.is_authenticated %}
-              <p>User: {{ user.get_username }}
-              <a class="btn btn-black" href="{% url 'logout'%}?next={{request.path}}">Logout</a>
-            {% else %}
-              <a class="btn btn-black" href="{% url 'login'%}?next={{request.path}}">Login</a>
-            {% endif %}
-          </nav>
-      <div class=corp>
-        <div class="col-sm-10 ">{% block content %}{% endblock %}</div>
-      </div>
-        {# The Footer #}
-    </body>
-<<<<<<< HEAD
->>>>>>> 37490fcfc9b9789a29ca4709225c286298a7f7bb
-=======
->>>>>>> refs/remotes/origin/master
+
+ -->
 </html>
