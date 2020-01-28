@@ -15,7 +15,7 @@
             <a class="nav-link" href="#exemple">Exemples</a>
           </li>
           <li class="nav-item active">
-            <a class="nav-link" href="#demo">démo</a>
+            <a class="nav-link" href="#demo">Démo</a>
           </li>
           <li class="nav-item active">
             <a class="nav-link" href="#prevention">Prévention</a>
@@ -103,93 +103,119 @@
             </li>
           </ul>
           {% load static %}
-          <img src="{% static '/img/ExempleSQL.png' %}" />
+          <img src="{% static '/img/ExempleSQL.png' %}"  class="center" />
         </div>
         <div class='ml-5 mb-3 mt-5'>
           <h5>
             Pour rentrer plus en profondeur je vais détailler 4 injections SQL
           </h5>
+          <ul>
+            <li>
+              <strong>Attaque 1 : Blind Based</strong>
+              <p>
+                L'injection de type aveugle ( ou 'Blind based' ) est une injection où ne connait rien de la base de donnée.
+              </p>
+              {% load static %}
+              <img src="{% static '/img/file_1.png' %}" height="420" width="500" class="mb-4 center" />
+              <p>
+                Prenons cette page de connexion classique. Ici nous avons aucune information sur ce qu'il peut avoir dans la base de donnée. Le but de cette attaque est de récupéré ( et non de se connecter simplement ) le mot de passe de l'administrateur. Dans une grande majorité des cas le nom de compte sera <strong> admin</strong>, on reprendra donc cette forte probabilité pour n'avoir que le mot de passe à trouver. On peut supposé aussi que le nom de la table sera users.
+                <br><br>
+                On va donc commence à tester une à une les lettres de alphabète, majuscule,minuscule ainsi que les chiffres et quelque caractères spéciaux, <strong>attention</strong> certain caractère son interdit, ils ont une signification spéciale suivant la base de donnée ainsi que sa version employé.
+                <br><br>
+                La majorité des cas que vous pourrez voir utiliseront substr, ici pour changer un peu, nous allons utilisé <strong>left</strong>(chaine,taille) qui permet de ressortir <strong>taille</strong> caractères de <strong>chaine</strong>.
+                <br><br>
+                <u>ex</u> : left("Salut",2) => 'Sa'
+                <br>
+                on a donc USERNAME à remplir ainsi que PASSWORD
+              </p>
+              <div class="bg-light ">
+                <code >
+                  username="admin' and (select left(password,1)) from users where<br>
+                  name='admin')='a' -- -<br>
+                  password="salut"
+                </code>
+              </div>
+              <p>
+                Nous remplirons les champs USERNAME et PASSWORD comme décrit au dessus pour un premier essais
+                <br>
+                Supposons que la page nous renvois :
+                <br>
+              </p>
+              {% load static %}
+              <img src="{% static '/img/file_2.png' %}" height="420" width="500" class="mb-4 center" />
+              <p>
+                On en conclus donc que le mot de passe ne commence pas par la lettre a.
+                <br>
+                Après avoir testé plusieurs cas, avec la commande suivante :
+              </p>
+              <div class="bg-light ">
+                <code >
+                  USERNAME = "admin' and (select left(password,1)) from users where<br>
+                  name='admin')='3' -- - "
+                </code>
+              </div>
+              <p class='mt-4'>
+                Il nous apparait ceci :
+              </p>
+              <img src="{% static '/img/file_3.png' %}" height="420" width="500" class="mb-4 center" />
+              <p>
+                On en conclut donc que le premier caractère de notre mots de passe est '3'.<br><br>
+                On peut donc passé au deuxième comme ceci
+              </p>
+              <div class="bg-light ">
+                <code >
+                  USERNAME = "and (select left(password,2)) from users where name='admin')='3a'-- -"
+                </code>
+              </div>
+              <p>
+                Et ainsi de suite jusqu'à trouvé toute les lettres. Voila vous comprenais maintenant l'injection SQL de type aveugle !
+              </p>
+            </li>
+            <!-- <li>
+              <strong>Attaque 2 : Error Based</strong>
+              <p>
+                Cette méthode profite d'une faiblesse des systèmes de base de données permettant de détourner un message d'erreur généré par la base de données et préalablement volontairement provoquée par l'injection SQL pour lui faire retourner une valeur précise récupérée en base de données
+              </p>
+            </li> -->
+            <li>
+              <strong>Attaque 3 : Union Based</strong>
+              <p>
+                L'injection SQL basée sur l'Union est une technique d'injection qui exploite l'opérateur SQL UNION qui est utilisé pour combiner le résultat de deux ou plusieurs instructions SELECT en un seul résultat
+              </p>
+            </li>
+          </ul>
+
         </div>
 
-          <p>
-
-          **Attaque 1 : Blind Based**
-
-          L'injection de type aveugle ( ou 'Blind based' ) est une injection où ne connait rien de la base de donnée.
-
-          IMAGE1 TAIQUI
-
-          Prenons cette page de connexion classique. Ici nous avons aucune information sur ce qu'il peut avoir dans la base de donnée. Le but de cette attaque est de récupéré ( et non de se connecter simplement ) le mot de passe de l'administrateur. Dans une grande majorité des cas le nom de compte sera admin, on reprendra donc cette forte probabilité pour n'avoir que le mot de passe à trouver. On peut supposé aussi que le nom de la table sera users.
-
-          On va donc commence à tester une à une les lettres de alphabète, majuscule,minuscule ainsi que les chiffres et quelque caractères spéciaux, attention certain caractère son interdit, ils ont une signification spéciale suivant la base de donnée ainsi que sa version employé.
-
-          La majorité des cas que vous pourrez voir utiliseront substr, ici pour changer un peu, nous allons utilisé left(chaine,taille) qui permet de ressortir taille caractères de chaine.
-
-          ex : left("Salut",2) => 'Sa'
-
-          on a donc USERNAME à remplir ainsi que PASSWORD
-
-          ```
-          username="admin' and (select left(password,1)) from users where
-          name='admin')='a' -- -
-          password="salut"
-          ```
-
-          Nous remplirons les champs USERNAME et PASSWORD comme décrit au dessus pour un premier essais
-
-          Supposons que la page nous renvois :
-
-          IMAGE2 TAIQUI
-
-          On en conclus donc que le mot de passe ne commence pas par la lettre a.
-
-          Après avoir testé plusieurs cas, avec la commande suivante :
-
-          ```
-          USERNAME = "admin' and (select left(password,1)) from users where
-          name='admin')='3' -- - "
-          ```
-
-          Il nous apparait ceci :
-
-          IMAGE3 TAIQUI
-
-          On en conclut donc que le premier caractère de notre mots de passe est '3'.
-
-          On peut donc passé au deuxième comme ceci
-
-          ```
-          USERNAME = "and (select left(password,2)) from users where name='admin')='3a'
-          -- -"
-          ```
-
-          Et ainsi de suite jusqu'à trouvé toute les lettres. Voila vous comprenais maintenant l'injection SQL de type aveugle !
-
-          **Attaque 2 : Error Based**
-
-          Cette méthode profite d'une faiblesse des systèmes de base de données permettant de détourner un message d'erreur généré par la base de données et préalablement volontairement provoquée par l'injection SQL pour lui faire retourner une valeur précise récupérée en base de données
-
-          **Attaque 3 : Union Based**
-
-          L'injection SQL basée sur l'Union est une technique d'injection qui exploite l'opérateur SQL UNION qui est utilisé pour combiner le résultat de deux ou plusieurs instructions SELECT en un seul résultat
-        </p>
       </div>
-      <div class=" mb-4">
-        <h2 id='demo' class='ml-5 mb-3'>Demo</h2>
-        <p>aller essaye</p>
-        <a href="http://localhost:8081/Basic/">basic injection</a>
-        <a href="http://localhost:8081/Blind/">blind injection</a>
-        <a href="http://localhost:8081/Error/">error injection</a>
+      <div class=" mb-4 ml-5">
+        <h2 id='demo' class=' mb-3 '>Demo</h2>
+        <div class=''>
+          <p>aller essaye</p>
+          <a href="http://localhost:8081/Basic/">basic injection</a>
+          <a href="http://localhost:8081/Blind/">blind injection</a>
+          <a href="http://localhost:8081/Error/">error injection</a>
+        </div>
       </div>
       <div class=" mb-4">
         <h2 id='prevention' class='ml-5 mb-3'>Prévention</h2>
         <p>
           La prévention de l'injection nécessite de conserver les données distinctes des commandes et des requêtes.
-          - L'option préférée consiste à utiliser une API sûre, qui évite l'utilisation complète de l'interpréteur ou fournit une interface paramétrée, ou à migrer pour utiliser les outils de mappage relationnel objet.
-          - Utilisez une validation d'entrée côté serveur positive ou «liste blanche». Ce n'est pas une défense complète car de nombreuses applications nécessitent des caractères spéciaux, tels que des zones de texte ou des API pour les applications mobiles.
-          - Pour toute requête dynamique résiduelle, filtrez les caractères spéciaux en utilisant la syntaxe spécifique pour chaque interpréteur.
-          - Utilisez LIMIT et d'autres contrôles SQL dans les requêtes pour empêcher la divulgation massive des enregistrements en cas d'injection SQL.
         </p>
+        <ul style='list-style:none'>
+          <li >
+            L'option préférée consiste à utiliser une API sûre, qui évite l'utilisation complète de l'interpréteur ou fournit une interface paramétrée, ou à migrer pour utiliser les outils de mappage relationnel objet.
+          </li>
+          <li class='mt-3'>
+            Utilisez une validation d'entrée côté serveur positive ou «liste blanche». Ce n'est pas une défense complète car de nombreuses applications nécessitent des caractères spéciaux, tels que des zones de texte ou des API pour les applications mobiles.
+          </li>
+          <li class='mt-3'>
+            Pour toute requête dynamique résiduelle, filtrez les caractères spéciaux en utilisant la syntaxe spécifique pour chaque interpréteur.
+          </li>
+          <li class='mt-3'>
+            Utilisez LIMIT et d'autres contrôles SQL dans les requêtes pour empêcher la divulgation massive des enregistrements en cas d'injection SQL.
+          </li>
+        </ul>
       </div>
     </div>
   {% else %}
