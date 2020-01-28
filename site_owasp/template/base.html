@@ -71,12 +71,41 @@
           </ul>
 
             {% if user.is_authenticated %}
+
+            <!-- ########################## -->
+
+                        {% if flag == "YES" %}
+                          <div class="mr-right">
+                            <p> <font color="green">Validé !</font> </p>
+                          </div>
+                        {% elif flag == "NO" %}
+                        <div class="mr-right">
+                          <p> <font color="red">Raté !</font> </p>
+                        </div>
+                        {% endif %}
+
+                        <form action="/flag" method="post">
+                        <div mr-right>
+                          <div class="contHttpResponseainer h-100">
+                            <div class="d-flex justify-content-center h-100">
+                              <div class="searchbar">
+                                <input class="search_input" type="text" name="flag" placeholder="Tu as un flag ?"></input>
+                                <button type="submit" class="search_icon">Flag</button>
+                                {% csrf_token %}
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </form>
+            <!-- ########################## -->
+
               <!-- <p>User: {{ user.get_username }} -->
               <a class="mr-left btn btn-black" href="{% url 'logout'%}?next={{request.path}}">Logout</a>
             {% else %}
               <a class="mr-left btn btn-black" href="{% url 'login'%}?next={{request.path}}">Login</a>
             {% endif %}
           </nav>
+
       <div class=corp>
         <!-- <div class="col-sm-10 "> -->
         <div class=" ">{% block content %}{% endblock %}</div>
