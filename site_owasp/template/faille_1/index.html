@@ -1,6 +1,208 @@
 {% extends 'base.html' %}
 {% block title %}faille_1{% endblock title %}
 {% block content %}
+<<<<<<< HEAD
+<<<<<<< HEAD
+  {% if user.is_authenticated %}
+    <!-- navbar navbar-expand-sm -->
+      <nav class="navbar navbar-expand-sm navbar-dark bg-secondary col sticky-top mt-56" style="z-index:100;">
+      <a class="navbar-brand" href="#">faille 1</a>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Explication</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="#exemple">Exemples</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="#demo">démo</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="#prevention">Prévention</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <div class="col-sm-10 p-3 ml-5  mt-9">
+      <div id='explication ' class="text-justify mb-5 pt-104 ">
+        <div class='mt-4'>
+          <h2  class='ml-5 mb-3 '>Explication</h2>
+          <p>
+            Des failles d'injection, telles que l'injection SQL, NoSQL, OS et LDAP, se produisent lorsque l'attaquant envoie des données à un interpréteur dans le cadre d'une commande ou d'une requête. l'injection de l'attaquant peux inciter à exécuter des commandes involontaires ou à accéder aux données sans autorisation appropriée.
+          </p>
+        </div>
+        <div class='mt-4 mb-5 ml-4'>
+          <ul>
+             <li>
+               <strong>Agents de menace et vecteurs d'attaque :</strong>
+               <p>
+                On peut supposer que presque toutes les sources de données peuvent être un vecteur d'injection comme des variables d'environnement, des paramètres, des services Web externes et internes et tous les types d'utilisateurs. Les failles d'injection se produisent lorsqu'un attaquant veut envoyer des données malveillante à un interpréteur SQL.
+               </p>
+             </li>
+             <li>
+               <strong>Faille de sécurité : </strong>
+               <p>
+                 les failles d'injection sont très répandues, en particulier dans le code hérité. Les vulnérabilités d'injection se trouvent souvent dans les requêtes SQL, LDAP, XPath ou NoSQL, les commandes du système d'exploitation, les analyseurs XML, les en-têtes SMTP, les langages d'expression ou encore les requêtes ORM. Les scanners et les fuzzers peuvent aider les attaquants à trouver des défauts d'injection.
+               </p>
+             </li>
+             <li>
+               <strong>Impacts :</strong>
+               <p>
+                 l'injection peut entraîner une perte de données, la corruption ou la divulgation à des parties non autorisées, la perte de responsabilité ou le refus d'accès. L'injection peut parfois conduire à une prise de contrôle complète de l'hôte. L'impact commercial dépend des besoins de l'application et des données.
+               </p>
+             </li>
+          </ul>
+        </div>
+        <div class='mt-4'>
+          <h5> L'application est-elle vulnérable?</h5>
+          <br>
+          <div class='ml-4'>
+            <p>
+              Une application est vulnérable aux attaques lorsque:
+              <ul  style=''>
+                <li>
+                  Les données fournies par l'utilisateur ne sont pas validées ou filtrées par l'application.
+                </li>
+                <li class="mt-2">
+                  Les requêtes dynamiques ou les appels non paramétrés sans échappement contextuel sont utilisés directement dans l'interpréteur.
+                </li>
+                <li class="mt-2">
+                  Les données hostiles sont utilisées dans les paramètres de recherche de la cartographie relationnelle objet (ORM) pour extraire des enregistrements sensibles supplémentaires.
+                </li>
+                <li class="mt-2">
+                  Les données hostiles sont directement utilisées ou concaténées, de sorte que le SQL ou la commande contient à la fois la structure et les données hostiles dans des requêtes dynamiques, des commandes ou des procédures stockées.
+                </li>
+                <li class="mt-2">
+                  Certaines des injections les plus courantes sont SQL, NoSQL, commande OS, Object Relational Mapping (ORM), LDAP et Expression Language (EL) ou Object Graph Navigation Library (OGNL). Le concept est identique parmi tous les interprètes. L'examen du code source est la meilleure méthode pour détecter si les applications sont vulnérables aux injections, suivi de près par des tests automatisés approfondis de tous les paramètres, en-têtes, URL, cookies, JSON, SOAP et entrées de données XML. Les organisations peuvent inclure des outils de source statique et de test d'application dynamique dans le pipeline CI / CD pour identifier les failles d'injection nouvellement introduites avant le déploiement en production.
+                </li>
+              </ul>
+
+            </p>
+          </div>
+        </div>
+      </div>
+      <hr/>
+      <div class=" mb-4 mt-5">
+        <h2 id='exemple'class='ml-5 mb-3'>Exemples</h2>
+        <div class='ml-4'>
+          <p>
+            Exemple d'attaque SQL : On imagine un serveur communicants avec sa base SQL se fait attaquer.
+          </p>
+          <ul>
+            <li>
+              Etape 1 : Le hacker va lancer une requête SQL malveillante sur le serveur (Ex! un SiteWeb)
+            </li>
+            <li>
+              Etape 2 : Le serveur va renvoyer la requête SQL malveillante sur la Base de donnée
+            </li>
+            <li>
+              Etape 3 : La base de donnée va répondre à la requête SQL malveillante au serveur
+            </li>
+            <li>
+              Etape 4 : Le serveur renvoie la réponse de la requêtes SQL malveillante à l'attaquant
+            </li>
+          </ul>
+          {% load static %}
+          <img src="{% static '/img/ExempleSQL.png' %}" />
+        </div>
+        <div class='ml-5 mb-3 mt-5'>
+          <h5>
+            Pour rentrer plus en profondeur je vais détailler 4 injections SQL
+          </h5>
+        </div>
+
+          <p>
+
+          **Attaque 1 : Blind Based**
+
+          L'injection de type aveugle ( ou 'Blind based' ) est une injection où ne connait rien de la base de donnée.
+
+          IMAGE1 TAIQUI
+
+          Prenons cette page de connexion classique. Ici nous avons aucune information sur ce qu'il peut avoir dans la base de donnée. Le but de cette attaque est de récupéré ( et non de se connecter simplement ) le mot de passe de l'administrateur. Dans une grande majorité des cas le nom de compte sera admin, on reprendra donc cette forte probabilité pour n'avoir que le mot de passe à trouver. On peut supposé aussi que le nom de la table sera users.
+
+          On va donc commence à tester une à une les lettres de alphabète, majuscule,minuscule ainsi que les chiffres et quelque caractères spéciaux, attention certain caractère son interdit, ils ont une signification spéciale suivant la base de donnée ainsi que sa version employé.
+
+          La majorité des cas que vous pourrez voir utiliseront substr, ici pour changer un peu, nous allons utilisé left(chaine,taille) qui permet de ressortir taille caractères de chaine.
+
+          ex : left("Salut",2) => 'Sa'
+
+          on a donc USERNAME à remplir ainsi que PASSWORD
+
+          ```
+          username="admin' and (select left(password,1)) from users where
+          name='admin')='a' -- -
+          password="salut"
+          ```
+
+          Nous remplirons les champs USERNAME et PASSWORD comme décrit au dessus pour un premier essais
+
+          Supposons que la page nous renvois :
+
+          IMAGE2 TAIQUI
+
+          On en conclus donc que le mot de passe ne commence pas par la lettre a.
+
+          Après avoir testé plusieurs cas, avec la commande suivante :
+
+          ```
+          USERNAME = "admin' and (select left(password,1)) from users where
+          name='admin')='3' -- - "
+          ```
+
+          Il nous apparait ceci :
+
+          IMAGE3 TAIQUI
+
+          On en conclut donc que le premier caractère de notre mots de passe est '3'.
+
+          On peut donc passé au deuxième comme ceci
+
+          ```
+          USERNAME = "and (select left(password,2)) from users where name='admin')='3a'
+          -- -"
+          ```
+
+          Et ainsi de suite jusqu'à trouvé toute les lettres. Voila vous comprenais maintenant l'injection SQL de type aveugle !
+
+          **Attaque 2 : Error Based**
+
+          Cette méthode profite d'une faiblesse des systèmes de base de données permettant de détourner un message d'erreur généré par la base de données et préalablement volontairement provoquée par l'injection SQL pour lui faire retourner une valeur précise récupérée en base de données
+
+          **Attaque 3 : Union Based**
+
+          L'injection SQL basée sur l'Union est une technique d'injection qui exploite l'opérateur SQL UNION qui est utilisé pour combiner le résultat de deux ou plusieurs instructions SELECT en un seul résultat
+        </p>
+      </div>
+      <div class=" mb-4">
+        <h2 id='demo' class='ml-5 mb-3'>Demo</h2>
+        <p>aller essaye</p>
+        <a href="http://localhost:8081/Basic/">basic injection</a>
+        <a href="http://localhost:8081/Blind/">blind injection</a>
+        <a href="http://localhost:8081/Error/">error injection</a>
+      </div>
+      <div class=" mb-4">
+        <h2 id='prevention' class='ml-5 mb-3'>Prévention</h2>
+        <p>
+          La prévention de l'injection nécessite de conserver les données distinctes des commandes et des requêtes.
+          - L'option préférée consiste à utiliser une API sûre, qui évite l'utilisation complète de l'interpréteur ou fournit une interface paramétrée, ou à migrer pour utiliser les outils de mappage relationnel objet.
+          - Utilisez une validation d'entrée côté serveur positive ou «liste blanche». Ce n'est pas une défense complète car de nombreuses applications nécessitent des caractères spéciaux, tels que des zones de texte ou des API pour les applications mobiles.
+          - Pour toute requête dynamique résiduelle, filtrez les caractères spéciaux en utilisant la syntaxe spécifique pour chaque interpréteur.
+          - Utilisez LIMIT et d'autres contrôles SQL dans les requêtes pour empêcher la divulgation massive des enregistrements en cas d'injection SQL.
+        </p>
+      </div>
+    </div>
+  {% else %}
+    <div class='col-sm-10 p-3 ml-5  mt-5'>
+      <p>connecte toi pour pouvoir acceder a cette page</p>
+    <div>
+  {% endif %}
+{% endblock %}
+=======
+=======
+>>>>>>> refs/remotes/origin/master
 
 <div class="mkt-s1">
       <h1>faille 1</h1>
@@ -14,3 +216,7 @@
   <p>connecte toi</p>
 {% endif %}
 {% endblock content %}
+<<<<<<< HEAD
+>>>>>>> 37490fcfc9b9789a29ca4709225c286298a7f7bb
+=======
+>>>>>>> refs/remotes/origin/master

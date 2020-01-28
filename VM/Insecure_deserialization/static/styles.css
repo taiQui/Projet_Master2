@@ -1,4 +1,4 @@
-.background {
+/* .background {
 	width: 100%;
 	float: left;
 	background: #b30838;
@@ -27,4 +27,8 @@ label {
 	margin: 1%;
   min-height:30px;
   border:1px solid #ffffff;
+} */
+.fenetre{
+  border-collapse: collapse;
+  	border-radius: 14px;
 }

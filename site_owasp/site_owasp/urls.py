@@ -16,6 +16,27 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.urls import include
+<<<<<<< HEAD
+<<<<<<< HEAD
+from pages.views import home_view,profil
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('accounts/', include('django.contrib.auth.urls')),
+    path('faille_1/', include('faille_1.urls')),
+    path('', include('pages.urls')),
+    path('broken_authentication/', include('broken_authentication.urls')),
+    path('bronken_access_control/',include('bronken_access_control.urls')),
+    path('insecure_deserialization/',include('insecure_deserialization.urls')),
+    path('insufficient_log/',include('insufficient_log.urls')),
+    path('security_miscounfiguration',include('security_miscounfiguration.urls')),
+    path('sensitive_data_exposure',include('sensitive_data_exposure.urls')),
+    path('xml_external_entities',include('xml_external_entities.urls')),
+    path('xss',include('xss.urls')),
+    path('using_components_know_vul',include('using_components_know_vul.urls'))
+=======
+=======
+>>>>>>> refs/remotes/origin/master
 from pages.views import home_view
 
 urlpatterns = [
@@ -24,5 +45,9 @@ urlpatterns = [
     path('accounts/', include('django.contrib.auth.urls')),
     path('faille_1/', include('faille_1.urls')),
     path('', home_view, name='home')
+<<<<<<< HEAD
+>>>>>>> 37490fcfc9b9789a29ca4709225c286298a7f7bb
+=======
+>>>>>>> refs/remotes/origin/master
 
 ]

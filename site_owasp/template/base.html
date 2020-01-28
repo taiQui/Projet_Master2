@@ -17,6 +17,24 @@
             {% endblock head_meta_viewport %}
         {% endblock head_meta %}
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+<<<<<<< HEAD
+<<<<<<< HEAD
+        <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
+
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+        <!-- <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script> -->
+        <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+
+
+=======
+>>>>>>> 37490fcfc9b9789a29ca4709225c286298a7f7bb
+=======
+>>>>>>> refs/remotes/origin/master
         {% load static %}
         <link rel="stylesheet" href="{% static '/styles.css' %}">
     </head>
@@ -25,6 +43,66 @@
         <header>
 
         </header>
+<<<<<<< HEAD
+<<<<<<< HEAD
+        <nav class="navbar navbar-expand-sm bg-dark navbar-dark ">
+          <a class="navbar-brand active" href="{% url 'home' %}">menu</a>
+          <ul class="navbar-nav mr-auto">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              failles
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="{% url 'faille_1' %}">SQL injection</a>
+              <a class="dropdown-item" href="{% url 'broken_authentication' %}">authentication</a>
+              <a class="dropdown-item" href="{% url 'bronken_access_control' %}">broken access control</a>
+              <a class="dropdown-item" href="{% url 'insecure_deserialization' %}">deserialization </a>
+              <a class="dropdown-item" href="{% url 'insufficient_log' %}">log insufficient</a>
+              <a class="dropdown-item" href="{% url 'security_miscounfiguration' %}">mauvaise Configuration</a>
+              <a class="dropdown-item" href="{% url 'sensitive_data_exposure' %}">donnee sensible</a>
+              <a class="dropdown-item" href="{% url 'using_components_know_vul' %}">elements avec vuln</a>
+              <a class="dropdown-item" href="{% url 'xss' %}">xss</a>
+              <!-- 'broken_authentication',
+              'bronken_access_control',
+              'insecure_deserialization',
+              'insufficient_log',
+              'security_miscounfiguration',
+              'sensitive_data_exposure',
+              'using_components_know_vul',
+              'xml_external_entities',
+              'xss', -->
+            </div>
+          </li>
+          {% if user.is_authenticated %}
+          <li class="nav-item">
+            <a class="nav-link" href="/profil">profil</a>
+          </li>
+          {%endif%}
+          </ul>
+
+            {% if user.is_authenticated %}
+              <!-- <p>User: {{ user.get_username }} -->
+              <a class="mr-left btn btn-black" href="{% url 'logout'%}?next={{request.path}}">Logout</a>
+            {% else %}
+              <a class="mr-left btn btn-black" href="{% url 'login'%}?next={{request.path}}">Login</a>
+            {% endif %}
+          </nav>
+      <div class=corp>
+        <!-- <div class="col-sm-10 "> -->
+        <div class=" ">{% block content %}{% endblock %}</div>
+      </div>
+        {# The Footer #}
+
+    </body>
+    <!-- <footer class="pie font-small blue ">
+    <div class="footer-copyright text-center py-3">© 2020 Copyright
+      <p style="padding-top:40px" class="text-center top_spac"> Create by <a target="_blank">❤️</a></p>
+    </div>
+  
+</footer> -->
+=======
+=======
+>>>>>>> refs/remotes/origin/master
         <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
           <a class="navbar-brand" href="{% url 'home' %}">menu</a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
@@ -55,4 +133,8 @@
       </div>
         {# The Footer #}
     </body>
+<<<<<<< HEAD
+>>>>>>> 37490fcfc9b9789a29ca4709225c286298a7f7bb
+=======
+>>>>>>> refs/remotes/origin/master
 </html>

@@ -38,6 +38,21 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'pages',
     'faille_1',
+<<<<<<< HEAD
+<<<<<<< HEAD
+    'broken_authentication',
+    'bronken_access_control',
+    'insecure_deserialization',
+    'insufficient_log',
+    'security_miscounfiguration',
+    'sensitive_data_exposure',
+    'using_components_know_vul',
+    'xml_external_entities',
+    'xss',
+=======
+>>>>>>> 37490fcfc9b9789a29ca4709225c286298a7f7bb
+=======
+>>>>>>> refs/remotes/origin/master
 
 ]
 
@@ -79,13 +94,34 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'owasp',
+<<<<<<< HEAD
+<<<<<<< HEAD
         'USER': 'www-data',
-        'PASSWORD': 'www-data',
+        'PASSWORD': 'password',
+=======
+        'USER': 'root',
+        'PASSWORD': '',
+>>>>>>> 37490fcfc9b9789a29ca4709225c286298a7f7bb
+=======
+        'USER': 'root',
+        'PASSWORD': '',
+>>>>>>> refs/remotes/origin/master
         'HOST': 'localhost',
         'PORT': '3306',
     }
 }
+<<<<<<< HEAD
+<<<<<<< HEAD
+AUTH_USER_MODEL = 'pages.MyUser'
+# AUTHENTICATION_BACKENDS =(
+#     'django.contrib.auth.backends.ModelBackend',
+# )
+=======
 
+>>>>>>> 37490fcfc9b9789a29ca4709225c286298a7f7bb
+=======
+
+>>>>>>> refs/remotes/origin/master
 # DATABASES=DB(user="root",password="root",db="",host="localhost")
 
 # Password validation
@@ -110,7 +146,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/2.2/topics/i18n/
 
-LANGUAGE_CODE = 'fr'
+LANGUAGE_CODE = 'fr-fr'
 
 TIME_ZONE = 'UTC'
 

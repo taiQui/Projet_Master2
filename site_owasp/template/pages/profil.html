@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <div class="container">
+    <div class="row justify-content-left align-items-center" style="height:30vh;">
+      <div class="col-auto  p-1 text-dark ">
+        {% if user.is_authenticated %}
+          <div>
+            <p>profil</p>
+            <p>user : {{user.get_username}}</p>
+            <p>le nombre de point :{{user.point}}</p>
+          </div>
+        {% endif %}
+      </div>
+      </div>
+  </div>
+{% endblock %}

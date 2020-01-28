@@ -1,4 +1,38 @@
 {% extends "base.html" %}
+<<<<<<< HEAD
+<<<<<<< HEAD
+{% block content %}
+  <div class="container">
+      <div class="row justify-content-center align-items-center" style="height:80vh;">
+          <div class="col-auto border p-3 bg-dark text-white fenetre_Auth ">
+              {% if form.errors %}
+              <p class="text-warning p-2">mauvais login/mdp</p>
+              {% endif %}{% if next %}
+                  {% if user.is_authenticated %}
+                  <p class="p-1">tu es authentifier.</p>
+                  {% else %}
+                  <p class=" ">il faut ce connecter pour voir cette page</p>
+                  {% endif %}
+              {% endif %}<form method="post" action="" class="">
+              {% csrf_token %}
+              <table>
+              <tr>
+                  <td>{{ form.username.label_tag }} </td>
+                  <td>{{ form.username }}</td>
+              </tr>
+              <tr>
+                  <td>{{ form.password.label_tag }} </td>
+                  <td>{{ form.password }}</td>
+              </tr>
+              </table><input type="submit" value="login" />
+              <input type="hidden" name="next" value="{{ next }}" />
+              </form>
+          </div>
+      </div>
+  </div>
+=======
+=======
+>>>>>>> refs/remotes/origin/master
 
 {% block content %}
 
@@ -31,4 +65,8 @@
     <input type="hidden" name="next" value="{{ next }}" />
   </form>
 
+<<<<<<< HEAD
+>>>>>>> 37490fcfc9b9789a29ca4709225c286298a7f7bb
+=======
+>>>>>>> refs/remotes/origin/master
 {% endblock %}

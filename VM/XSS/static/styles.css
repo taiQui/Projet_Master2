@@ -1,20 +1,6 @@
-#search {
-    float: right;
-    margin-top: 9px;
-    width: 250px;
-}
 
-.search {
-    padding: 5px 0;
-    width: 230px;
-    height: 30px;
-    position: relative;
-    left: 10px;
-    float: left;
-    line-height: 22px;
-}
 
-    .search input {
+    /* .search input {
         position: absolute;
         width: 0px;
         float: Left;
@@ -32,12 +18,17 @@
         .search:hover input, .search input:focus {
             width: 200px;
             margin-left: 0px;
-        }
+        } */
 
-.btn {
+/* .btn {
     height: 30px;
     position: absolute;
     right: 0;
     top: 5px;
-    border-radius:1px;
+    border-radius:4px;
+} */
+
+.fenetre{
+  border-collapse: collapse;
+  	border-radius: 14px;
 }

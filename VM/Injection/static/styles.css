@@ -26,3 +26,8 @@ Follow me on Twitter @maridlcrmn
     .navbar .nav-collapse .navbar-form { margin: 0; }
     .nav-collapse>li { float: none; }
 }
+
+.fenetre{
+  border-collapse: collapse;
+  	border-radius: 14px;
+}

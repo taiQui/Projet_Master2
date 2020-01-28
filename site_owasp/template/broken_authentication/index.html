@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% block title %}broken authentication{% endblock title %}
+{% block content %}
+  {% if user.is_authenticated %}
+    <!-- navbar navbar-expand-sm -->
+      <nav class="navbar navbar-expand-sm navbar-dark bg-secondary col sticky-top mt-56" style="z-index:100;">
+      <a class="navbar-brand" href="#">broken authentication</a>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Explication</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="#exemple">Exemples</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="#demo">demo</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="#prevention">prevention</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <div class="col-sm-10 p-3 ml-5  mt-9">
+      <div id='explication' class=" mb-4 pt-104 ">
+        <h2  class='ml-5 mb-3'>Explication</h2>
+        <p class="text-justify">qdduqfgbuwakfb dadw da dwakld w dand dakla adjkldaw ad da dajadw adw da akwladw awdknlawdawwabfewfwefkebnfkbewjewkjafbwjafbewjlfbjabgfkljbgfb fkjewbfwefnfjkgbkjabgjeakbwakkjbgadgnjnjewkwfnnekdsgehfksfhkejsbvfbjesfljqfenwjkfnwkfb</p>
+        <p>qdduqfgbuwakfbwabfewfwefkebnfkbewjewkjafbwjafbewjlfbjabgfkljbgfb fkjewbfwefnfjkgb hda k d nkajd nadw ndakwdawn awdankld daw dk;alw adw adw adw admdawdmd md dmd d dmd kjabgjeakbwakkjbgadgnjnjewkwfnnekdsgehfksfhkejsbvfbjesfljqfenwjkfnwkfb</p>
+        <p>qdduqfgbuwakfbwabfewfwefkebnfkbewjewkjafbwjafbewjlfbjabgfkljbgfb fkjewbfwefnfjkgbkjabgjeakbwakkjbgadgnjnjewkwfnnekdsgehfksfhkejsbvfbjesfljqfenwjkfnwkfb</p>
+        <p>qdduqfgbuwakfbwabfewfwefkebnfkbewjewkjafbwjafbewjlfbjabgfkljbgfb fkjewbfwefnfjkgbkjabgjeakbwakkjbgadgnjnjewkwfnnekdsgehfksfhkejsbvfbjesfljqfenwjkfnwkfb</p>
+        <p>qdduqfgbuwakfbwabfewfwefkebnfkbewjewkjafbwjafbewjlfbjabgfkljbgfb fkjewbfwefnfjkgbkjabgjeakbwakkjbgadgnjnjewkwfnnekdsgehfksfhkejsbvfbjesfljqfenwjkfnwkfb</p>
+        <p>qdduqfgbuwakfbwabfewfwefkebnfkbewjewkjafbwjafbewjlfbjabgfkljbgfb fkjewbfwefnfjkgbkjabgjeakbwakkjbgadgnjnjewkwfnnekdsgehfksfhkejsbvfbjesfljqfenwjkfnwkfb</p>
+        <p>qdduqfgbuwakfbwabfewfwefkebnfkbewjewkjafbwjafbewjlfbjabgfkljbgfb fkjewbfwefnfjkgbkjabgjeakbwakkjbgadgnjnjewkwfnnekdsgehfksfhkejsbvfbjesfljqfenwjkfnwkfb</p>
+        <p>qdduqfgbuwakfbwabfewfwefkebnfkbewjewkjafbwjafbewjlfbjabgfkljbgfb fkjewbfwefnfjkgbkjabgjeakbwakkjbgadgnjnjewkwfnnekdsgehfksfhkejsbvfbjesfljqfenwjkfnwkfb</p>
+        <p>qdduqfgbuwakfbwabfewfwefkebnfkbewjewkjafbwjafbewjlfbjabgfkljbgfb fkjewbfwefnfjkgbkjabgjeakbwakkjbgadgnjnjewkwfnnekdsgehfksfhkejsbvfbjesfljqfenwjkfnwkfb</p>
+        <p>qdduqfgbuwakfbwabfewfwefkebnfkbewjewkjafbwjafbewjlfbjabgfkljbgfb fkjewbfwefnfjkgbkjabgjeakbwakkjbgadgnjnjewkwfnnekdsgehfksfhkejsbvfbjesfljqfenwjkfnwkfb</p>
+        <p>qdduqfgbuwakfbwabfewfwefkebnfkbewjewkjafbwjafbewjlfbjabgfkljbgfb fkjewbfwefnfjkgbkjabgjeakbwakkjbgadgnjnjewkwfnnekdsgehfksfhkejsbvfbjesfljqfenwjkfnwkfb</p>
+      </div>
+      <div class=" mb-4">
+        <h2 id='exemple'class='ml-5 mb-3'>Exemples</h2>
+        <p>dadhnwabdnawhda</p>
+      </div>
+      <div class=" mb-4">
+        <h2 id='demo' class='ml-5 mb-3'>Demo</h2>
+        <p>aller essaye</p>
+        <a href="#">demo</a>
+      </div>
+      <div class=" mb-4">
+        <h2 id='prevention' class='ml-5 mb-3'>Prevention</h2>
+      </div>
+    </div>
+  {% else %}
+    <div class='col-sm-10 p-3 ml-5  mt-5'>
+      <p>connecte toi pour pouvoir acceder a cette page</p>
+    <div>
+  {% endif %}
+{% endblock %}
