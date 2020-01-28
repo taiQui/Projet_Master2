@@ -52,15 +52,7 @@
               <a class="dropdown-item" href="{% url 'sensitive_data_exposure' %}">donnee sensible</a>
               <a class="dropdown-item" href="{% url 'using_components_know_vul' %}">elements avec vuln</a>
               <a class="dropdown-item" href="{% url 'xss' %}">xss</a>
-              <!-- 'broken_authentication',
-              'bronken_access_control',
-              'insecure_deserialization',
-              'insufficient_log',
-              'security_miscounfiguration',
-              'sensitive_data_exposure',
-              'using_components_know_vul',
-              'xml_external_entities',
-              'xss', -->
+
             </div>
           </li>
           {% if user.is_authenticated %}
