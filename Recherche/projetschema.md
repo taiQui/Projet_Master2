@@ -91,10 +91,6 @@ Et ainsi de suite jusqu'à trouvé toute les lettres. Voila vous comprenais main
 
 Cette méthode profite d'une faiblesse des systèmes de base de données permettant de détourner un message d'erreur généré par la base de données et préalablement volontairement provoquée par l'injection SQL pour lui faire retourner une valeur précise récupérée en base de données
 
-**Attaque 3 : Union Based**
-
-L'injection SQL basée sur l'Union est une technique d'injection qui exploite l'opérateur SQL UNION qui est utilisé pour combiner le résultat de deux ou plusieurs instructions SELECT en un seul résultat
-
 ### Prévention
 
 La prévention de l'injection nécessite de conserver les données distinctes des commandes et des requêtes.
@@ -218,7 +214,9 @@ Beaucoup d'attaque pourrais permettre d'avoir accès à des données non chiffr�
 
 L'attaque man-in-the-middle attack (MITM), est une attaque qui a pour but d'intercepter les communications entre deux parties, dans ce cas, si la données est non chiffré, l'attaquant pourras en clair voir les données sans problème.
 
-Ici, l'utilisateur va ce connecter au FTP avec une communication non chiffré, il ne ce doute pas qu'un hacker ce trouve en MITM entre lui et sont serveur FTP, l'attaquant verras donc passer le login/motdepasse en clair.
+Prenons l'exemple d'un File Transfer Protocol, ou FTP, c'est un protocole de communication destiné au partage de fichiers sur un réseau TCP/IP. Il permet, depuis un ordinateur, de copier des fichiers vers un autre ordinateur du réseau, ou encore de supprimer ou de modifier des fichiers sur cet ordinateur.
+
+Ici, l'utilisateur va ce connecter au FTP avec une communication non chiffré, il ne ce doute pas qu'un hacker ce trouve en MITM entre lui et sont serveur FTP, l'attaquant verras donc passer le login/motdepasse en clair avec par exemple un outils : Wireshark.
 
 IMAGE ExempleMITM
 
@@ -431,6 +429,24 @@ L'application peut être vulnérable si l'application est:
 
 **Attaque 1 : Insecure Code Management**
 
+Pour notre exemple prenons un site basique que nous pouvons faire nous même.
+
+IMAGE1SECURITY
+
+Chaque site web a des fichiers de configuration, des fichiers de gestions et surtout un dossier de production quand il est en développement. Pour le développement, ll y'a des logiciels qui permettent de facilité accès au code a tous les développeur ainsi que la gestion des différente partis d'un projets, ici nous allons prendre GIT, c'est un logiciel de gestion décentralisé, les développeurs peuvent déposer leurs bout de code ainsi que récupéré celui des autres personne, c'est une définition très basique de cet outils très complets.
+
+Un dossier git à la création, crée un dossier nommé '.git' qui se trouve a la racine du dossier d'un projet et qui contient tous ce qui se trouve dans le projet, et notamment les différentes branches qui se trouve être les partis séparé du projet; (où la branche master est la partis principale d'un projet); comme par exemple la partis Authentification d'un site. Imaginons pour la suite que dans la partis authentification, les développeur aurait mis dans le code sources, non chiffré :
+
+```
+SI ( nomDeCompte == "admin" et motDePasse == "Hello_je_suis_l_admin") {
+```
+
+Supposons maintenant que les développeurs ont modifiés cette page authentification en la donnant à la branche principale master en enlevant la ligne de code d'au dessus, donc on ne la verrai pas. Cependant les développeurs n'ont pas interdit l'accès au dossier .git à des utilisateur lambda. On tomberai sur cette situation :
+
+IMAGE2SECURTY
+
+On pourrai penser que ce n'est pas grave, il n'y a que la version finale ici MAIS ce n'est pas vrai, en téléchargeant tous ce dossier, on peut récupérer chaque partis ( branche ) indépendamment et donc récupéré le nom d'utilisateur et le mot de passe de l'administrateur du site. Ce qui revient a être très dangereux suivant les intentions de l'attaquant.
+
 ### Prévention
 
 Des processus d'installation sécurisés doivent être mis en œuvre, notamment:
@@ -480,7 +496,7 @@ Si lorsque j’envoie mon script Javascript, une fenêtre apparait. la faille es
 
 Ensuite je dois construire ma XSS pour récupéré un cookie ou faire une redirection vers un site malveillant.
 
-Exemple d'une XSS de redirection 
+Exemple d'une XSS de redirection dans un formulaire
 
 - <script>document.location="https://www.redirection.com/"</script>
 
