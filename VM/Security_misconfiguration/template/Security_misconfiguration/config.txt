@@ -1,2 +1,2 @@
 username: admin
-password: Fl4g4d05_F0ll0w_U5
+password: dfad37d1d67f40b64cbb5d2228d27fbe

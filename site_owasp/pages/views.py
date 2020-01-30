@@ -24,9 +24,16 @@ def flag(request):
             database = bdd.DB('www-data','www-data','owasp')
             valid = database.validFlag(request.POST.get('flag'))
             if valid:
-                valid = "YES"
-                database2 = bdd.DB('www-data','www-data','owasp')
-                database2.addPoint(request.user)
+                database_check_if_already_validate= bdd.DB('www-data','www-data','owasp')
+                a = database_check_if_already_validate.already_validate(request.POST.get('flag'),request.user)
+                if a == True or a == None:
+                    valid = "NO"
+                elif a == False:
+                    valid = "YES"
+                    database_addp = bdd.DB('www-data','www-data','owasp')
+                    database_addp.addPoint(request.user)
+                    database_addp.add_to_flagged(request.POST.get('flag'),request.user)
+
             else:
                 valid = "NO"
             return render(request,'base.html',{"flag":valid})

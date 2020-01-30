@@ -6,7 +6,7 @@ def home(request):
     if "username" in request.POST and "password" in request.POST:
         username = request.POST.get('username')
         password = request.POST.get('password')
-        if username == "admin" and password=="Fl4g4d05_F0ll0w_U5":
+        if username == "admin" and password=="dfad37d1d67f40b64cbb5d2228d27fbe":
             return render(request,"login.html",{})
         else:
             return render(request,"index.html",{"error":True})

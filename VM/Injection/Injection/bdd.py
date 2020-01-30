@@ -178,7 +178,7 @@ class DB:
 
     def getUser(self,name):
         try:
-            self.cursor.execute("select name from users where name=\'"+name+"\'")
+            self.cursor.execute("select name,pseudo from users where name=\'"+name+"\'")
             r = self.cursor.fetchall()
             if len(r) > 0:
                 return r

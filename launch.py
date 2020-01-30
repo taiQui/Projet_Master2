@@ -2,7 +2,7 @@
 # coding : utf-8
 from threading import Thread
 from multiprocessing import Process
-import subprocess,time
+import subprocess,time,os
 
 PORT = ["8080","8081","8084","8086","8088","8090"]
 PORT_OPEN = [False,False,False,False,False,False]
@@ -59,4 +59,6 @@ if __name__ == "__main__":
     input("Quit ? [Press any key]")
     for process in process_tab:
         process.terminate()
+        time.sleep(0.1)
         process.join()
+    os.system('sudo killall -9 python3')

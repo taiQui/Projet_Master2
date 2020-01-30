@@ -218,6 +218,23 @@ class DB:
             return len(valid)>0
         except mysql.connector.Error as err:
             return False
+    def already_validate(self,flag,user):
+        try:
+            self.cursor.execute("select * from flag_flagged where id_flag=\'"+flag+"\' and id_user=\'"+user+"\'")
+            a = self.cursor.fetchall()
+            if len(a) > 0:
+                return True
+            else:
+                return False
+        except mysql.connector.Error as err:
+            return None
+    def add_to_flagged(self,flag,user):
+        try:
+            self.cursor.execute("insert into flag_flagged(id_flag,id_user) values (\'"+flag+"\',\'"+user+"\')")
+            self.database.commit()
+            return True
+        except:
+            return None
 
 
 if __name__ == "__main__":
