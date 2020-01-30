@@ -4,15 +4,15 @@ echo "[+] ok mysql"
 # alors machine
 # principale              8080
 # injection               8081 +
-# broken_authentification 8082
+# broken_authentification 8082 +
 # broken acces control    8083
-# insecure Insecure_deser 8084 +
+# insecure Insecure_deser 8084
 # insuf log               8085
-# Security_misconfigurati 8086 +
+# Security_misconfigurati 8086
 # sensitive data          8087
-# using comp vul          8088 +
+# using comp vul          8088 
 # xml                     8089
-# xss                     8090 
+# xss                     8090
 
 echo "[+] demmarage de toute les vm pour les test"
 cd site_owasp/

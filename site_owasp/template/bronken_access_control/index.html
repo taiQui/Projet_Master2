@@ -1,10 +1,10 @@
 {% extends 'base.html' %}
-{% block title %}bronken access control{% endblock title %}
+{% block title %}broken access control{% endblock title %}
 {% block content %}
   {% if user.is_authenticated %}
     <!-- navbar navbar-expand-sm -->
       <nav class="navbar navbar-expand-sm navbar-dark bg-secondary col sticky-top mt-56" style="z-index:100;">
-      <a class="navbar-brand" href="#">bronken access control</a>
+      <a class="navbar-brand" href="#">Broken access control</a>
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
@@ -15,40 +15,165 @@
             <a class="nav-link" href="#exemple">Exemples</a>
           </li>
           <li class="nav-item active">
-            <a class="nav-link" href="#demo">demo</a>
+            <a class="nav-link" href="#demo">Démo</a>
           </li>
           <li class="nav-item active">
-            <a class="nav-link" href="#prevention">prevention</a>
+            <a class="nav-link" href="#prevention">Prévention</a>
           </li>
         </ul>
       </div>
     </nav>
     <div class="col-sm-10 p-3 ml-5  mt-9">
-      <div id='explication' class=" mb-4 pt-104 ">
-        <h2  class='ml-5 mb-3'>Explication</h2>
-        <p class="text-justify">qdduqfgbuwakfb dadw da dwakld w dand dakla adjkldaw ad da dajadw adw da akwladw awdknlawdawwabfewfwefkebnfkbewjewkjafbwjafbewjlfbjabgfkljbgfb fkjewbfwefnfjkgbkjabgjeakbwakkjbgadgnjnjewkwfnnekdsgehfksfhkejsbvfbjesfljqfenwjkfnwkfb</p>
-        <p>qdduqfgbuwakfbwabfewfwefkebnfkbewjewkjafbwjafbewjlfbjabgfkljbgfb fkjewbfwefnfjkgb hda k d nkajd nadw ndakwdawn awdankld daw dk;alw adw adw adw admdawdmd md dmd d dmd kjabgjeakbwakkjbgadgnjnjewkwfnnekdsgehfksfhkejsbvfbjesfljqfenwjkfnwkfb</p>
-        <p>qdduqfgbuwakfbwabfewfwefkebnfkbewjewkjafbwjafbewjlfbjabgfkljbgfb fkjewbfwefnfjkgbkjabgjeakbwakkjbgadgnjnjewkwfnnekdsgehfksfhkejsbvfbjesfljqfenwjkfnwkfb</p>
-        <p>qdduqfgbuwakfbwabfewfwefkebnfkbewjewkjafbwjafbewjlfbjabgfkljbgfb fkjewbfwefnfjkgbkjabgjeakbwakkjbgadgnjnjewkwfnnekdsgehfksfhkejsbvfbjesfljqfenwjkfnwkfb</p>
-        <p>qdduqfgbuwakfbwabfewfwefkebnfkbewjewkjafbwjafbewjlfbjabgfkljbgfb fkjewbfwefnfjkgbkjabgjeakbwakkjbgadgnjnjewkwfnnekdsgehfksfhkejsbvfbjesfljqfenwjkfnwkfb</p>
-        <p>qdduqfgbuwakfbwabfewfwefkebnfkbewjewkjafbwjafbewjlfbjabgfkljbgfb fkjewbfwefnfjkgbkjabgjeakbwakkjbgadgnjnjewkwfnnekdsgehfksfhkejsbvfbjesfljqfenwjkfnwkfb</p>
-        <p>qdduqfgbuwakfbwabfewfwefkebnfkbewjewkjafbwjafbewjlfbjabgfkljbgfb fkjewbfwefnfjkgbkjabgjeakbwakkjbgadgnjnjewkwfnnekdsgehfksfhkejsbvfbjesfljqfenwjkfnwkfb</p>
-        <p>qdduqfgbuwakfbwabfewfwefkebnfkbewjewkjafbwjafbewjlfbjabgfkljbgfb fkjewbfwefnfjkgbkjabgjeakbwakkjbgadgnjnjewkwfnnekdsgehfksfhkejsbvfbjesfljqfenwjkfnwkfb</p>
-        <p>qdduqfgbuwakfbwabfewfwefkebnfkbewjewkjafbwjafbewjlfbjabgfkljbgfb fkjewbfwefnfjkgbkjabgjeakbwakkjbgadgnjnjewkwfnnekdsgehfksfhkejsbvfbjesfljqfenwjkfnwkfb</p>
-        <p>qdduqfgbuwakfbwabfewfwefkebnfkbewjewkjafbwjafbewjlfbjabgfkljbgfb fkjewbfwefnfjkgbkjabgjeakbwakkjbgadgnjnjewkwfnnekdsgehfksfhkejsbvfbjesfljqfenwjkfnwkfb</p>
-        <p>qdduqfgbuwakfbwabfewfwefkebnfkbewjewkjafbwjafbewjlfbjabgfkljbgfb fkjewbfwefnfjkgbkjabgjeakbwakkjbgadgnjnjewkwfnnekdsgehfksfhkejsbvfbjesfljqfenwjkfnwkfb</p>
+      <div id='explication' class="text-justify mb-4 pt-104 ">
+        <div class='mt-4 '>
+          <h2  class='ml-5 mb-3'>Explication</h2>
+          <p>
+            Une attaque d'entité externe XML est un type d'attaque contre une application qui analyse une entrée XML. Cette attaque se produit lorsque l'entrée XML contenant une référence à une entité externe est traitée par un analyseur XML faiblement configuré. Cette attaque peut entraîner la divulgation de données confidentielles, un déni de service, la falsification de requêtes côté serveur, la numérisation de port du point de vue de la machine sur laquelle se trouve l'analyseur et d'autres répercussions sur le système.
+          </p>
+        </div>
+        <div class='mt-4 mb-5 ml-4'>
+          <ul>
+             <li>
+               <strong>Agents de menace et vecteurs d'attaque :</strong>
+               <p>
+                  par défaut, de nombreux processeurs XML plus anciens autorisent la spécification d'une entité externe, un URI qui est déréférencé et évalué pendant le traitement XML. Les outils DAST peuvent découvrir ce problème en inspectant les dépendances et la configuration. Les outils DAST nécessitent des étapes manuelles supplémentaires pour détecter et exploiter ce problème. Les testeurs manuels doivent être formés à la façon de tester XXE, car il n'était pas couramment testé en 2017.
+               </p>
+             </li>
+             <li>
+               <strong>Faiblesses en matière de sécurité  : </strong>
+               <p>
+                au cours des dernières années, il s'agit de l'attaque ayant le plus d'impact. Le défaut le plus courant est tout simplement de ne pas crypter les données sensibles. Lorsque la cryptographie est utilisée, la génération et la gestion de clés faibles et l'utilisation faible d'algorithmes, de protocoles et de chiffrement sont courantes, en particulier pour les techniques de stockage de hachage de mots de passe faibles. Pour les données en transit, les faiblesses côté serveur sont principalement faciles à détecter, mais difficiles pour les données au repos.
+               </p>
+             </li>
+             <li>
+               <strong>Impacts :</strong>
+               <p>
+                 ces failles peuvent être utilisées pour extraire des données, exécuter une requête à distance à partir du serveur, analyser les systèmes internes, effectuer une attaque par déni de service, ainsi que pour exécuter d'autres attaques. L'impact commercial dépend des besoins de protection de toutes les applications et données concernées.
+               </p>
+             </li>
+          </ul>
+        </div>
+        <div class='mt-4'>
+          <h5> L'application est-elle vulnérable?</h5>
+          <br>
+          <div class='ml-4'>
+            <p>
+              Les applications et en particulier les services Web basés sur XML ou les intégrations en aval peuvent être vulnérables aux attaques si:
+              <ul  style=''>
+                <li>
+                  L'application accepte XML directement ou les téléchargements XML, en particulier à partir de sources non fiables, ou insère des données non fiables dans des documents XML, qui sont ensuite analysées par un processeur XML.
+                </li>
+                <li class="mt-2">
+                  Si l'application utilise SAML pour le traitement des identités dans le cadre de la sécurité fédérée ou de l'authentification unique (SSO). SAML utilise XML pour les assertions d'identité et peut être vulnérable.
+                </li>
+                <li class="mt-2">
+                  Si l'application utilise SOAP avant la version 1.2, elle est susceptible de subir des attaques XXE si des entités XML sont transmises au framework SOAP. Être vulnérable aux attaques XXE signifie probablement que l'application est vulnérable aux attaques par déni de service, y compris l'attaque Billion Laughs
+                </li>
+              </ul>
+            </p>
+          </div>
+        </div>
       </div>
-      <div class=" mb-4">
+      <hr/>
+      <div class=" mb-4 mt-5">
         <h2 id='exemple'class='ml-5 mb-3'>Exemples</h2>
-        <p>dadhnwabdnawhda</p>
+        <div class=''>
+          <p>
+            Une XXE de son nom XML External Entity, est une injection par du langage XML. Prenons un site lambda permettant d'inserer du code XML, par exemple pour donner une police d'écriture spéciale, une taille d'écriture spéciale etc.
+          </p>
+          {% load static %}
+          <img src="{% static '/img/file_5.jpg' %}"  class="center" />
+          <div class="bg-light ">
+            <pre>&lt;?<span class="pl-ent">xml</span><span class="pl-e"> version</span>=<span class="pl-s"><span class="pl-pds">"</span>1.0<span class="pl-pds">"</span></span><span class="pl-e"> encoding</span>=<span class="pl-s"><span class="pl-pds">"</span>UTF-8<span class="pl-pds">"</span></span>?&gt;
+            &lt;<span class="pl-ent">rss</span> <span class="pl-e">version</span>=<span class="pl-s"><span class="pl-pds">"</span>2.0<span class="pl-pds">"</span></span>&gt;
+            	&lt;<span class="pl-ent">channel</span>&gt;
+            		&lt;<span class="pl-ent">title</span>&gt;Mon site&lt;/<span class="pl-ent">title</span>&gt;
+            		&lt;<span class="pl-ent">description</span>&gt;Ceci est un exemple de flux RSS 2.0&lt;/<span class="pl-ent">description</span>&gt;
+            		&lt;<span class="pl-ent">lastBuildDate</span>&gt;Sat, 07 Sep 2002 00:00:01 GMT&lt;/<span class="pl-ent">lastBuildDate</span>&gt;
+            		&lt;<span class="pl-ent">link</span>&gt;http://www.example.org&lt;/<span class="pl-ent">link</span>&gt;
+            		&lt;<span class="pl-ent">item</span>&gt;
+            			&lt;<span class="pl-ent">title</span>&gt;Actualité N°1&lt;/<span class="pl-ent">title</span>&gt;
+            			&lt;<span class="pl-ent">description</span>&gt;Ceci est ma première actualité&lt;/<span class="pl-ent">description</span>&gt;
+            			&lt;<span class="pl-ent">pubDate</span>&gt;Sat, 07 Sep 2002 00:00:01 GMT&lt;/<span class="pl-ent">pubDate</span>&gt;
+            			&lt;<span class="pl-ent">link</span>&gt;http://www.example.org/actu1&lt;/<span class="pl-ent">link</span>&gt;
+            		&lt;/<span class="pl-ent">item</span>&gt;
+            		&lt;<span class="pl-ent">item</span>&gt;
+            			&lt;<span class="pl-ent">title</span>&gt;Actualité N°2&lt;/<span class="pl-ent">title</span>&gt;
+            			&lt;<span class="pl-ent">description</span>&gt;Ceci est ma seconde actualité&lt;/<span class="pl-ent">description</span>&gt;
+            			&lt;<span class="pl-ent">pubDate</span>&gt;Sat, 07 Sep 2002 00:00:01 GMT&lt;/<span class="pl-ent">pubDate</span>&gt;
+            			&lt;<span class="pl-ent">link</span>&gt;http://www.example.org/actu2&lt;/<span class="pl-ent">link</span>&gt;
+            		&lt;/<span class="pl-ent">item</span>&gt;
+            	&lt;/<span class="pl-ent">channel</span>&gt;
+            &lt;/<span class="pl-ent">rss</span>&gt;
+          </pre>
+
+          </div>
+          <p>
+            La méthode pour notre attaque qui va être d'injecté du code que le serveur exécutera, sera d'ajouté dans le header du fichier une commande dans ce genre la :
+          </p>
+          <div class="bg-light ">
+            <code>&lt;!DOCTYPE HELLO [
+              &lt;!ENTITY XXE_REKT SYSTEM "SOMETHING" &gt;
+              ]&gt;&lt;title&gt;&amp;XXE_REKT;&lt;/title&gt;
+            </code>
+          </div>
+          <p>
+            Ici il faut ajouté dans SOMETHING quelque chose que le serveur pourra traité. On pourrai choisir d'affiché par exemple le code source d'une page de login par exemple :
+          </p>
+          <div class="bg-light ">
+            <code>
+              &lt;!DOCTYPE HELLO [<br>
+              &lt;!ENTITY XXE_REKT SYSTEM "file:///PATH/TO/FILE/login.php" &gt;<br>
+              ]&gt;&lt;title&gt;&amp;XXE_REKT;&lt;/title&gt;<br>
+            </code>
+          </div>
+          <p>On pourrai notamment poussé l'exploitation plus loin en outrepassant des filtres basique en utilisant des WRAPPER php qui sont des fonction interne a PHP.</p>
+          <div class="bg-light ">
+            <code>&lt;!DOCTYPE HELLO [ <br>
+              &lt;!ENTITY XXE_REKT SYSTEM "php://filter/read=convert.base64-<br>
+              encode=PATH/TO/FILE" &gt;<br>
+              ]&gt;&lt;title&gt;&amp;XXE_REKT;&lt;/title&gt;
+            </code>
+          </div>
+          <p>Ceci nous retournerais le code sources du fichier demandé en base64, il nous resterait uniquement à décoder ce fichier pour avoir le code en clair !
+          </p>
+          <p>
+            Ici, l'utilisateur va ce connecter au FTP avec une communication non chiffré, il ne ce doute pas qu'un hacker ce trouve en MITM entre lui et sont serveur FTP, l'attaquant verras donc passer le login/motdepasse en clair avec par exemple un outils : Wireshark.
+          </p>
+        </div>
       </div>
-      <div class=" mb-4">
+      <hr/>
+      <div class=" mb-4 mt-5">
         <h2 id='demo' class='ml-5 mb-3'>Demo</h2>
         <p>aller essaye</p>
-        <a href="#">demo</a>
+        <a href="#">Démo</a>
       </div>
+      <hr/>
       <div class=" mb-4">
-        <h2 id='prevention' class='ml-5 mb-3'>Prevention</h2>
+        <h2 id='prevention' class='ml-5 mb-3'>Prévention</h2>
+        <p>
+          La formation des développeurs est essentielle pour identifier et atténuer XXE. De plus, la prévention de XXE nécessite:
+        </p>
+        <ul>
+          <li>
+            Dans la mesure du possible, utilisez des formats de données moins complexes tels que JSON et évitez la sérialisation des données sensibles.
+          </li>
+          <li>
+            Corrigez ou mettez à niveau tous les processeurs et bibliothèques XML utilisés par l'application ou sur le système d'exploitation sous-jacent. Utilisez des vérificateurs de dépendances.
+          </li>
+          <li>
+            Désactivez l'entité externe XML et le traitement DTD dans tous les analyseurs XML de l'application.
+          </li>
+          <li>
+            Mettez en œuvre une validation, un filtrage ou un filtrage des entrées côté serveur positif («liste blanche») pour empêcher les données hostiles dans les documents XML, les en-têtes ou les nœuds.
+          </li>
+          <li>
+            Vérifiez que la fonctionnalité de téléchargement de fichiers XML ou XSL valide le XML entrant à l'aide de la validation XSD ou similaire.
+          </li>
+        </ul>
+        <p>
+          Si ces contrôles ne sont pas possibles, envisagez d'utiliser des correctifs virtuels, des passerelles de sécurité API ou des pare-feu d'applications Web (WAF) pour détecter, surveiller et bloquer les attaques XXE.
+        </p>
       </div>
     </div>
   {% else %}

@@ -59,3 +59,4 @@ if __name__ == "__main__":
     input("Quit ? [Press any key]")
     for process in process_tab:
         process.terminate()
+        process.join()

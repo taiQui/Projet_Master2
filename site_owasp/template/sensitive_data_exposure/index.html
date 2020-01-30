@@ -1,10 +1,10 @@
 {% extends 'base.html' %}
-{% block title %}sensitiv data{% endblock title %}
+{% block title %}donnee sensible{% endblock title %}
 {% block content %}
   {% if user.is_authenticated %}
     <!-- navbar navbar-expand-sm -->
       <nav class="navbar navbar-expand-sm navbar-dark bg-secondary col sticky-top mt-56" style="z-index:100;">
-      <a class="navbar-brand" href="#">sensitiv data</a>
+      <a class="navbar-brand" href="#">donnee sensible</a>
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
@@ -15,41 +15,130 @@
             <a class="nav-link" href="#exemple">Exemples</a>
           </li>
           <li class="nav-item active">
-            <a class="nav-link" href="#demo">demo</a>
+            <a class="nav-link" href="#demo">Démo</a>
           </li>
           <li class="nav-item active">
-            <a class="nav-link" href="#prevention">prevention</a>
+            <a class="nav-link" href="#prevention">Prévention</a>
           </li>
         </ul>
       </div>
     </nav>
     <div class="col-sm-10 p-3 ml-5  mt-9">
-      <div id='explication' class=" mb-4 pt-104 ">
-        <h2  class='ml-5 mb-3'>Explication</h2>
-        <p class="text-justify">qdduqfgbuwakfb dadw da dwakld w dand dakla adjkldaw ad da dajadw adw da akwladw awdknlawdawwabfewfwefkebnfkbewjewkjafbwjafbewjlfbjabgfkljbgfb fkjewbfwefnfjkgbkjabgjeakbwakkjbgadgnjnjewkwfnnekdsgehfksfhkejsbvfbjesfljqfenwjkfnwkfb</p>
-        <p>qdduqfgbuwakfbwabfewfwefkebnfkbewjewkjafbwjafbewjlfbjabgfkljbgfb fkjewbfwefnfjkgb hda k d nkajd nadw ndakwdawn awdankld daw dk;alw adw adw adw admdawdmd md dmd d dmd kjabgjeakbwakkjbgadgnjnjewkwfnnekdsgehfksfhkejsbvfbjesfljqfenwjkfnwkfb</p>
-        <p>qdduqfgbuwakfbwabfewfwefkebnfkbewjewkjafbwjafbewjlfbjabgfkljbgfb fkjewbfwefnfjkgbkjabgjeakbwakkjbgadgnjnjewkwfnnekdsgehfksfhkejsbvfbjesfljqfenwjkfnwkfb</p>
-        <p>qdduqfgbuwakfbwabfewfwefkebnfkbewjewkjafbwjafbewjlfbjabgfkljbgfb fkjewbfwefnfjkgbkjabgjeakbwakkjbgadgnjnjewkwfnnekdsgehfksfhkejsbvfbjesfljqfenwjkfnwkfb</p>
-        <p>qdduqfgbuwakfbwabfewfwefkebnfkbewjewkjafbwjafbewjlfbjabgfkljbgfb fkjewbfwefnfjkgbkjabgjeakbwakkjbgadgnjnjewkwfnnekdsgehfksfhkejsbvfbjesfljqfenwjkfnwkfb</p>
-        <p>qdduqfgbuwakfbwabfewfwefkebnfkbewjewkjafbwjafbewjlfbjabgfkljbgfb fkjewbfwefnfjkgbkjabgjeakbwakkjbgadgnjnjewkwfnnekdsgehfksfhkejsbvfbjesfljqfenwjkfnwkfb</p>
-        <p>qdduqfgbuwakfbwabfewfwefkebnfkbewjewkjafbwjafbewjlfbjabgfkljbgfb fkjewbfwefnfjkgbkjabgjeakbwakkjbgadgnjnjewkwfnnekdsgehfksfhkejsbvfbjesfljqfenwjkfnwkfb</p>
-        <p>qdduqfgbuwakfbwabfewfwefkebnfkbewjewkjafbwjafbewjlfbjabgfkljbgfb fkjewbfwefnfjkgbkjabgjeakbwakkjbgadgnjnjewkwfnnekdsgehfksfhkejsbvfbjesfljqfenwjkfnwkfb</p>
-        <p>qdduqfgbuwakfbwabfewfwefkebnfkbewjewkjafbwjafbewjlfbjabgfkljbgfb fkjewbfwefnfjkgbkjabgjeakbwakkjbgadgnjnjewkwfnnekdsgehfksfhkejsbvfbjesfljqfenwjkfnwkfb</p>
-        <p>qdduqfgbuwakfbwabfewfwefkebnfkbewjewkjafbwjafbewjlfbjabgfkljbgfb fkjewbfwefnfjkgbkjabgjeakbwakkjbgadgnjnjewkwfnnekdsgehfksfhkejsbvfbjesfljqfenwjkfnwkfb</p>
-        <p>qdduqfgbuwakfbwabfewfwefkebnfkbewjewkjafbwjafbewjlfbjabgfkljbgfb fkjewbfwefnfjkgbkjabgjeakbwakkjbgadgnjnjewkwfnnekdsgehfksfhkejsbvfbjesfljqfenwjkfnwkfb</p>
+      <div id='explication' class="text-justify mb-4 pt-104 ">
+        <div class='mt-4 '>
+          <h2  class='ml-5 mb-3'>Explication</h2>
+          <p>
+            De nombreuses applications Web et API ne protègent pas correctement les données sensibles. Les attaquants peuvent voler ou modifier ces données faiblement protégées pour commettre une fraude par carte de crédit, un vol d'identité ou d'autres délits, souvent ces données ne sont pas chiffrées ou chiffrées avec un algorithme de chiffrement faible.
+          </p>
+        </div>
+        <div class='mt-4 mb-5 ml-4'>
+          <ul>
+             <li>
+               <strong>Agents de menace et vecteurs d'attaque :</strong>
+               <p>
+                 plutôt que d'attaquer directement la crypto, les attaquants volent des clés, exécutent des attaques de type intermédiaire ou volent des données en texte clair sur le serveur, pendant le transport, ou sur le client de l'utilisateur, par exemple un navigateur. Une attaque manuelle est généralement requise. Les bases de données de mots de passe précédemment récupérées peuvent être forcées par les unités de traitement graphique (GPU).
+               </p>
+             </li>
+             <li>
+               <strong>Faiblesses en matière de sécurité  : </strong>
+               <p>
+                au cours des dernières années, il s'agit de l'attaque ayant le plus d'impact. Le défaut le plus courant est tout simplement de ne pas crypter les données sensibles. Lorsque la cryptographie est utilisée, la génération et la gestion de clés faibles et l'utilisation faible d'algorithmes, de protocoles et de chiffrement sont courantes, en particulier pour les techniques de stockage de hachage de mots de passe faibles. Pour les données en transit, les faiblesses côté serveur sont principalement faciles à détecter, mais difficiles pour les données au repos.
+               </p>
+             </li>
+             <li>
+               <strong>Impacts :</strong>
+               <p>
+                  l'échec compromet fréquemment toutes les données qui auraient dû être protégées. En règle générale, ces informations comprennent des données personnelles sensibles (PII) telles que les dossiers de santé, les informations d'identification, les données personnelles et les cartes de crédit, qui nécessitent souvent une protection telle que définie par les lois ou règlements tels que le RGPD de l'UE ou les lois locales sur la confidentialité.
+                </p>
+             </li>
+          </ul>
+        </div>
+        <div class='mt-4'>
+          <h5> L'application est-elle vulnérable?</h5>
+          <br>
+          <div class='ml-4'>
+            <p>
+              La première chose est de déterminer les besoins de protection des données en transit et au repos. Par exemple, les mots de passe, les numéros de carte de crédit, les dossiers médicaux, les informations personnelles et les secrets d'affaires nécessitent une protection supplémentaire, en particulier si ces données relèvent des lois sur la confidentialité, par exemple le Règlement général sur la protection des données (RGPD) de l'UE, ou des réglementations, par exemple la protection des données financières telles que PCI Norme de sécurité des données (PCI DSS). Pour toutes ces données:
+              <ul  style=''>
+                <li>
+                  Les données sont-elles transmises en texte clair? Cela concerne des protocoles tels que HTTP, SMTP et FTP. Le trafic Internet externe est particulièrement dangereux. Vérifiez tout le trafic interne, par exemple entre les équilibreurs de charge, les serveurs Web ou les systèmes principaux.
+                </li>
+                <li class="mt-2">
+                  Des algorithmes cryptographiques anciens ou faibles sont-ils utilisés par défaut ou dans un code plus ancien?                </li>
+                <li class="mt-2">
+                  Des clés de chiffrement par défaut sont-elles utilisées, des clés de chiffrement faibles sont-elles générées ou réutilisées, ou la gestion ou la rotation des clés est-elle manquante?                </li>
+                <li class="mt-2">
+                  Le chiffrement n'est-il pas appliqué, par exemple, manque-t-il des directives de sécurité ou des en-têtes d'agent utilisateur (navigateur)?
+                </li>
+                <li class="mt-2">
+                  L'agent utilisateur (par exemple, application, client de messagerie) ne vérifie-t-il pas que le certificat de serveur reçu est valide?
+                </li>
+              </ul>
+            </p>
+          </div>
+        </div>
       </div>
-      <div class=" mb-4">
+      <hr/>
+      <div class=" mb-4 mt-5">
         <h2 id='exemple'class='ml-5 mb-3'>Exemples</h2>
-        <p>dadhnwabdnawhda</p>
+        <div class=''>
+          <p>
+            Beaucoup d'attaque pourrais permettre d'avoir accès à des données non chiffré, les injection SQL par exemple ou encore le man-in-the-middle attack.
+          </p>
+          <p>
+            L'attaque man-in-the-middle attack (MITM), est une attaque qui a pour but d'intercepter les communications entre deux parties, dans ce cas, si la données est non chiffré, l'attaquant pourras en clair voir les données sans problème.
+          </p>
+          <p>
+            Prenons l'exemple d'un File Transfer Protocol, ou FTP, c'est un protocole de communication destiné au partage de fichiers sur un réseau TCP/IP. Il permet, depuis un ordinateur, de copier des fichiers vers un autre ordinateur du réseau, ou encore de supprimer ou de modifier des fichiers sur cet ordinateur.
+          </p>
+          <p>
+            Ici, l'utilisateur va ce connecter au FTP avec une communication non chiffré, il ne ce doute pas qu'un hacker ce trouve en MITM entre lui et sont serveur FTP, l'attaquant verras donc passer le login/motdepasse en clair avec par exemple un outils : Wireshark.
+          </p>
+          {% load static %}
+          <img src="{% static '/img/file_4.png' %}"  class="center" />
+        </div>
       </div>
-      <div class=" mb-4">
+      <hr/>
+      <div class=" mb-4 mt-5">
         <h2 id='demo' class='ml-5 mb-3'>Demo</h2>
         <p>aller essaye</p>
-        <a href="#">demo</a>
-
+        <a href="#">Démo</a>
       </div>
+      <hr/>
       <div class=" mb-4">
-        <h2 id='prevention' class='ml-5 mb-3'>Prevention</h2>
+        <h2 id='prevention' class='ml-5 mb-3'>Prévention</h2>
+        <p>
+          Procédez au minimum comme suit et consultez les références:
+        </p>
+        <ul>
+          <li>
+            Classer les données traitées, stockées ou transmises par une application. Identifiez les données sensibles en fonction des lois sur la confidentialité, des exigences réglementaires ou des besoins de l'entreprise.
+          </li>
+          <li>
+            Appliquer des contrôles selon la classification.
+          </li>
+          <li>
+            Ne stockez pas inutilement des données sensibles. Jetez-le dès que possible.
+          </li>
+          <li>
+            Assurez-vous de chiffrer toutes les données sensibles.
+          </li>
+          <li>
+            Assurez-vous que des algorithmes, protocoles et clés standard à jour et solides sont en place; utiliser une bonne gestion des clés.
+          </li>
+          <li>
+            chiffrez toutes les données en transit avec des protocoles sécurisés tels que TLS avec des chiffrements PFS (Perfect Forward Secret), une hiérarchisation des chiffrements par le serveur et des paramètres sécurisés.
+          </li>
+          <li>
+            Désactivez la mise en cache pour les réponses contenant des données sensibles.
+          </li>
+          <li>
+            Stockez les mots de passe à l'aide de fonctions de hachage adaptatives et salées.
+          </li>
+          <li>
+            Vérifiez indépendamment l'efficacité de la configuration et des paramètres.
+          </li>
+        </ul>
       </div>
     </div>
   {% else %}
