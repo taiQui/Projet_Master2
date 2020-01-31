@@ -15,9 +15,6 @@
             <a class="nav-link" href="#exemple">Exemples</a>
           </li>
           <li class="nav-item active">
-            <a class="nav-link" href="#demo">Démo</a>
-          </li>
-          <li class="nav-item active">
             <a class="nav-link" href="#prevention">Prévention</a>
           </li>
         </ul>
@@ -84,7 +81,7 @@ Permettre à la clé primaire d'être changée en enregistrement d'utilisateurs 
         </div>
       </div>
       <hr/>
-      <div class=" mb-4 mt-5">
+      <div class=" mb-4 mt-5 text-justify">
         <h2 id='exemple'class='ml-5 mb-3'>Exemples</h2>
         <div class=''>
           <p>
@@ -128,7 +125,7 @@ Permettre à la clé primaire d'être changée en enregistrement d'utilisateurs 
             Ci-dessous ce trouve la signature:
           </p>
           <code>
-OnuZnYMdetcg7AWGV6WURn8CFSfas6AQej4V9M13nsk = :{�z �WF���'ڳ�z>�w
+            OnuZnYMdetcg7AWGV6WURn8CFSfas6AQej4V9M13nsk = :{�z �WF���'ڳ�z>�w
           </code>
           <p>
             Seulement voilà, on peut tromper la vérification via signature en indiquant dans le header que l’on utilise pas d’algorithme de signature.
@@ -139,13 +136,7 @@ OnuZnYMdetcg7AWGV6WURn8CFSfas6AQej4V9M13nsk = :{�z �WF���'ڳ�z>�w
         </div>
       </div>
       <hr/>
-      <div class=" mb-4 mt-5">
-        <h2 id='demo' class='ml-5 mb-3'>Demo</h2>
-        <p>aller essaye</p>
-        <a href="#">Démo</a>
-      </div>
-      <hr/>
-      <div class=" mb-4">
+      <div class=" mb-4 text-justify">
         <h2 id='prevention' class='ml-5 mb-3'>Prévention</h2>
         <p>
           Le contrôle d'accès n'est efficace que s'il est appliqué dans du code côté serveur approuvé ou une API sans serveur, où l'attaquant ne peut pas modifier la vérification du contrôle d'accès ou les métadonnées.
@@ -155,16 +146,16 @@ OnuZnYMdetcg7AWGV6WURn8CFSfas6AQej4V9M13nsk = :{�z �WF���'ڳ�z>�w
             À l'exception des ressources publiques, refusez par défaut.
           </li>
           <li>
-Implémentez une fois les mécanismes de contrôle d'accès et réutilisez-les tout au long de l'application, notamment en minimisant l'utilisation de CORS.
+            Implémentez une fois les mécanismes de contrôle d'accès et réutilisez-les tout au long de l'application, notamment en minimisant l'utilisation de CORS.
           </li>
           <li>
-Les contrôles d'accès aux modèles doivent imposer la propriété des enregistrements, plutôt que d'accepter que l'utilisateur puisse créer, lire, mettre à jour ou supprimer n'importe quel enregistrement.
+            Les contrôles d'accès aux modèles doivent imposer la propriété des enregistrements, plutôt que d'accepter que l'utilisateur puisse créer, lire, mettre à jour ou supprimer n'importe quel enregistrement.
           </li>
           <li>
-Désactivez la liste des répertoires du serveur Web et assurez-vous que les métadonnées des fichiers (par exemple .git) et les fichiers de sauvegarde ne sont pas présents dans les racines Web.
+            Désactivez la liste des répertoires du serveur Web et assurez-vous que les métadonnées des fichiers (par exemple .git) et les fichiers de sauvegarde ne sont pas présents dans les racines Web.
           </li>
           <li>
-Enregistrer les échecs de contrôle d'accès, alerter les administrateurs le cas échéant (par exemple, échecs répétés).
+            Enregistrer les échecs de contrôle d'accès, alerter les administrateurs le cas échéant (par exemple, échecs répétés).
           </li>
           <li>
             Limitez l'accès à l'API et au contrôleur pour minimiser les dommages causés par les outils d'attaque automatisés.
@@ -176,7 +167,7 @@ Enregistrer les échecs de contrôle d'accès, alerter les administrateurs le ca
       </div>
     </div>
   {% else %}
-    <div class='col-sm-10 p-3 ml-5  mt-5'>
+    <div class='col-sm-10 p-3 ml-5  mt-5 text-justify'>
       <p>connecte toi pour pouvoir acceder a cette page</p>
     <div>
   {% endif %}

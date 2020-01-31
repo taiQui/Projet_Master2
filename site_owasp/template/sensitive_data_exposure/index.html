@@ -1,10 +1,10 @@
 {% extends 'base.html' %}
-{% block title %}donnee sensible{% endblock title %}
+{% block title %}donnée sensible{% endblock title %}
 {% block content %}
   {% if user.is_authenticated %}
     <!-- navbar navbar-expand-sm -->
       <nav class="navbar navbar-expand-sm navbar-dark bg-secondary col sticky-top mt-56" style="z-index:100;">
-      <a class="navbar-brand" href="#">donnee sensible</a>
+      <a class="navbar-brand" href="#">Donnée sensible</a>
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
@@ -13,9 +13,6 @@
           </li>
           <li class="nav-item active">
             <a class="nav-link" href="#exemple">Exemples</a>
-          </li>
-          <li class="nav-item active">
-            <a class="nav-link" href="#demo">Démo</a>
           </li>
           <li class="nav-item active">
             <a class="nav-link" href="#prevention">Prévention</a>
@@ -53,7 +50,7 @@
              </li>
           </ul>
         </div>
-        <div class='mt-4'>
+        <div class='text-justify mt-4'>
           <h5> L'application est-elle vulnérable?</h5>
           <br>
           <div class='ml-4'>
@@ -79,7 +76,7 @@
         </div>
       </div>
       <hr/>
-      <div class=" mb-4 mt-5">
+      <div class="text-justify mb-4 mt-5">
         <h2 id='exemple'class='ml-5 mb-3'>Exemples</h2>
         <div class=''>
           <p>
@@ -99,13 +96,7 @@
         </div>
       </div>
       <hr/>
-      <div class=" mb-4 mt-5">
-        <h2 id='demo' class='ml-5 mb-3'>Demo</h2>
-        <p>aller essaye</p>
-        <a href="#">Démo</a>
-      </div>
-      <hr/>
-      <div class=" mb-4">
+      <div class=" mb-4 text-justify">
         <h2 id='prevention' class='ml-5 mb-3'>Prévention</h2>
         <p>
           Procédez au minimum comme suit et consultez les références:
