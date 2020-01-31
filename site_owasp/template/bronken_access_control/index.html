@@ -28,7 +28,7 @@
         <div class='mt-4 '>
           <h2  class='ml-5 mb-3'>Explication</h2>
           <p>
-            Une attaque d'entité externe XML est un type d'attaque contre une application qui analyse une entrée XML. Cette attaque se produit lorsque l'entrée XML contenant une référence à une entité externe est traitée par un analyseur XML faiblement configuré. Cette attaque peut entraîner la divulgation de données confidentielles, un déni de service, la falsification de requêtes côté serveur, la numérisation de port du point de vue de la machine sur laquelle se trouve l'analyseur et d'autres répercussions sur le système.
+            Les restrictions sur ce que les utilisateurs authentifiés sont autorisés à faire ne sont souvent pas correctement appliquées. Les attaquants peuvent exploiter ces failles pour accéder à des fonctionnalités et/ou des données non autorisées, comme accéder aux comptes d'autres utilisateurs, afficher des fichiers sensibles, modifier les données d'autres utilisateurs, changer les droits d'accès, etc...
           </p>
         </div>
         <div class='mt-4 mb-5 ml-4'>
@@ -36,19 +36,19 @@
              <li>
                <strong>Agents de menace et vecteurs d'attaque :</strong>
                <p>
-                  par défaut, de nombreux processeurs XML plus anciens autorisent la spécification d'une entité externe, un URI qui est déréférencé et évalué pendant le traitement XML. Les outils DAST peuvent découvrir ce problème en inspectant les dépendances et la configuration. Les outils DAST nécessitent des étapes manuelles supplémentaires pour détecter et exploiter ce problème. Les testeurs manuels doivent être formés à la façon de tester XXE, car il n'était pas couramment testé en 2017.
+                 l'exploitation du contrôle d'accès est une compétence essentielle des attaquants. Les outils SAST et DAST peuvent détecter l'absence de contrôle d'accès mais ne peuvent pas vérifier s'il est fonctionnel lorsqu'il est présent. Le contrôle d'accès est détectable à l'aide de moyens manuels, ou éventuellement grâce à l'automatisation pour l'absence de contrôles d'accès dans certains cadres.
                </p>
              </li>
              <li>
                <strong>Faiblesses en matière de sécurité  : </strong>
                <p>
-                au cours des dernières années, il s'agit de l'attaque ayant le plus d'impact. Le défaut le plus courant est tout simplement de ne pas crypter les données sensibles. Lorsque la cryptographie est utilisée, la génération et la gestion de clés faibles et l'utilisation faible d'algorithmes, de protocoles et de chiffrement sont courantes, en particulier pour les techniques de stockage de hachage de mots de passe faibles. Pour les données en transit, les faiblesses côté serveur sont principalement faciles à détecter, mais difficiles pour les données au repos.
+                les faiblesses du contrôle d'accès sont fréquentes en raison du manque de détection automatisée et du manque de tests fonctionnels efficaces par les développeurs d'applications. La détection du contrôle d'accès ne se prête généralement pas à des tests statiques ou dynamiques automatisés. Les tests manuels sont le meilleur moyen de détecter les contrôles d'accès manquants ou inefficaces, y compris la méthode HTTP (GET vs PUT, etc.), le contrôleur, les références d'objet directes, etc.
                </p>
              </li>
              <li>
                <strong>Impacts :</strong>
                <p>
-                 ces failles peuvent être utilisées pour extraire des données, exécuter une requête à distance à partir du serveur, analyser les systèmes internes, effectuer une attaque par déni de service, ainsi que pour exécuter d'autres attaques. L'impact commercial dépend des besoins de protection de toutes les applications et données concernées.
+                 L'impact technique concerne les attaquants agissant en tant qu'utilisateurs ou administrateurs, ou les utilisateurs utilisant des fonctions privilégiées, ou créant, accédant, mettant à jour ou supprimant chaque enregistrement. L'impact commercial dépend des besoins de protection de l'application et des données.
                </p>
              </li>
           </ul>
@@ -58,16 +58,25 @@
           <br>
           <div class='ml-4'>
             <p>
-              Les applications et en particulier les services Web basés sur XML ou les intégrations en aval peuvent être vulnérables aux attaques si:
+Le contrôle d'accès applique une stratégie telle que les utilisateurs ne peuvent pas agir en dehors des autorisations prévues. Les échecs conduisent généralement à la divulgation non autorisée d'informations, à la modification ou à la destruction de toutes les données, ou à l'exécution d'une fonction commerciale en dehors des limites de l'utilisateur. Les vulnérabilités courantes de contrôle d'accès incluent:
               <ul  style=''>
                 <li>
-                  L'application accepte XML directement ou les téléchargements XML, en particulier à partir de sources non fiables, ou insère des données non fiables dans des documents XML, qui sont ensuite analysées par un processeur XML.
+Contourner les contrôles de contrôle d'accès en modifiant l'URL, l'état de l'application interne ou la page HTML, ou simplement en utilisant un outil d'attaque API personnalisé.
                 </li>
                 <li class="mt-2">
-                  Si l'application utilise SAML pour le traitement des identités dans le cadre de la sécurité fédérée ou de l'authentification unique (SSO). SAML utilise XML pour les assertions d'identité et peut être vulnérable.
+Permettre à la clé primaire d'être changée en enregistrement d'utilisateurs d'un autre, permettant d'afficher ou de modifier le compte de quelqu'un d'autre.
                 </li>
                 <li class="mt-2">
-                  Si l'application utilise SOAP avant la version 1.2, elle est susceptible de subir des attaques XXE si des entités XML sont transmises au framework SOAP. Être vulnérable aux attaques XXE signifie probablement que l'application est vulnérable aux attaques par déni de service, y compris l'attaque Billion Laughs
+                  Élévation de privilège. Agir en tant qu'utilisateur sans être connecté, ou agir en tant qu'administrateur lorsque vous êtes connecté en tant qu'utilisateur.
+                </li>
+                <li class="mt-2">
+                  Manipulation de métadonnées, comme la relecture ou la falsification d'un jeton de contrôle d'accès JSON Web Token (JWT) ou d'un cookie ou d'un champ masqué manipulé pour élever les privilèges, ou abus de l'invalidation JWT.
+                </li>
+                <li class="mt-2">
+                  Une mauvaise configuration de CORS permet un accès API non autorisé.
+                </li>
+                <li class="mt-2">
+                  Forcer la navigation vers des pages authentifiées en tant qu'utilisateur non authentifié ou vers des pages privilégiées en tant qu'utilisateur standard. Accès à l'API avec des contrôles d'accès manquants pour POST, PUT et DELETE.
                 </li>
               </ul>
             </p>
@@ -79,66 +88,53 @@
         <h2 id='exemple'class='ml-5 mb-3'>Exemples</h2>
         <div class=''>
           <p>
-            Une XXE de son nom XML External Entity, est une injection par du langage XML. Prenons un site lambda permettant d'inserer du code XML, par exemple pour donner une police d'écriture spéciale, une taille d'écriture spéciale etc.
+            JSON Web token permet l'échange sécurisé de jetons entre plusieurs parties. Le principe est simple, un hash est générer qui servira de signature pendant une certaine durée. Ce token va ensuite transiter dans chaque requête entre le client et le serveur.
           </p>
-          {% load static %}
-          <img src="{% static '/img/file_5.jpg' %}"  class="center" />
-          <div class="bg-light ">
-            <pre>&lt;?<span class="pl-ent">xml</span><span class="pl-e"> version</span>=<span class="pl-s"><span class="pl-pds">"</span>1.0<span class="pl-pds">"</span></span><span class="pl-e"> encoding</span>=<span class="pl-s"><span class="pl-pds">"</span>UTF-8<span class="pl-pds">"</span></span>?&gt;
-            &lt;<span class="pl-ent">rss</span> <span class="pl-e">version</span>=<span class="pl-s"><span class="pl-pds">"</span>2.0<span class="pl-pds">"</span></span>&gt;
-            	&lt;<span class="pl-ent">channel</span>&gt;
-            		&lt;<span class="pl-ent">title</span>&gt;Mon site&lt;/<span class="pl-ent">title</span>&gt;
-            		&lt;<span class="pl-ent">description</span>&gt;Ceci est un exemple de flux RSS 2.0&lt;/<span class="pl-ent">description</span>&gt;
-            		&lt;<span class="pl-ent">lastBuildDate</span>&gt;Sat, 07 Sep 2002 00:00:01 GMT&lt;/<span class="pl-ent">lastBuildDate</span>&gt;
-            		&lt;<span class="pl-ent">link</span>&gt;http://www.example.org&lt;/<span class="pl-ent">link</span>&gt;
-            		&lt;<span class="pl-ent">item</span>&gt;
-            			&lt;<span class="pl-ent">title</span>&gt;Actualité N°1&lt;/<span class="pl-ent">title</span>&gt;
-            			&lt;<span class="pl-ent">description</span>&gt;Ceci est ma première actualité&lt;/<span class="pl-ent">description</span>&gt;
-            			&lt;<span class="pl-ent">pubDate</span>&gt;Sat, 07 Sep 2002 00:00:01 GMT&lt;/<span class="pl-ent">pubDate</span>&gt;
-            			&lt;<span class="pl-ent">link</span>&gt;http://www.example.org/actu1&lt;/<span class="pl-ent">link</span>&gt;
-            		&lt;/<span class="pl-ent">item</span>&gt;
-            		&lt;<span class="pl-ent">item</span>&gt;
-            			&lt;<span class="pl-ent">title</span>&gt;Actualité N°2&lt;/<span class="pl-ent">title</span>&gt;
-            			&lt;<span class="pl-ent">description</span>&gt;Ceci est ma seconde actualité&lt;/<span class="pl-ent">description</span>&gt;
-            			&lt;<span class="pl-ent">pubDate</span>&gt;Sat, 07 Sep 2002 00:00:01 GMT&lt;/<span class="pl-ent">pubDate</span>&gt;
-            			&lt;<span class="pl-ent">link</span>&gt;http://www.example.org/actu2&lt;/<span class="pl-ent">link</span>&gt;
-            		&lt;/<span class="pl-ent">item</span>&gt;
-            	&lt;/<span class="pl-ent">channel</span>&gt;
-            &lt;/<span class="pl-ent">rss</span>&gt;
-          </pre>
-
-          </div>
           <p>
-            La méthode pour notre attaque qui va être d'injecté du code que le serveur exécutera, sera d'ajouté dans le header du fichier une commande dans ce genre la :
+            Un JSON Web token est construis en 3 parties.
+            <ul>
+              <li>
+                Il est composé de 3 parties : le header, le payload et la signature.
+              </li>
+              <li>
+                Il sont séparés par des points dans la chaine de caractères et les informations sont encodées en base64.
+              </li>
+            </ul>
+          </p>
+          <p>
+            On peut voir les tokens si l'on inspecte la page dans la partie "network", un exemple d'un TOKEN.
           </p>
           <div class="bg-light ">
-            <code>&lt;!DOCTYPE HELLO [
-              &lt;!ENTITY XXE_REKT SYSTEM "SOMETHING" &gt;
-              ]&gt;&lt;title&gt;&amp;XXE_REKT;&lt;/title&gt;
+            <code>
+              eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6Imd1ZXN0In0.OnuZnYMdetcg7AWGV6WURn8CFSfas6AQej4V9M13nsk <br>
             </code>
           </div>
           <p>
             Ici il faut ajouté dans SOMETHING quelque chose que le serveur pourra traité. On pourrai choisir d'affiché par exemple le code source d'une page de login par exemple :
           </p>
-          <div class="bg-light ">
-            <code>
-              &lt;!DOCTYPE HELLO [<br>
-              &lt;!ENTITY XXE_REKT SYSTEM "file:///PATH/TO/FILE/login.php" &gt;<br>
-              ]&gt;&lt;title&gt;&amp;XXE_REKT;&lt;/title&gt;<br>
-            </code>
-          </div>
-          <p>On pourrai notamment poussé l'exploitation plus loin en outrepassant des filtres basique en utilisant des WRAPPER php qui sont des fonction interne a PHP.</p>
-          <div class="bg-light ">
-            <code>&lt;!DOCTYPE HELLO [ <br>
-              &lt;!ENTITY XXE_REKT SYSTEM "php://filter/read=convert.base64-<br>
-              encode=PATH/TO/FILE" &gt;<br>
-              ]&gt;&lt;title&gt;&amp;XXE_REKT;&lt;/title&gt;
-            </code>
-          </div>
-          <p>Ceci nous retournerais le code sources du fichier demandé en base64, il nous resterait uniquement à décoder ce fichier pour avoir le code en clair !
+          <p>
+            Cependant on peut usurper un token ou encore trompé la vérification de la signature ou encore déchiffré des "secrets" facilement avec des dictionnaires.
           </p>
           <p>
-            Ici, l'utilisateur va ce connecter au FTP avec une communication non chiffré, il ne ce doute pas qu'un hacker ce trouve en MITM entre lui et sont serveur FTP, l'attaquant verras donc passer le login/motdepasse en clair avec par exemple un outils : Wireshark.
+            Si l'on décode chaque partie cela donne :
+          </p>
+          <div class="bg-light ">
+            <code>
+              eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9 = {"typ":"JWT","alg":"HS256"}<br>
+              eyJ1c2VybmFtZSI6Imd1ZXN0In0 = {"username":"guest"}<br>
+            </code>
+          </div>
+          <p>
+            Ci-dessous ce trouve la signature:
+          </p>
+          <code>
+OnuZnYMdetcg7AWGV6WURn8CFSfas6AQej4V9M13nsk = :{�z �WF���'ڳ�z>�w
+          </code>
+          <p>
+            Seulement voilà, on peut tromper la vérification via signature en indiquant dans le header que l’on utilise pas d’algorithme de signature.
+          </p>
+          <p>
+            On change de {"username":"guest"} à {"username":"admin"} pour être en admin, on supprime l'algorithme pour la signature: {"typ":"JWT","alg":"none"} et on retire la signature, on renvoie notre payload et PAF, nous sommes admin.
           </p>
         </div>
       </div>
@@ -152,28 +148,31 @@
       <div class=" mb-4">
         <h2 id='prevention' class='ml-5 mb-3'>Prévention</h2>
         <p>
-          La formation des développeurs est essentielle pour identifier et atténuer XXE. De plus, la prévention de XXE nécessite:
+          Le contrôle d'accès n'est efficace que s'il est appliqué dans du code côté serveur approuvé ou une API sans serveur, où l'attaquant ne peut pas modifier la vérification du contrôle d'accès ou les métadonnées.
         </p>
         <ul>
           <li>
-            Dans la mesure du possible, utilisez des formats de données moins complexes tels que JSON et évitez la sérialisation des données sensibles.
+            À l'exception des ressources publiques, refusez par défaut.
           </li>
           <li>
-            Corrigez ou mettez à niveau tous les processeurs et bibliothèques XML utilisés par l'application ou sur le système d'exploitation sous-jacent. Utilisez des vérificateurs de dépendances.
+Implémentez une fois les mécanismes de contrôle d'accès et réutilisez-les tout au long de l'application, notamment en minimisant l'utilisation de CORS.
           </li>
           <li>
-            Désactivez l'entité externe XML et le traitement DTD dans tous les analyseurs XML de l'application.
+Les contrôles d'accès aux modèles doivent imposer la propriété des enregistrements, plutôt que d'accepter que l'utilisateur puisse créer, lire, mettre à jour ou supprimer n'importe quel enregistrement.
           </li>
           <li>
-            Mettez en œuvre une validation, un filtrage ou un filtrage des entrées côté serveur positif («liste blanche») pour empêcher les données hostiles dans les documents XML, les en-têtes ou les nœuds.
+Désactivez la liste des répertoires du serveur Web et assurez-vous que les métadonnées des fichiers (par exemple .git) et les fichiers de sauvegarde ne sont pas présents dans les racines Web.
           </li>
           <li>
-            Vérifiez que la fonctionnalité de téléchargement de fichiers XML ou XSL valide le XML entrant à l'aide de la validation XSD ou similaire.
+Enregistrer les échecs de contrôle d'accès, alerter les administrateurs le cas échéant (par exemple, échecs répétés).
+          </li>
+          <li>
+            Limitez l'accès à l'API et au contrôleur pour minimiser les dommages causés par les outils d'attaque automatisés.
+          </li>
+          <li>
+            Les jetons JWT doivent être invalidés sur le serveur après la déconnexion.
           </li>
         </ul>
-        <p>
-          Si ces contrôles ne sont pas possibles, envisagez d'utiliser des correctifs virtuels, des passerelles de sécurité API ou des pare-feu d'applications Web (WAF) pour détecter, surveiller et bloquer les attaques XXE.
-        </p>
       </div>
     </div>
   {% else %}

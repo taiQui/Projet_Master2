@@ -1,10 +1,10 @@
 {% extends 'base.html' %}
-{% block title %}mauvaise config{% endblock title %}
+{% block title %}mauvaise configuration{% endblock title %}
 {% block content %}
   {% if user.is_authenticated %}
     <!-- navbar navbar-expand-sm -->
       <nav class="navbar navbar-expand-sm navbar-dark bg-secondary col sticky-top mt-56" style="z-index:100;">
-      <a class="navbar-brand" href="#">mauvaise config</a>
+      <a class="navbar-brand" href="#">Mauvaise Configuration</a>
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
@@ -15,41 +15,141 @@
             <a class="nav-link" href="#exemple">Exemples</a>
           </li>
           <li class="nav-item active">
-            <a class="nav-link" href="#demo">demo</a>
+            <a class="nav-link" href="#demo">Démo</a>
           </li>
           <li class="nav-item active">
-            <a class="nav-link" href="#prevention">prevention</a>
+            <a class="nav-link" href="#prevention">Prévention</a>
           </li>
         </ul>
       </div>
     </nav>
     <div class="col-sm-10 p-3 ml-5  mt-9">
-      <div id='explication' class=" mb-4 pt-104 ">
-        <h2  class='ml-5 mb-3'>Explication</h2>
-        <p class="text-justify">qdduqfgbuwakfb dadw da dwakld w dand dakla adjkldaw ad da dajadw adw da akwladw awdknlawdawwabfewfwefkebnfkbewjewkjafbwjafbewjlfbjabgfkljbgfb fkjewbfwefnfjkgbkjabgjeakbwakkjbgadgnjnjewkwfnnekdsgehfksfhkejsbvfbjesfljqfenwjkfnwkfb</p>
-        <p>qdduqfgbuwakfbwabfewfwefkebnfkbewjewkjafbwjafbewjlfbjabgfkljbgfb fkjewbfwefnfjkgb hda k d nkajd nadw ndakwdawn awdankld daw dk;alw adw adw adw admdawdmd md dmd d dmd kjabgjeakbwakkjbgadgnjnjewkwfnnekdsgehfksfhkejsbvfbjesfljqfenwjkfnwkfb</p>
-        <p>qdduqfgbuwakfbwabfewfwefkebnfkbewjewkjafbwjafbewjlfbjabgfkljbgfb fkjewbfwefnfjkgbkjabgjeakbwakkjbgadgnjnjewkwfnnekdsgehfksfhkejsbvfbjesfljqfenwjkfnwkfb</p>
-        <p>qdduqfgbuwakfbwabfewfwefkebnfkbewjewkjafbwjafbewjlfbjabgfkljbgfb fkjewbfwefnfjkgbkjabgjeakbwakkjbgadgnjnjewkwfnnekdsgehfksfhkejsbvfbjesfljqfenwjkfnwkfb</p>
-        <p>qdduqfgbuwakfbwabfewfwefkebnfkbewjewkjafbwjafbewjlfbjabgfkljbgfb fkjewbfwefnfjkgbkjabgjeakbwakkjbgadgnjnjewkwfnnekdsgehfksfhkejsbvfbjesfljqfenwjkfnwkfb</p>
-        <p>qdduqfgbuwakfbwabfewfwefkebnfkbewjewkjafbwjafbewjlfbjabgfkljbgfb fkjewbfwefnfjkgbkjabgjeakbwakkjbgadgnjnjewkwfnnekdsgehfksfhkejsbvfbjesfljqfenwjkfnwkfb</p>
-        <p>qdduqfgbuwakfbwabfewfwefkebnfkbewjewkjafbwjafbewjlfbjabgfkljbgfb fkjewbfwefnfjkgbkjabgjeakbwakkjbgadgnjnjewkwfnnekdsgehfksfhkejsbvfbjesfljqfenwjkfnwkfb</p>
-        <p>qdduqfgbuwakfbwabfewfwefkebnfkbewjewkjafbwjafbewjlfbjabgfkljbgfb fkjewbfwefnfjkgbkjabgjeakbwakkjbgadgnjnjewkwfnnekdsgehfksfhkejsbvfbjesfljqfenwjkfnwkfb</p>
-        <p>qdduqfgbuwakfbwabfewfwefkebnfkbewjewkjafbwjafbewjlfbjabgfkljbgfb fkjewbfwefnfjkgbkjabgjeakbwakkjbgadgnjnjewkwfnnekdsgehfksfhkejsbvfbjesfljqfenwjkfnwkfb</p>
-        <p>qdduqfgbuwakfbwabfewfwefkebnfkbewjewkjafbwjafbewjlfbjabgfkljbgfb fkjewbfwefnfjkgbkjabgjeakbwakkjbgadgnjnjewkwfnnekdsgehfksfhkejsbvfbjesfljqfenwjkfnwkfb</p>
-        <p>qdduqfgbuwakfbwabfewfwefkebnfkbewjewkjafbwjafbewjlfbjabgfkljbgfb fkjewbfwefnfjkgbkjabgjeakbwakkjbgadgnjnjewkwfnnekdsgehfksfhkejsbvfbjesfljqfenwjkfnwkfb</p>
+      <div id='explication' class="text-justify mb-4 pt-104 ">
+        <div class='mt-4 '>
+          <h2  class='ml-5 mb-3'>Explication</h2>
+          <p>
+            Une mauvaise configuration de la sécurité est le problème le plus courant. Cela est généralement le résultat de configurations par défaut non sécurisées, de configurations incomplètes, d'en-têtes HTTP mal configurés et de messages d'erreur détaillés contenant des informations sensibles. Non seulement tous les systèmes d'exploitation, bibliothèques et applications doivent être configurés en toute sécurité, mais ils doivent être corrigés / mis à niveau en temps opportun.
+          </p>
+        </div>
+        <div class='mt-4 mb-5 ml-4'>
+          <ul>
+             <li>
+               <strong>Agents de menace et vecteurs d'attaque :</strong>
+               <p>
+                  les attaquants tentent souvent d'exploiter des failles non corrigées ou d'accéder à des comptes par défaut, à des pages inutilisées, à des fichiers et répertoires non protégés, etc. pour obtenir un accès non autorisé ou une connaissance du système.
+               </p>
+             </li>
+             <li>
+               <strong>Faiblesses en matière de sécurité  : </strong>
+               <p>
+                une mauvaise configuration de la sécurité peut se produire à n'importe quel niveau d'une pile d'applications, y compris les services réseau, la plate-forme, le serveur Web, le serveur d'applications, la base de données, les cadres, le code personnalisé et les machines virtuelles, conteneurs ou stockage préinstallés. Les scanners automatisés sont utiles pour détecter les erreurs de configuration, l'utilisation de comptes ou de configurations par défaut, les services inutiles, les options héritées, etc...
+               </p>
+             </li>
+             <li>
+               <strong>Impacts :</strong>
+               <p>
+                 ces failles donnent fréquemment aux attaquants un accès non autorisé à certaines données ou fonctionnalités du système. Parfois, ces défauts entraînent un compromis complet du système. L'impact commercial dépend des besoins de protection de l'application et des données.
+               </p>
+             </li>
+          </ul>
+        </div>
+        <div class='mt-4'>
+          <h5> L'application est-elle vulnérable?</h5>
+          <br>
+          <div class='ml-4'>
+            <p>
+              L'application peut être vulnérable si l'application est:
+              <ul  style=''>
+                <li>
+                  Renforcement de la sécurité appropriée manquant sur n'importe quelle partie de la pile d'applications ou autorisations mal configurées sur les services cloud.
+                </li>
+                <li class="mt-2">
+                  Les fonctionnalités inutiles sont activées ou installées (par exemple, ports, services, pages, comptes ou privilèges inutiles).
+                </li>
+                <li class="mt-2">
+                  Les comptes par défaut et leurs mots de passe sont toujours activés et inchangés.
+                </li>
+                <li>
+                  La gestion des erreurs révèle aux utilisateurs des traces de pile ou d'autres messages d'erreur trop informatifs.
+                </li>
+                <li>
+                  Pour les systèmes mis à niveau, les dernières fonctionnalités de sécurité sont désactivées ou ne sont pas configurées en toute sécurité.
+                </li>
+                <li>
+                  Les paramètres de sécurité dans les serveurs d'applications, les cadres d'application (par exemple Struts, Spring, ASP.NET), les bibliothèques, les bases de données, etc. ne sont pas définis sur des valeurs sécurisées.
+                </li>
+                <li>
+                  Le serveur n'envoie pas d'en-têtes ou de directives de sécurité ou ils ne sont pas définis sur des valeurs sécurisées.
+                </li>
+              </ul>
+            </p>
+          </div>
+        </div>
       </div>
-      <div class=" mb-4">
+      <hr/>
+      <div class="text-justify mb-4 mt-5">
         <h2 id='exemple'class='ml-5 mb-3'>Exemples</h2>
-        <p>dadhnwabdnawhda</p>
+        <div class=''>
+          <p>
+            Pour notre exemple prenons un site basique que nous pouvons faire nous même.<br>
+          </p>
+
+          {% load static %}
+          <img src="{% static '/img/file_6.png' %}"  class="center"/>
+          <p class='mt-4'>
+            Chaque site web a des fichiers de configuration, des fichiers de gestions et surtout un dossier de production quand il est en développement. Pour le développement, ll y'a des logiciels qui permettent de facilité l'acces au code a tous les developpeur ainsi que la gestion des differente partis d'un projets, ici nous allons prendre <strong>GIT</strong>, c'est un logiciel de gestion descentralisé, les developpeurs peuvent déposer leurs bout de code ainsi que récuperé celui des autres personne, c'est une définition très basique de cet outils très complets.
+          </p>
+          <p>
+            Un dossier <strong>git</strong> à la création, crée un dossier nommé <strong>'.git'</strong> qui se trouve a la racine du dossier d'un projet et qui contient tous ce qui se trouve dans le projet, et notamment les differentes <strong>branches</strong> qui se trouve être les partis séparé du projet; (où la branche <strong>master</strong> est la partis principale d'un projet); comme par exemple la partis <strong><i>Authentification</i></strong> d'un site. Imaginons pour la suite que dans la partis authentification, les developpeur aurait mis dans le code sources, non chiffré :
+          </p>
+          <div class="bg-light mt-4 mb-4">
+            <code>
+              SI ( nomDeCompte == "admin"  et  motDePasse == "Hello_je_suis_l_admin") {
+            </code>
+          </div>
+          <p>
+            Supposons maintenant que les developpeurs ont modifiés cette page authentification en la donnant à la branche principale <strong>master</strong> en enlevant la ligne de code d'au dessus, donc on ne la verrai pas. Cependant les developpeurs n'ont pas interdit l'acces au dossier <strong>.git<strong> à des utilisateur lambda. On tomberai sur cette situation :
+          </p>
+          {% load static %}
+          <img src="{% static '/img/file_6.png' %}"  class="center"/>
+
+          <p>
+            On pourrai penser que ce n'est pas grave, il n'y a que la version finale ici <strong>MAIS</strong> ce n'est pas vrai, en téléchargeant tous ce dossier, on peut récupérer chaque partis ( branche ) indépendamment et donc récupéré le nom d'utilisateur et le mot de passe de l'administrateur du site. Ce qui revient a être très dangereux suivant les intentions de l'attaquant.
+          </p>
+        </div>
       </div>
-      <div class=" mb-4">
+      <hr/>
+      <div class=" mb-4 mt-5">
         <h2 id='demo' class='ml-5 mb-3'>Demo</h2>
         <p>aller essaye</p>
-        <a href="http://localhost:8086">demo</a>
-
+        <a href="http://localhost:8086">Démo</a>
       </div>
-      <div class=" mb-4">
-        <h2 id='prevention' class='ml-5 mb-3'>Prevention</h2>
+      <hr/>
+      <div class="text-justify mb-4">
+        <h2 id='prevention' class='ml-5 mb-3'>Prévention</h2>
+        <p>
+          La formation des développeurs est essentielle pour identifier et atténuer XXE. De plus, la prévention de XXE nécessite:
+        </p>
+        <ul>
+          <li>
+            Dans la mesure du possible, utilisez des formats de données moins complexes tels que JSON et évitez la sérialisation des données sensibles.
+          </li>
+          <li>
+            Corrigez ou mettez à niveau tous les processeurs et bibliothèques XML utilisés par l'application ou sur le système d'exploitation sous-jacent. Utilisez des vérificateurs de dépendances.
+          </li>
+          <li>
+            Désactivez l'entité externe XML et le traitement DTD dans tous les analyseurs XML de l'application.
+          </li>
+          <li>
+            Mettez en œuvre une validation, un filtrage ou un filtrage des entrées côté serveur positif («liste blanche») pour empêcher les données hostiles dans les documents XML, les en-têtes ou les nœuds.
+          </li>
+          <li>
+            Vérifiez que la fonctionnalité de téléchargement de fichiers XML ou XSL valide le XML entrant à l'aide de la validation XSD ou similaire.
+          </li>
+        </ul>
+        <p>
+          Si ces contrôles ne sont pas possibles, envisagez d'utiliser des correctifs virtuels, des passerelles de sécurité API ou des pare-feu d'applications Web (WAF) pour détecter, surveiller et bloquer les attaques XXE.
+        </p>
       </div>
     </div>
   {% else %}

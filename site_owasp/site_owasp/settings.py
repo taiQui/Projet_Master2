@@ -89,7 +89,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'owasp',
         'USER': 'www-data',
-        'PASSWORD': 'www-data',
+        'PASSWORD': 'password',
         'HOST': 'localhost',
         'PORT': '3306',
     }

@@ -52,6 +52,7 @@
               <a class="dropdown-item" href="{% url 'sensitive_data_exposure' %}">donnee sensible</a>
               <a class="dropdown-item" href="{% url 'using_components_know_vul' %}">elements avec vuln</a>
               <a class="dropdown-item" href="{% url 'xss' %}">xss</a>
+              <a class="dropdown-item" href="{% url 'xml_external_entities' %}">xml</a>
             </div>
           </li>
           {% if user.is_authenticated %}
@@ -62,8 +63,6 @@
           </ul>
 
             {% if user.is_authenticated %}
-
-            <!-- ########################## -->
 
                         {% if flag == "YES" %}
                           <div class="mr-right">
@@ -88,9 +87,6 @@
                           </div>
                         </div>
                       </form>
-            <!-- ########################## -->
-
-              <!-- <p>User: {{ user.get_username }} -->
               <a class="mr-left btn btn-black" href="{% url 'logout'%}?next={{request.path}}">Logout</a>
             {% else %}
               <a class="mr-left btn btn-black" href="{% url 'login'%}?next={{request.path}}">Login</a>
