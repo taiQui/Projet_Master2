@@ -1,10 +1,10 @@
 {% extends 'base.html' %}
-{% block title %}insuf log{% endblock title %}
+{% block title %}insufficient log{% endblock title %}
 {% block content %}
   {% if user.is_authenticated %}
     <!-- navbar navbar-expand-sm -->
       <nav class="navbar navbar-expand-sm navbar-dark bg-secondary col sticky-top mt-56" style="z-index:100;">
-      <a class="navbar-brand" href="#">insuf log</a>
+      <a class="navbar-brand" href="#">insufficient log</a>
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
@@ -12,44 +12,96 @@
             <a class="nav-link" href="#">Explication</a>
           </li>
           <li class="nav-item active">
-            <a class="nav-link" href="#exemple">Exemples</a>
-          </li>
-          <li class="nav-item active">
-            <a class="nav-link" href="#demo">demo</a>
-          </li>
-          <li class="nav-item active">
-            <a class="nav-link" href="#prevention">prevention</a>
+            <a class="nav-link" href="#prevention">Prévention</a>
           </li>
         </ul>
       </div>
     </nav>
     <div class="col-sm-10 p-3 ml-5  mt-9">
-      <div id='explication' class=" mb-4 pt-104 ">
-        <h2  class='ml-5 mb-3'>Explication</h2>
-        <p class="text-justify">qdduqfgbuwakfb dadw da dwakld w dand dakla adjkldaw ad da dajadw adw da akwladw awdknlawdawwabfewfwefkebnfkbewjewkjafbwjafbewjlfbjabgfkljbgfb fkjewbfwefnfjkgbkjabgjeakbwakkjbgadgnjnjewkwfnnekdsgehfksfhkejsbvfbjesfljqfenwjkfnwkfb</p>
-        <p>qdduqfgbuwakfbwabfewfwefkebnfkbewjewkjafbwjafbewjlfbjabgfkljbgfb fkjewbfwefnfjkgb hda k d nkajd nadw ndakwdawn awdankld daw dk;alw adw adw adw admdawdmd md dmd d dmd kjabgjeakbwakkjbgadgnjnjewkwfnnekdsgehfksfhkejsbvfbjesfljqfenwjkfnwkfb</p>
-        <p>qdduqfgbuwakfbwabfewfwefkebnfkbewjewkjafbwjafbewjlfbjabgfkljbgfb fkjewbfwefnfjkgbkjabgjeakbwakkjbgadgnjnjewkwfnnekdsgehfksfhkejsbvfbjesfljqfenwjkfnwkfb</p>
-        <p>qdduqfgbuwakfbwabfewfwefkebnfkbewjewkjafbwjafbewjlfbjabgfkljbgfb fkjewbfwefnfjkgbkjabgjeakbwakkjbgadgnjnjewkwfnnekdsgehfksfhkejsbvfbjesfljqfenwjkfnwkfb</p>
-        <p>qdduqfgbuwakfbwabfewfwefkebnfkbewjewkjafbwjafbewjlfbjabgfkljbgfb fkjewbfwefnfjkgbkjabgjeakbwakkjbgadgnjnjewkwfnnekdsgehfksfhkejsbvfbjesfljqfenwjkfnwkfb</p>
-        <p>qdduqfgbuwakfbwabfewfwefkebnfkbewjewkjafbwjafbewjlfbjabgfkljbgfb fkjewbfwefnfjkgbkjabgjeakbwakkjbgadgnjnjewkwfnnekdsgehfksfhkejsbvfbjesfljqfenwjkfnwkfb</p>
-        <p>qdduqfgbuwakfbwabfewfwefkebnfkbewjewkjafbwjafbewjlfbjabgfkljbgfb fkjewbfwefnfjkgbkjabgjeakbwakkjbgadgnjnjewkwfnnekdsgehfksfhkejsbvfbjesfljqfenwjkfnwkfb</p>
-        <p>qdduqfgbuwakfbwabfewfwefkebnfkbewjewkjafbwjafbewjlfbjabgfkljbgfb fkjewbfwefnfjkgbkjabgjeakbwakkjbgadgnjnjewkwfnnekdsgehfksfhkejsbvfbjesfljqfenwjkfnwkfb</p>
-        <p>qdduqfgbuwakfbwabfewfwefkebnfkbewjewkjafbwjafbewjlfbjabgfkljbgfb fkjewbfwefnfjkgbkjabgjeakbwakkjbgadgnjnjewkwfnnekdsgehfksfhkejsbvfbjesfljqfenwjkfnwkfb</p>
-        <p>qdduqfgbuwakfbwabfewfwefkebnfkbewjewkjafbwjafbewjlfbjabgfkljbgfb fkjewbfwefnfjkgbkjabgjeakbwakkjbgadgnjnjewkwfnnekdsgehfksfhkejsbvfbjesfljqfenwjkfnwkfb</p>
-        <p>qdduqfgbuwakfbwabfewfwefkebnfkbewjewkjafbwjafbewjlfbjabgfkljbgfb fkjewbfwefnfjkgbkjabgjeakbwakkjbgadgnjnjewkwfnnekdsgehfksfhkejsbvfbjesfljqfenwjkfnwkfb</p>
+      <div id='explication' class="text-justify mb-4 pt-104 ">
+        <div class='mt-4 '>
+          <h2  class='ml-5 mb-3'>Explication</h2>
+          <p>
+            Le manque surveillance de tous les évènements liée a l'ordinateurs, comme les connections interne/externe, les erreurs d'exécution de programmes ou des journaux alias "log" peut amener un Hacker à continuer à attaquer un système informatique, de maintenir une persistance, et de falsifier, extraire ou détruire des données.
+          </p>
+        </div>
+        <div class='mt-4 mb-5 ml-4'>
+          <ul>
+             <li>
+               <strong>Agents de menace et vecteurs d'attaque :</strong>
+               <p>
+                 l'exploitation d'une journalisation et d'une surveillance insuffisantes est le fondement de presque tous les incidents majeurs. Les attaquants comptent sur le manque de surveillance et de réponse rapide pour atteindre leurs objectifs sans être détectés.
+               </p>
+             </li>
+             <li>
+               <strong>Faiblesses en matière de sécurité  : </strong>
+               <p>
+                 ce problème est inclus dans le Top 10 sur la base d'une enquête de l'industrie . Une stratégie pour déterminer si vous disposez d'une surveillance suffisante consiste à examiner les journaux après les tests de pénétration. Les actions des testeurs doivent être enregistrées suffisamment pour comprendre quels dommages ils peuvent avoir infligés.
+               </p>
+             </li>
+             <li>
+               <strong>Impacts :</strong>
+               <p>
+                 la plupart des attaques réussies commencent par un sondage de vulnérabilité. Permettre à ces sondes de continuer peut augmenter la probabilité d'un exploit réussi à près de 100%. En 2016, l'identification d'une violation a pris en moyenne 191 - beaucoup de temps pour que les dommages soient infligés.                </p>
+             </li>
+          </ul>
+        </div>
+        <div class='mt-4'>
+          <h5> L'application est-elle vulnérable?</h5>
+          <br>
+          <div class='ml-4'>
+            <p>
+              L'enregistrement, la détection, la surveillance et la réponse active insuffisants se produisent à tout moment:
+              <ul  style=''>
+                <li>
+                  Les événements vérifiables, tels que les ouvertures de session, les échecs de connexion et les transactions de valeur élevée ne sont pas enregistrés.
+                </li>
+                <li class="mt-2">
+                  Les avertissements et les erreurs ne génèrent aucun message de journal, insuffisant ou peu clair.
+                </li>
+                <li>
+                  Les journaux des applications et des API ne sont pas surveillés pour détecter toute activité suspecte.
+                </li>
+                <li>
+                  Les journaux ne sont stockés que localement.
+                </li>
+                <li>
+                  Les seuils d'alerte et les processus d'escalade des réponses appropriés ne sont pas en place ni efficaces.
+                </li>
+                <li>
+                  Les tests de pénétration et les analyses par les outils DAST ne déclenchent pas d'alertes.
+                </li>
+                <li>
+                  L'application n'est pas en mesure de détecter, d'intensifier ou d'alerter les attaques actives en temps réel ou presque en temps réel.
+                </li>
+              </ul>
+            </p>
+          </div>
+        </div>
       </div>
-      <div class=" mb-4">
-        <h2 id='exemple'class='ml-5 mb-3'>Exemples</h2>
-        <p>dadhnwabdnawhda</p>
-      </div>
-      <div class=" mb-4">
-        <h2 id='demo' class='ml-5 mb-3'>Demo</h2>
-        <p>aller essaye</p>
-        <a href="#">demo</a>
-
-      </div>
-      <div class=" mb-4">
-        <h2 id='prevention' class='ml-5 mb-3'>Prevention</h2>
+      <hr/>
+      <div class="text-justify mb-4">
+        <h2 id='prevention' class='ml-5 mb-3'>Prévention</h2>
+        <p>
+          Selon le risque des données stockées ou traitées par l'application:
+        </p>
+        <ul>
+          <li>
+            Assurez-vous que tous les échecs de connexion, de contrôle d'accès et de validation des entrées côté serveur peuvent être enregistrés avec un contexte utilisateur suffisant pour identifier les comptes suspects ou malveillants, et conservés pendant suffisamment de temps pour permettre une analyse judiciaire différée.
+          </li>
+          <li>
+            Assurez-vous que les journaux sont générés dans un format qui peut être facilement consommé par une solution de gestion centralisée des journaux.
+          </li>
+          <li>
+            Assurez-vous que les transactions de grande valeur ont une piste d'audit avec des contrôles d'intégrité pour empêcher la falsification ou la suppression, telles que les tables de base de données à ajouter uniquement ou similaires.
+          </li>
+          <li>
+            Établir une surveillance et des alertes efficaces de sorte que les activités suspectes soient détectées et traitées en temps opportun.
+          </li>
+          <li>
+            Établir ou adopter un plan de réponse et de reprise après incident.
+          </li>
+        </ul>
       </div>
     </div>
   {% else %}

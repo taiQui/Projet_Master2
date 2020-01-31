@@ -4,7 +4,7 @@
   {% if user.is_authenticated %}
     <!-- navbar navbar-expand-sm -->
       <nav class="navbar navbar-expand-sm navbar-dark bg-secondary col sticky-top mt-56" style="z-index:100;">
-      <a class="navbar-brand" href="#">insecure deserialization </a>
+      <a class="navbar-brand" href="#">insecure deserialization</a>
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
@@ -15,41 +15,146 @@
             <a class="nav-link" href="#exemple">Exemples</a>
           </li>
           <li class="nav-item active">
-            <a class="nav-link" href="#demo">demo</a>
+            <a class="nav-link" href="#demo">Démo</a>
           </li>
           <li class="nav-item active">
-            <a class="nav-link" href="#prevention">prevention</a>
+            <a class="nav-link" href="#prevention">Prévention</a>
           </li>
         </ul>
       </div>
     </nav>
     <div class="col-sm-10 p-3 ml-5  mt-9">
-      <div id='explication' class=" mb-4 pt-104 ">
-        <h2  class='ml-5 mb-3'>Explication</h2>
-        <p class="text-justify">qdduqfgbuwakfb dadw da dwakld w dand dakla adjkldaw ad da dajadw adw da akwladw awdknlawdawwabfewfwefkebnfkbewjewkjafbwjafbewjlfbjabgfkljbgfb fkjewbfwefnfjkgbkjabgjeakbwakkjbgadgnjnjewkwfnnekdsgehfksfhkejsbvfbjesfljqfenwjkfnwkfb</p>
-        <p>qdduqfgbuwakfbwabfewfwefkebnfkbewjewkjafbwjafbewjlfbjabgfkljbgfb fkjewbfwefnfjkgb hda k d nkajd nadw ndakwdawn awdankld daw dk;alw adw adw adw admdawdmd md dmd d dmd kjabgjeakbwakkjbgadgnjnjewkwfnnekdsgehfksfhkejsbvfbjesfljqfenwjkfnwkfb</p>
-        <p>qdduqfgbuwakfbwabfewfwefkebnfkbewjewkjafbwjafbewjlfbjabgfkljbgfb fkjewbfwefnfjkgbkjabgjeakbwakkjbgadgnjnjewkwfnnekdsgehfksfhkejsbvfbjesfljqfenwjkfnwkfb</p>
-        <p>qdduqfgbuwakfbwabfewfwefkebnfkbewjewkjafbwjafbewjlfbjabgfkljbgfb fkjewbfwefnfjkgbkjabgjeakbwakkjbgadgnjnjewkwfnnekdsgehfksfhkejsbvfbjesfljqfenwjkfnwkfb</p>
-        <p>qdduqfgbuwakfbwabfewfwefkebnfkbewjewkjafbwjafbewjlfbjabgfkljbgfb fkjewbfwefnfjkgbkjabgjeakbwakkjbgadgnjnjewkwfnnekdsgehfksfhkejsbvfbjesfljqfenwjkfnwkfb</p>
-        <p>qdduqfgbuwakfbwabfewfwefkebnfkbewjewkjafbwjafbewjlfbjabgfkljbgfb fkjewbfwefnfjkgbkjabgjeakbwakkjbgadgnjnjewkwfnnekdsgehfksfhkejsbvfbjesfljqfenwjkfnwkfb</p>
-        <p>qdduqfgbuwakfbwabfewfwefkebnfkbewjewkjafbwjafbewjlfbjabgfkljbgfb fkjewbfwefnfjkgbkjabgjeakbwakkjbgadgnjnjewkwfnnekdsgehfksfhkejsbvfbjesfljqfenwjkfnwkfb</p>
-        <p>qdduqfgbuwakfbwabfewfwefkebnfkbewjewkjafbwjafbewjlfbjabgfkljbgfb fkjewbfwefnfjkgbkjabgjeakbwakkjbgadgnjnjewkwfnnekdsgehfksfhkejsbvfbjesfljqfenwjkfnwkfb</p>
-        <p>qdduqfgbuwakfbwabfewfwefkebnfkbewjewkjafbwjafbewjlfbjabgfkljbgfb fkjewbfwefnfjkgbkjabgjeakbwakkjbgadgnjnjewkwfnnekdsgehfksfhkejsbvfbjesfljqfenwjkfnwkfb</p>
-        <p>qdduqfgbuwakfbwabfewfwefkebnfkbewjewkjafbwjafbewjlfbjabgfkljbgfb fkjewbfwefnfjkgbkjabgjeakbwakkjbgadgnjnjewkwfnnekdsgehfksfhkejsbvfbjesfljqfenwjkfnwkfb</p>
-        <p>qdduqfgbuwakfbwabfewfwefkebnfkbewjewkjafbwjafbewjlfbjabgfkljbgfb fkjewbfwefnfjkgbkjabgjeakbwakkjbgadgnjnjewkwfnnekdsgehfksfhkejsbvfbjesfljqfenwjkfnwkfb</p>
+      <div id='explication' class="text-justify mb-4 pt-104 ">
+        <div class='mt-4 '>
+          <h2  class='ml-5 mb-3'>Explication</h2>
+          <p>
+            Une désérialisation non sécurisée conduit souvent à l'exécution de code à distance. Même si les failles de désérialisation n'entraînent pas l'exécution de code à distance, elles peuvent être utilisées pour effectuer des attaques, notamment des attaques de relecture, des attaques par injection et des attaques par escalade de privilèges
+          </p>
+        </div>
+        <div class='mt-4 mb-5 ml-4'>
+          <ul>
+             <li>
+               <strong>Agents de menace et vecteurs d'attaque :</strong>
+               <p>
+                 l'exploitation de la désérialisation est quelque peu difficile, car les exploits standard fonctionnent rarement sans modifications ou ajustements du code d'exploitation sous-jacent.
+               </p>
+             </li>
+             <li>
+               <strong>Faiblesses en matière de sécurité  : </strong>
+               <p>
+                 ce problème est inclus dans le Top 10 sur la base d'une enquête de l'industrie et non sur des données quantifiables. Certains outils peuvent détecter des failles de désérialisation, mais une assistance humaine est souvent nécessaire pour valider le problème. On s'attend à ce que les données de prévalence des défauts de désérialisation augmentent à mesure que des outils sont développés pour aider à les identifier et à y remédier.
+               </p>
+             </li>
+             <li>
+               <strong>Impacts :</strong>
+               <p>
+                 L'impact des défauts de désérialisation ne peut pas être surestimé. Ces failles peuvent conduire à des attaques d'exécution de code à distance, l'une des attaques les plus graves possibles. L'impact commercial dépend des besoins de protection de l'application et des données.
+               </p>
+             </li>
+          </ul>
+        </div>
+        <div class='mt-4'>
+          <h5> L'application est-elle vulnérable?</h5>
+          <br>
+          <div class='ml-4'>
+            <p>
+              Les applications et les API seront vulnérables si elles désérialisent des objets hostiles ou falsifiés fournis par un attaquant. Cela peut entraîner deux principaux types d'attaques:
+              <ul  style=''>
+                <li>
+                  Attaques liées aux objets et à la structure de données où l'attaquant modifie la logique de l'application ou réalise l'exécution de code à distance arbitraire s'il existe des classes disponibles pour l'application qui peuvent changer de comportement pendant ou après la désérialisation.
+                </li>
+                <li class="mt-2">
+                  Attaques de falsification de données typiques telles que les attaques liées au contrôle d'accès où les structures de données existantes sont utilisées mais le contenu est modifié.
+                </li>
+              </ul>
+            </p>
+            <p>
+              La sérialisation peut être utilisée dans des applications pour:
+              <ul>
+                <li>
+                  Communication à distance et inter-processus (RPC / IPC)
+                </li>
+                <li>
+                  Protocoles filaires, services Web, courtiers de messages
+                </li>
+                <li>
+                  Mise en cache / persistance
+                </li>
+                <li>
+                  Bases de données, serveurs de cache, systèmes de fichiers
+                </li>
+                <li>
+                  Cookies HTTP, paramètres de formulaire HTML, jetons d'authentification API
+                </li>
+              </ul>
+            </p>
+          </div>
+        </div>
       </div>
-      <div class=" mb-4">
-        <h2 id='exemple'class='ml-5 mb-3'>Exemples</h2>
-        <p>dadhnwabdnawhda</p>
+      <hr/>
+      <div class="text-justify mb-4 mt-5">
+        <h2 id='exemple'class='ml-5 mb-3'>Exemple</h2>
+        <div class=''>
+          <p>
+
+          </p>
+          <p class='mt-4'>
+
+          </p>
+          <p>
+
+          </p>
+          <div class="bg-light mt-4 mb-4">
+            <code>
+
+            </code>
+          </div>
+          <p>
+
+          </p>
+          <p>
+
+          </p>
+          <p>
+
+          </p>
+          <p>
+
+          </p>
+        </div>
       </div>
-      <div class=" mb-4">
+      <hr/>
+      <div class=" mb-4 mt-5">
         <h2 id='demo' class='ml-5 mb-3'>Demo</h2>
         <p>aller essaye</p>
-        <a href="#">demo</a>
-
+        <a href="http://localhost:8084">Démo</a>
       </div>
-      <div class=" mb-4">
-        <h2 id='prevention' class='ml-5 mb-3'>Prevention</h2>
+      <hr/>
+      <div class="text-justify mb-4">
+        <h2 id='prevention' class='ml-5 mb-3'>Prévention</h2>
+        <p>
+          Le seul modèle architectural sûr est de ne pas accepter les objets sérialisés provenant de sources non fiables ou d'utiliser des supports de sérialisation qui n'autorisent que les types de données primitifs. Si cela n'est pas possible, envisagez l'une des options suivantes:
+        </p>
+        <ul>
+          <li>
+            Implémentation de contrôles d'intégrité tels que des signatures numériques sur tous les objets sérialisés pour empêcher la création d'objets hostiles ou la falsification de données.
+          </li>
+          <li>
+            Application de contraintes de type strictes pendant la désérialisation avant la création de l'objet, car le code attend généralement un ensemble définissable de classes. Les contournements de cette technique ont été démontrés, il est donc déconseillé de s'en remettre uniquement à cette technique.
+          </li>
+          <li>
+            Isoler et exécuter du code qui désérialise dans les environnements à faibles privilèges lorsque cela est possible.
+          </li>
+          <li>
+            Consigner les exceptions et les échecs de désérialisation, par exemple lorsque le type entrant n'est pas le type attendu ou que la désérialisation lève des exceptions.
+          </li>
+          <li>
+            Restreindre ou surveiller la connectivité réseau entrante et sortante à partir de conteneurs ou de serveurs qui se désérialisent.
+          </li>
+          <li>
+            Surveillance de la désérialisation, alerte si un utilisateur se désérialise en permanence.
+          </li>
+        </ul>
       </div>
     </div>
   {% else %}

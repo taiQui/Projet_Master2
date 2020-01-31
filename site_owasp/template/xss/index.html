@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% block title %}XSS{% endblock title %}
+{% block title %}xss{% endblock title %}
 {% block content %}
   {% if user.is_authenticated %}
     <!-- navbar navbar-expand-sm -->
@@ -15,41 +15,136 @@
             <a class="nav-link" href="#exemple">Exemples</a>
           </li>
           <li class="nav-item active">
-            <a class="nav-link" href="#demo">demo</a>
+            <a class="nav-link" href="#demo">Démo</a>
           </li>
           <li class="nav-item active">
-            <a class="nav-link" href="#prevention">prevention</a>
+            <a class="nav-link" href="#prevention">Prévention</a>
           </li>
         </ul>
       </div>
     </nav>
     <div class="col-sm-10 p-3 ml-5  mt-9">
-      <div id='explication' class=" mb-4 pt-104 ">
-        <h2  class='ml-5 mb-3'>Explication</h2>
-        <p class="text-justify">qdduqfgbuwakfb dadw da dwakld w dand dakla adjkldaw ad da dajadw adw da akwladw awdknlawdawwabfewfwefkebnfkbewjewkjafbwjafbewjlfbjabgfkljbgfb fkjewbfwefnfjkgbkjabgjeakbwakkjbgadgnjnjewkwfnnekdsgehfksfhkejsbvfbjesfljqfenwjkfnwkfb</p>
-        <p>qdduqfgbuwakfbwabfewfwefkebnfkbewjewkjafbwjafbewjlfbjabgfkljbgfb fkjewbfwefnfjkgb hda k d nkajd nadw ndakwdawn awdankld daw dk;alw adw adw adw admdawdmd md dmd d dmd kjabgjeakbwakkjbgadgnjnjewkwfnnekdsgehfksfhkejsbvfbjesfljqfenwjkfnwkfb</p>
-        <p>qdduqfgbuwakfbwabfewfwefkebnfkbewjewkjafbwjafbewjlfbjabgfkljbgfb fkjewbfwefnfjkgbkjabgjeakbwakkjbgadgnjnjewkwfnnekdsgehfksfhkejsbvfbjesfljqfenwjkfnwkfb</p>
-        <p>qdduqfgbuwakfbwabfewfwefkebnfkbewjewkjafbwjafbewjlfbjabgfkljbgfb fkjewbfwefnfjkgbkjabgjeakbwakkjbgadgnjnjewkwfnnekdsgehfksfhkejsbvfbjesfljqfenwjkfnwkfb</p>
-        <p>qdduqfgbuwakfbwabfewfwefkebnfkbewjewkjafbwjafbewjlfbjabgfkljbgfb fkjewbfwefnfjkgbkjabgjeakbwakkjbgadgnjnjewkwfnnekdsgehfksfhkejsbvfbjesfljqfenwjkfnwkfb</p>
-        <p>qdduqfgbuwakfbwabfewfwefkebnfkbewjewkjafbwjafbewjlfbjabgfkljbgfb fkjewbfwefnfjkgbkjabgjeakbwakkjbgadgnjnjewkwfnnekdsgehfksfhkejsbvfbjesfljqfenwjkfnwkfb</p>
-        <p>qdduqfgbuwakfbwabfewfwefkebnfkbewjewkjafbwjafbewjlfbjabgfkljbgfb fkjewbfwefnfjkgbkjabgjeakbwakkjbgadgnjnjewkwfnnekdsgehfksfhkejsbvfbjesfljqfenwjkfnwkfb</p>
-        <p>qdduqfgbuwakfbwabfewfwefkebnfkbewjewkjafbwjafbewjlfbjabgfkljbgfb fkjewbfwefnfjkgbkjabgjeakbwakkjbgadgnjnjewkwfnnekdsgehfksfhkejsbvfbjesfljqfenwjkfnwkfb</p>
-        <p>qdduqfgbuwakfbwabfewfwefkebnfkbewjewkjafbwjafbewjlfbjabgfkljbgfb fkjewbfwefnfjkgbkjabgjeakbwakkjbgadgnjnjewkwfnnekdsgehfksfhkejsbvfbjesfljqfenwjkfnwkfb</p>
-        <p>qdduqfgbuwakfbwabfewfwefkebnfkbewjewkjafbwjafbewjlfbjabgfkljbgfb fkjewbfwefnfjkgbkjabgjeakbwakkjbgadgnjnjewkwfnnekdsgehfksfhkejsbvfbjesfljqfenwjkfnwkfb</p>
-        <p>qdduqfgbuwakfbwabfewfwefkebnfkbewjewkjafbwjafbewjlfbjabgfkljbgfb fkjewbfwefnfjkgbkjabgjeakbwakkjbgadgnjnjewkwfnnekdsgehfksfhkejsbvfbjesfljqfenwjkfnwkfb</p>
+      <div id='explication' class="text-justify mb-4 pt-104 ">
+        <div class='mt-4 '>
+          <h2  class='ml-5 mb-3'>Explication</h2>
+          <p>
+Des failles XSS inclut des données non autorisés dans une page Web, ou met à jour une page Web existante avec des données fournies par l'attaquant. XSS permet en autres aux attaquants d'exécuter des scripts dans le navigateur de la victime qui peuvent pirater des sessions utilisateur, défigurer des sites Web ou rediriger l'utilisateur vers des sites malveillants.
+          </p>
+        </div>
+        <div class='mt-4 mb-5 ml-4'>
+          <ul>
+             <li>
+               <strong>Agents de menace et vecteurs d'attaque :</strong>
+               <p>
+                 des outils automatisés peuvent détecter et exploiter les trois formes de XSS, et il existe des cadres d'exploitation librement disponibles.
+               </p>
+             </li>
+             <li>
+               <strong>Faiblesses en matière de sécurité  : </strong>
+               <p>
+                 XSS est le deuxième problème le plus répandu dans le Top 10 OWASP, et se trouve dans environ les deux tiers de toutes les applications. Les outils automatisés peuvent détecter automatiquement certains problèmes XSS, en particulier dans les technologies matures telles que PHP, J2EE / JSP et ASP.NET.
+               </p>
+             </li>
+             <li>
+               <strong>Impacts :</strong>
+               <p>
+                  l'impact de XSS est modéré pour les XSS réfléchis et DOM, et sévère pour les XSS stockés, avec une exécution de code à distance sur le navigateur de la victime, comme le vol d'informations d'identification, des sessions ou la livraison de logiciels malveillants à la victime.
+               </p>
+             </li>
+          </ul>
+        </div>
+        <div class='mt-4'>
+          <h5> L'application est-elle vulnérable?</h5>
+          <br>
+          <div class='ml-4'>
+            <p>
+              Il existe trois formes de XSS, ciblant généralement les navigateurs des utilisateurs:              <ul  style=''>
+                <li>
+                  <strong>Reflected XSS :</strong>
+                  <p>
+                    l'application ou l'API inclut une entrée utilisateur non validée et non échappée dans le cadre de la sortie HTML. Une attaque réussie peut permettre à l'attaquant d'exécuter du code HTML et JavaScript arbitraire dans le navigateur de la victime. En règle générale, l'utilisateur devra interagir avec un lien malveillant qui pointe vers une page contrôlée par un attaquant, comme des sites Web malveillants, des publicités ou similaires.
+                  </p>
+                </li>
+                <li class="mt-2">
+                  <strong>XSS stocké :</strong>
+                    <p>
+                      l'application ou l'API stocke les entrées utilisateur non analysées qui sont affichées ultérieurement par un autre utilisateur ou un administrateur. Le XSS stocké est souvent considéré comme un risque élevé ou critique.
+                    </p>
+                </li>
+                <li class="mt-2">
+                  <strong>DOM XSS :</strong>
+                  <p>
+                    les frameworks JavaScript, les applications d'une seule page et les API qui incluent dynamiquement des données contrôlables par l'attaquant dans une page sont vulnérables à DOM XSS. Idéalement, l'application n'enverrait pas de données contrôlables par l'attaquant à des API JavaScript non sécurisées.
+                  </p>
+                </li>
+              </ul>
+            </p>
+          </div>
+        </div>
       </div>
-      <div class=" mb-4">
-        <h2 id='exemple'class='ml-5 mb-3'>Exemples</h2>
-        <p>dadhnwabdnawhda</p>
+      <hr/>
+      <div class="text-justify mb-4 mt-5">
+        <h2 id='exemple'class='ml-5 mb-3'>Exemple</h2>
+        <div class=''>
+          <p>
+            Le cross-site scripting (XSS ) permet d'injecter du contenu dans une page web, provoquant ainsi des actions sur malveillante sur les utilisateurs visitant la page, vol de cookie, redirection vers un site malveillant, défaçage.
+          </p>
+          <p class='mt-4'>
+            Pour tester si une faille XSS existe, la manière la plus simple est d’injecter un code javascript. Le test le plus élémentaire à réaliser est de l’injection soit dans une URL, soit dans un formulaire de contact, dans un livre d’or, etc...
+          </p>
+          <p>
+            Cette commande permet de voir si le site est faillible à du XSS,il faut  est à retenir.
+          </p>
+          <div class="bg-light mt-4 mb-4">
+            <code>
+              &lt;script&gt;alert(1)&lt;/script&gt;
+            </code>
+          </div>
+          <p>
+            alert : permet d'apparaitre une fenêtre sur le navigateur
+          </p>
+          <p>
+            Si lorsque j’envoie mon script Javascript, une fenêtre apparait. la faille est bien présente dans le formulaire.
+          </p>
+          <p>
+            Ensuite je dois construire ma XSS pour récupéré un cookie ou faire une redirection vers un site malveillant.
+          </p>
+          <p>
+            Exemple d'une XSS de redirection dans un formulaire
+          </p>
+          <div>
+            <code class="bg-light mt-4 mb-4">
+              &lt;script&gt;document.location="<a href="https://www.redirection.com/&quot;&lt;/script&gt;" rel="nofollow">https://www.redirection.com/"&lt;/script&gt</a>
+            </code>
+          </div>
+        </div>
       </div>
-      <div class=" mb-4">
+      <hr/>
+      <div class=" mb-4 mt-5">
         <h2 id='demo' class='ml-5 mb-3'>Demo</h2>
         <p>aller essaye</p>
-        <a href="http://localhost:8090">demo</a>
-
+        <a href="http://localhost:8090">Démo</a>
       </div>
-      <div class=" mb-4">
-        <h2 id='prevention' class='ml-5 mb-3'>Prevention</h2>
+      <hr/>
+      <div class="text-justify mb-4">
+        <h2 id='prevention' class='ml-5 mb-3'>Prévention</h2>
+        <p>
+          La prévention de XSS nécessite la séparation des données non fiables du contenu du navigateur actif. Cela peut être réalisé par:
+        </p>
+        <ul>
+          <li>
+            Utilisation de frameworks qui échappent automatiquement à XSS par conception, tels que le dernier Ruby on Rails, React JS. Découvrez les limites de la protection XSS de chaque framework et gérez correctement les cas d'utilisation qui ne sont pas couverts.
+          </li>
+          <li>
+            L'échappement de données de requête HTTP non fiables en fonction du contexte dans la sortie HTML (corps, attribut, JavaScript, CSS ou URL) résoudra les vulnérabilités XSS reflétées et stockées.
+          </li>
+          <li>
+            L'application d'un encodage contextuel lors de la modification du document du navigateur côté client agit contre DOM XSS. Lorsque cela ne peut être évité, des techniques d'échappement contextuelles similaires peuvent être appliquées aux API du navigateur.
+          </li>
+          <li>
+            Utiliser la fonction <code class="bg-light ">htmlspecialchars()</code>. Cette fonction permet de filtrer les symboles du type <, & ou encore ", en les remplaçant par leur équivalent en HTML.
+          </li>
+        </ul>
       </div>
     </div>
   {% else %}

@@ -108,12 +108,12 @@
             </code>
           </div>
           <p>
-            Supposons maintenant que les developpeurs ont modifiés cette page authentification en la donnant à la branche principale <strong>master</strong> en enlevant la ligne de code d'au dessus, donc on ne la verrai pas. Cependant les developpeurs n'ont pas interdit l'acces au dossier <strong>.git<strong> à des utilisateur lambda. On tomberai sur cette situation :
+            Supposons maintenant que les developpeurs ont modifiés cette page authentification en la donnant à la branche principale <strong>master</strong> en enlevant la ligne de code d'au dessus, donc on ne la verrai pas. Cependant les developpeurs n'ont pas interdit l'acces au dossier <strong>.git</strong> à des utilisateur lambda. On tomberai sur cette situation :
           </p>
           {% load static %}
           <img src="{% static '/img/file_6.png' %}"  class="center"/>
 
-          <p>
+          <p class='mt-4'>
             On pourrai penser que ce n'est pas grave, il n'y a que la version finale ici <strong>MAIS</strong> ce n'est pas vrai, en téléchargeant tous ce dossier, on peut récupérer chaque partis ( branche ) indépendamment et donc récupéré le nom d'utilisateur et le mot de passe de l'administrateur du site. Ce qui revient a être très dangereux suivant les intentions de l'attaquant.
           </p>
         </div>
@@ -128,28 +128,28 @@
       <div class="text-justify mb-4">
         <h2 id='prevention' class='ml-5 mb-3'>Prévention</h2>
         <p>
-          La formation des développeurs est essentielle pour identifier et atténuer XXE. De plus, la prévention de XXE nécessite:
+Des processus d'installation sécurisés doivent être mis en œuvre, notamment:
         </p>
         <ul>
           <li>
-            Dans la mesure du possible, utilisez des formats de données moins complexes tels que JSON et évitez la sérialisation des données sensibles.
+Un processus de durcissement reproductible qui permet de déployer rapidement et facilement un autre environnement correctement verrouillé. Les environnements de développement, d'assurance qualité et de production doivent tous être configurés de manière identique, avec des informations d'identification différentes utilisées dans chaque environnement. Ce processus doit être automatisé afin de minimiser l'effort requis pour configurer un nouvel environnement sécurisé.
           </li>
           <li>
-            Corrigez ou mettez à niveau tous les processeurs et bibliothèques XML utilisés par l'application ou sur le système d'exploitation sous-jacent. Utilisez des vérificateurs de dépendances.
+Une plate-forme minimale sans fonctionnalités, composants, documentation et exemples inutiles. Supprimez ou n'installez pas les fonctionnalités et les cadres inutilisés.
           </li>
           <li>
-            Désactivez l'entité externe XML et le traitement DTD dans tous les analyseurs XML de l'application.
+Une tâche pour examiner et mettre à jour les configurations appropriées à toutes les notes de sécurité, mises à jour et correctifs dans le cadre du processus de gestion des correctifs.
           </li>
           <li>
-            Mettez en œuvre une validation, un filtrage ou un filtrage des entrées côté serveur positif («liste blanche») pour empêcher les données hostiles dans les documents XML, les en-têtes ou les nœuds.
+Une architecture d'application segmentée qui fournit une séparation efficace et sécurisée entre les composants ou les locataires, avec segmentation, conteneurisation ou groupes de sécurité cloud (ACL).
           </li>
           <li>
-            Vérifiez que la fonctionnalité de téléchargement de fichiers XML ou XSL valide le XML entrant à l'aide de la validation XSD ou similaire.
+Envoi de directives de sécurité aux clients
+          </li>
+          <li>
+            Un processus automatisé pour vérifier l'efficacité des configurations et des paramètres dans tous les environnements.
           </li>
         </ul>
-        <p>
-          Si ces contrôles ne sont pas possibles, envisagez d'utiliser des correctifs virtuels, des passerelles de sécurité API ou des pare-feu d'applications Web (WAF) pour détecter, surveiller et bloquer les attaques XXE.
-        </p>
       </div>
     </div>
   {% else %}

