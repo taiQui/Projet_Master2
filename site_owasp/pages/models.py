@@ -38,7 +38,7 @@ class MyUserManager(BaseUserManager):
 
 class MyUser(AbstractBaseUser):
     nom = models.CharField(
-        verbose_name='speudo',
+        verbose_name='Pseudo',
         default='SOME STRING',
         max_length=20,
         unique=True
@@ -72,19 +72,15 @@ class MyUser(AbstractBaseUser):
         return self.is_admin
 
 class flag(models.Model):
-    num_faille  = models.IntegerField()
     flag        = models.CharField(max_length=50)
 
-    def create_flag(self, num_faille, flag):
+    def create_flag(self, flag):
         """
         Creates and saves a flag
         """
         if not flag:
             raise ValueError('flag must have an flag')
-        if not num_faille:
-            raise ValueError('flag must have an num_faille')
         flag = self.model(
-            num_faille=num_faille,
             flag=flag,
         )
         flag.save(using=self._db)
@@ -92,7 +88,7 @@ class flag(models.Model):
 
 
     def __str__(self):
-        return  str(self.num_faille)
+        return  str(self.flag)
 
     def get_absolute_url(self):
         return reverse('flag-detail', kwargs={'pk': self.pk})

@@ -201,7 +201,7 @@ class DB:
         try:
             if ' or ' in name or ' and ' in name or '#' in name or " union " in name :
                 return [("Le piratage c'est pas bien, jeune padawan du hacking !",)],None
-            self.cursor.execute("select name from users where name=\'"+name+"\'")
+            self.cursor.execute("select name,work from users where name=\'"+name+"\'")
             r = self.cursor.fetchall()
             print(r)
             if len(r) > 0:
