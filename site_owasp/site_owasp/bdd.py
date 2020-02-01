@@ -106,7 +106,7 @@ class DB:
             Delete user and print how many line has been removed
         """
         try:
-            self.cursor.execute("delete from users where name=\'"+name+"\'")
+            self.cursor.execute("delete from users where name=\'"+str(name)+"\'")
             self.database.commit()
             print("[+] {} Row deleted !".format(self.cursor.rowcount))
         except mysql.connector.Error as err:
@@ -119,7 +119,7 @@ class DB:
         cipher = hashlib.md5()
         cipher.update(password.encode())
         try:
-            self.cursor.execute("select * from users where name=\'"+username+"\' and pass=\'"+cipher.hexdigest()+"\'")
+            self.cursor.execute("select * from users where name=\'"+str(username)+"\' and pass=\'"+cipher.hexdigest()+"\'")
             r = self.cursor.fetchall()
             return len(r)==1
         except mysql.connector.Error as err:
@@ -130,7 +130,7 @@ class DB:
             Return point for given user
         """
         try:
-            self.cursor.execute("select point from pages_myuser where nom=\'"+user+"\'")
+            self.cursor.execute("select point from pages_myuser where nom=\'"+str(user)+"\'")
             r = self.cursor.fetchall()
             if len(r) < 1:
                 return -1
@@ -145,7 +145,7 @@ class DB:
         try:
             users = self.getUsers()
             for user in users:
-                self.cursor.execute("delete from users where name=\'"+user[1]+"\'")
+                self.cursor.execute("delete from users where name=\'"+str(user[1])+"\'")
                 self.database.commit()
                 print("[*] {} deleted !".format(user[1]))
             print("[+] Database cleaned !")
@@ -158,7 +158,9 @@ class DB:
         """
         try:
             pt = int(self.getPoints(name))
-            self.cursor.execute("update pages_myuser set point="+str(point+pt)+" where name=\'"+name+"\'")
+            # print("old pt : "+str(pt))
+            # print(type(pt))
+            self.cursor.execute("update pages_myuser set point="+str(point+pt)+" where nom=\'"+str(name)+"\'")
             self.database.commit()
             print("[+] {} get {} points, he has now {}.".format(name,point,pt+point))
         except mysql.connector.Error as err:
@@ -170,7 +172,7 @@ class DB:
         """
         try:
             pt = int(self.getPoints(name))
-            self.cursor.execute("update users set points="+str(pt-point)+" where name=\'"+name+"\'")
+            self.cursor.execute("update users set points="+str(pt-point)+" where nom=\'"+name+"\'")
             self.database.commit()
             print("[+] {} lose {} points, he has now {}.".format(name,point,pt-point))
         except mysql.connector.Error as err:
@@ -220,8 +222,9 @@ class DB:
             return False
     def already_validate(self,flag,user):
         try:
-            self.cursor.execute("select * from flag_flagged where id_flag=\'"+flag+"\' and id_user=\'"+user+"\'")
+            self.cursor.execute("select * from flag_flagged where id_flag=\'"+str(flag)+"\' and id_user=\'"+str(user)+"\'")
             a = self.cursor.fetchall()
+            print("yolo : "+str(a))
             if len(a) > 0:
                 return True
             else:
@@ -230,12 +233,12 @@ class DB:
             return None
     def add_to_flagged(self,flag,user):
         try:
-            self.cursor.execute("insert into flag_flagged(id_flag,id_user) values (\'"+flag+"\',\'"+user+"\')")
+            self.cursor.execute("insert into flag_flagged(id_flag,id_user) values (\'"+str(flag)+"\',\'"+str(user)+"\')")
             self.database.commit()
             return True
-        except:
+        except mysql.connector.Error as err:
+            print(err)
             return None
-
 
 if __name__ == "__main__":
     a = DB("www-data","www-data","sql_injection")
