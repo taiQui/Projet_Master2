@@ -3,6 +3,8 @@
 from threading import Thread
 from multiprocessing import Process
 import subprocess,time,os
+os.system('printf "\e[3;0;0t"')
+os.system('printf "\e[8;40;120t"')
 
 PORT = ["8080","8081","8084","8086","8088","8090"]
 PORT_OPEN = [False,False,False,False,False,False]
