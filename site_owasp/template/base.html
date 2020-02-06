@@ -31,6 +31,7 @@
         <link rel="stylesheet" href="{% static '/styles.css' %}">
     </head>
     <body>
+      <div id='main'>
         {# Navigation Menu #}
         <header>
 
@@ -93,17 +94,33 @@
             {% endif %}
           </nav>
 
-      <div class=corp>
+      <div class='corp'>
         <!-- <div class="col-sm-10 "> -->
         <div class=" ">{% block content %}{% endblock %}</div>
       </div>
         {# The Footer #}
 
-    </body>
-    <!-- <footer class="pie font-small blue ">
-    <div class="footer-copyright text-center py-3">© 2020 Copyright
-      <p style="padding-top:40px" class="text-center top_spac"> Create by <a target="_blank">❤️</a></p>
-    </div>
+        <!-- <footer class="footer pie font-small blue ">
 
- -->
+        </footer> -->
+
+
+        <div class="push"></div>
+      <footer class="footer fixed-bottom bg-dark text-light">
+        <div class="footer-copyright text-center py-3">
+          © 2020 Copyright
+          <p style="padding-top:10px" class="text-center top_spac"> Create by <a target="_blank">❤️</a></p>
+        </div>
+      </footer>
+      <!-- <footer class="py-2 bg-dark">
+      <div class="container">
+      <div class="w-100"></div>
+      <div class="col-md text-muted text-center">
+      ©Akshay Gaur
+    </div>
+  </div>
+</footer> -->
+    </div>
+    </body>
+
 </html>
