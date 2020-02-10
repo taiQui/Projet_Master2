@@ -1,14 +1,14 @@
 #!/bin/sh
-if [ $? -eq 0 ]
+if [ $# = 0 ]
 then
-  echo $0" username(root) file_with_password_for_username"
+  echo $0" username(root) file_with_password_for_username, err 1"
   exit
 fi
 for i in $#
 do
   if [ '-h' -eq $i ]
     then
-    echo $0" username(root) file_with_password_for_username"
+    echo $0" username(root) file_with_password_for_username, err 2"
     exit
   fi
 done
